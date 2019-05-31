@@ -13,4 +13,5 @@ notifications:
   email:
     recipients:
       - p.degiano@fi.uba.ar
+      - manuel.radrizzani@outlook.com
     on_failure: always
