@@ -197,4 +197,20 @@ public class TP1Tests {
         herrero.usar(pico);
         assertEquals(0, pico.durabilidad());
     }
+    @Test
+    public void test09HachaFuncionaCorrectamente(){
+        Hacha hacha = new Hacha();
+        int durabilidadHacha = hacha.durabilidad();
+
+        hacha.usar();
+        assertEquals(durabilidadHacha -1 , hacha.durabilidad());
+
+        for(int i = 0; i<4; i++ ){
+            hacha.usar();
+            }
+
+        assertEquals(durabilidadHacha -5, hacha.durabilidad());
+
+
+    }
 }
