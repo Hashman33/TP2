@@ -67,7 +67,7 @@ public class HerramientaTests {
     }
 
     @Test
-    public void test11SeUsaPicoFinoConTodosLosMaterialesExceptoDiamanteYNoSeDesgasta() {
+    public void test12SeUsaPicoFinoConTodosLosMaterialesExceptoDiamanteYNoSeDesgasta() {
         assertEquals(1, 1);
     }
 }
