@@ -14,12 +14,6 @@ public class HerramientaPiedra implements MaterialHerramienta{
         pico.fuerza = 4;
     }
 
-    public void inicializarPicoFino(PicoFino picoFino) {
-        picoFino.desgaste = new DesgastePorValor(1000);
-        picoFino.factor = 0.1;
-        picoFino.fuerza = 20;
-    }
-
     public boolean esPiedra() { return true; }
 
     public boolean esMetal() { return false; }

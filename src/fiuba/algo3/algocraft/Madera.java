@@ -20,8 +20,5 @@ public class Madera extends Material {
 
 
     @Override
-    public boolean desgastarCon(PicoFino picoFino){
-        this.desgaste.desgastar(picoFino.getFuerza(),1);
-        return false;
-    }
+    public boolean desgastarCon(PicoFino picoFino){ return false; }
 }
