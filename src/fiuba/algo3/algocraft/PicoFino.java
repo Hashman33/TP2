@@ -9,7 +9,7 @@ public class PicoFino extends Herramienta {
     }
     @Override
     public void desgastar(Material material){
-        if (material.desgastarcon(this)) {
+        if (material.desgastarCon(this)) {
             desgaste.desgastar(this.getDurabilidadActual(),this.factor);
         }
     }

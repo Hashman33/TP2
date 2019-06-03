@@ -8,43 +8,19 @@ public class Diamante extends Material {
 
     }
     @Override
-    public boolean desgastarcon( HachaMadera hachamadera){
+    public boolean desgastarCon(Hacha hacha){
         return false;
     }
 
 
     @Override
-    public boolean desgastarcon(HachaMetal hachaMetal){
+    public boolean desgastarCon(Pico pico){
         return false;
     }
 
 
     @Override
-    public boolean desgastarcon(HachaPiedra hachaPiedra){
-        return false;
-    }
-
-
-    @Override
-    public boolean desgastarcon(PicoMadera picoMadera){
-        return false;
-    }
-
-
-    @Override
-    public boolean desgastarcon(PicoPiedra picoPiedra){
-        return false;
-    }
-
-
-    @Override
-    public boolean desgastarcon(PicoMetal picoMetal){
-        return false;
-    }
-
-
-    @Override
-    public boolean desgastarcon(PicoFino picoFino){
+    public boolean desgastarCon(PicoFino picoFino){
         this.desgaste.desgastar(picoFino.getFuerza(), 1);
         return true;
     }

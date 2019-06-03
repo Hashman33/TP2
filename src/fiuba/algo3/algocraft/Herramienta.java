@@ -6,7 +6,7 @@ public abstract class Herramienta {
     protected int fuerza;
 
     public void desgastar(Material material){
-        material.desgastarcon(this);
+        material.desgastarCon(this);
         desgaste.desgastar(this.getFuerza(),this.factor);
 
     }
@@ -18,7 +18,6 @@ public abstract class Herramienta {
     public int getFuerza() {
         return fuerza;
     }
-    public int getDurabilidadActual(){
-        return this.desgaste.durabilidad();
-    }
+    public double getDurabilidadActual(){ return this.desgaste.durabilidad(); }
+
 }

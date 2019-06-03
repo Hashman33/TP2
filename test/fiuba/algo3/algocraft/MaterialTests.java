@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft;
 
-import fiuba.algo3.algocraft.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,25 +9,25 @@ public class MaterialTests {
     @Test
     public void test01SeCreaMaderaConUnaDurabilidad() {
 
-        Madera madera = new Madera();
+        Madera bloqueMadera = new Madera();
 
-        assertEquals(10, madera.durabildadactual());
+        assertEquals(10, bloqueMadera.getDurabilidadActual());
     }
 
     @Test
     public void test02SeCreaPiedraConUnaDurabilidad() {
 
-        Piedra piedra = new Piedra();
+        Piedra bloquePiedra = new Piedra();
 
-        assertEquals(30, piedra.durabildadactual());
+        assertEquals(30, bloquePiedra.getDurabilidadActual());
     }
 
     @Test
     public void test03SeCreaMetalConUnaDurabilidad() {
 
-         Metal metal = new Metal();
+         Metal bloqueMetal = new Metal();
 
-        assertEquals(50, metal.durabildadactual());
+        assertEquals(50, bloqueMetal.getDurabilidadActual());
     }
 
     @Test
@@ -36,16 +35,18 @@ public class MaterialTests {
 
         Diamante diamante = new Diamante();
 
-        assertEquals(100, diamante.durabildadactual());
+        assertEquals(100, diamante.getDurabilidadActual());
     }
 
     // Test contra Madera
     @Test
     public void test05SeUsaHachaDeMaderaEnMaterialMaderaYSeReduceDurabilidad() {
-        HachaMadera hachaMadera = new HachaMadera();
-        Madera madera = new Madera();
-        hachaMadera.desgastar(madera);
-        assertEquals(8, madera.durabildadactual());
+        HerramientaMadera deMadera = new HerramientaMadera();
+        Hacha hachaMadera = new Hacha(deMadera);
+        Madera bloqueMadera = new Madera();
+
+        hachaMadera.desgastar(bloqueMadera);
+        assertEquals(8, bloqueMadera.getDurabilidadActual());
     }
 
     @Test
@@ -75,6 +76,8 @@ public class MaterialTests {
     // Fin Test contra Madera
 
 
-    // TODO: Agregar tests idem Madera, pero con Piedra y Metal. Ojo que el enunciado nombra algunos, los otros serian supuestos nuestros
+    /* TODO: Agregar tests idem Madera, pero con Piedra y Metal. Ojo que el enunciado nombra algunos,
+             los otros serian supuestos nuestros
+     */
 
 }

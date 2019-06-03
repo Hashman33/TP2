@@ -4,28 +4,19 @@ public abstract class Material {
 
     protected Desgaste desgaste;
 
-    public  boolean desgastarcon(Herramienta herramienta){
-        return this.desgastarcon(herramienta);
+    public  boolean desgastarCon(Herramienta herramienta){
+        return this.desgastarCon(herramienta);
 
     }
 
-    public abstract boolean desgastarcon(HachaMadera hachaMadera);
+    public abstract boolean desgastarCon(Hacha hacha);
 
-    public abstract boolean desgastarcon(HachaPiedra hachaPiedra);
+    public abstract boolean desgastarCon(Pico pico);
 
-    public abstract boolean desgastarcon(HachaMetal hachaMetal);
-
-    public abstract boolean desgastarcon(PicoMadera picoMadera);
-
-    public abstract boolean desgastarcon(PicoPiedra picoPiedra);
-
-    public abstract boolean desgastarcon(PicoMetal picoMetal);
-
-    public abstract boolean desgastarcon(PicoFino picoFino);
+    public abstract boolean desgastarCon(PicoFino picoFino);
 
 
-
-    public double durabildadactual(){
+    public double getDurabilidadActual(){
         return this.desgaste.durabilidad();
     }
 

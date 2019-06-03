@@ -2,11 +2,11 @@ package fiuba.algo3.algocraft;
 
 public abstract class Desgaste {
 
-    protected int durabilidad;
+    protected double durabilidad;
 
-    public int durabilidad() {
+    public double durabilidad() {
         return this.durabilidad;
     }
 
-    public abstract void desgastar(int valor, double factor);
+    public abstract void desgastar(double valor, double factor);
 }
