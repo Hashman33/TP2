@@ -257,21 +257,78 @@ public class MaterialTests {
 
     // Tests contra Diamante
     @Test
-    public void test29SeUsaHachaDeMaderaContraDiamanteNoReduceDurabilidad() { assertEquals(1,1); }
+    public void test29SeUsaHachaDeMaderaContraDiamanteNoReduceDurabilidad() {
+
+        Hacha hachaMadera = new Hacha(new HerramientaMadera());
+        Diamante bloqueDiamante = new Diamante();
+
+        hachaMadera.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
+    }
     @Test
-    public void test30SeUsaHachaDePiedraContraDiamanteNoReduceDurabilidad() { assertEquals(1,1); }
+    public void test30SeUsaHachaDePiedraContraDiamanteNoReduceDurabilidad() {
+        Hacha hachaPiedra = new Hacha(new HerramientaPiedra());
+        Diamante bloqueDiamante = new Diamante();
+
+        hachaPiedra.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
+    }
     @Test
-    public void test31SeUsaHachaDeMetalContraDiamanteNoReduceDurabilidad() { assertEquals(1,1); }
+    public void test31SeUsaHachaDeMetalContraDiamanteNoReduceDurabilidad() {
+        Hacha hachaMetal = new Hacha(new HerramientaMetal());
+        Diamante bloqueDiamante = new Diamante();
+
+        hachaMetal.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
+    }
     @Test
-    public void test32SeUsaPicoDeMaderaContraDiamanteNoReduceDurabilidad() { assertEquals(1,1); }
+    public void test32SeUsaPicoDeMaderaContraDiamanteNoReduceDurabilidad() {
+        Pico picoMadera = new Pico(new HerramientaMadera());
+        Diamante bloqueDiamante = new Diamante();
+
+        picoMadera.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
+    }
     @Test
-    public void test33SeUsaPicoDePiedraContraDiamanteNoReduceDurabilidad() { assertEquals(1,1); }
+    public void test33SeUsaPicoDePiedraContraDiamanteNoReduceDurabilidad() {
+        Pico picoPiedra = new Pico(new HerramientaPiedra());
+        Diamante bloqueDiamante = new Diamante();
+
+        picoPiedra.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
+    }
     @Test
-    public void test34SeUsaPicoDeMetalContraDiamanteNoReduceDurabilidad() { assertEquals(1,1); }
+    public void test34SeUsaPicoDeMetalContraDiamanteNoReduceDurabilidad() {
+        Pico picoMetal = new Pico(new HerramientaMetal());
+        Diamante bloqueDiamante = new Diamante();
+
+        picoMetal.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
+    }
     @Test
-    public void test35SeUsaPicoFinoDePiedraContraDiamanteSeReduceDurabilidad() { assertEquals(1,1); }
+    public void test35SeUsaPicoFinoDePiedraContraDiamanteSeReduceDurabilidad() {
+        PicoFino picoFinoPiedra = new PicoFino(new HerramientaPiedra());
+        Diamante bloqueDiamante = new Diamante();
+
+        picoFinoPiedra.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial() - picoFinoPiedra.getFuerza(), bloqueDiamante.getDurabilidadActual());
+    }
     @Test
-    public void test36SeUsaPicoFinoDeMetalContraDiamanteSeReduceDurabilidad() { assertEquals(1,1); }
+    public void test36SeUsaPicoFinoDeMetalContraDiamanteSeReduceDurabilidad() {
+        PicoFino picoFinoMetal = new PicoFino(new HerramientaMetal());
+        Diamante bloqueDiamante = new Diamante();
+
+        picoFinoMetal.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial() - picoFinoMetal.getFuerza(), bloqueDiamante.getDurabilidadActual());
+    }
     // Fin Tests contra Diamante
 
 }
