@@ -6,6 +6,8 @@ public interface MaterialHerramienta {
 
     void inicializarPico(Pico pico);
 
+    void inicializarPicoFino(PicoFino picoFino);
+
     boolean esPiedra();
 
 }

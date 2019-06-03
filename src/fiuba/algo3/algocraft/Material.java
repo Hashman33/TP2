@@ -20,6 +20,10 @@ public abstract class Material {
         return this.desgaste.durabilidad();
     }
 
+    public double getDurabilidadInicial(){
+        return this.desgaste.getDurabilidadInicial();
+    }
+
 
 
 }

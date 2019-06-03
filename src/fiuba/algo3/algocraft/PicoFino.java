@@ -2,10 +2,12 @@ package fiuba.algo3.algocraft;
 
 public class PicoFino extends Herramienta {
 
-    public PicoFino(){
-        this.desgaste = new DesgastePorValor(1000);
-        this.factor = 0.1;
-        this.fuerza = 20;
+    protected MaterialHerramienta material;
+
+    public PicoFino(MaterialHerramienta material){
+
+        this.material = material;
+        material.inicializarPicoFino(this);
     }
     @Override
     public void desgastar(Material material){

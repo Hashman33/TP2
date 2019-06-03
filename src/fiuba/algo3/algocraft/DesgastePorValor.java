@@ -3,7 +3,10 @@ package fiuba.algo3.algocraft;
 public class DesgastePorValor extends Desgaste{
 
     public DesgastePorValor(double durabilidadInicial) {
+
         this.durabilidad = durabilidadInicial;
+        this.durabilidadInicial = durabilidadInicial;
+
     }
 
 

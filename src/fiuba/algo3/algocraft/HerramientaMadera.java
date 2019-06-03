@@ -14,5 +14,9 @@ public class HerramientaMadera implements MaterialHerramienta {
         pico.fuerza = 2;
     }
 
+    public void inicializarPicoFino(PicoFino picoFino) {
+        throw new HerramientaInexistenteException();
+    }
+
     public boolean esPiedra() { return true; }
 }

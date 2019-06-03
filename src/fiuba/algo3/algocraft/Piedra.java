@@ -9,7 +9,7 @@ public class Piedra extends Material {
     }
     @Override
     public boolean desgastarCon(Hacha hacha){
-        return true;
+        return false;
     }
 
 

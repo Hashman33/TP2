@@ -6,6 +6,7 @@ public class DesgasteAbrupto extends Desgaste {
 
     public DesgasteAbrupto(double durabilidad, int usos) {
         this.durabilidad = durabilidad;
+        this.durabilidadInicial = durabilidad;
         this.usos = usos;
     }
 

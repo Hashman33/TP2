@@ -56,7 +56,7 @@ public class HerramientaTests {
 
     @Test
     public void test07SeCreaPicoFinoConDurabilidadYFuerza() {
-        PicoFino PicoFino = new PicoFino();
+        PicoFino PicoFino = new PicoFino(new HerramientaPiedra());
         assertEquals(1000, PicoFino.getDurabilidadActual());
         assertEquals(20, PicoFino.getFuerza());
     }
@@ -180,7 +180,7 @@ public class HerramientaTests {
 
     @Test
     public void test14SeUsaPicoFinoConDiamanteYSeDesgastaDeADecimos() {
-        PicoFino picoFino = new PicoFino();   // FUERZA = 20
+        PicoFino picoFino = new PicoFino(new HerramientaPiedra());   // FUERZA = 20
         double durabilidadInicial = picoFino.getDurabilidadActual();
         Diamante diamante = new Diamante();
 
@@ -196,7 +196,7 @@ public class HerramientaTests {
 
     @Test
     public void test15SeUsaPicoFinoConTodosLosMaterialesExceptoDiamanteYNoSeDesgasta() {
-        PicoFino picoFino = new PicoFino();   // FUERZA = 20
+        PicoFino picoFino = new PicoFino(new HerramientaPiedra());   // FUERZA = 20
         double durabilidadInicial = picoFino.getDurabilidadActual();
         Madera bloqueMadera = new Madera();
         Piedra bloquePiedra = new Piedra();
