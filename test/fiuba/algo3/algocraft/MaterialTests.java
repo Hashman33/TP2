@@ -169,7 +169,14 @@ public class MaterialTests {
         assertEquals(bloquePiedra.getDurabilidadInicial() - picoFinoPiedra.fuerza, bloquePiedra.getDurabilidadActual());
     }
     @Test
-    public void test20SeUsaPicoFinoDeMetalContraPiedraSeReduceDurabilidad() { assertEquals(1,1); }
+    public void test20SeUsaPicoFinoDeMetalContraPiedraSeReduceDurabilidad() {
+        PicoFino picoFinoMetal = new PicoFino(new HerramientaMetal());
+        Piedra bloquePiedra = new Piedra();
+
+        picoFinoMetal.desgastar(bloquePiedra);
+
+        assertEquals(bloquePiedra.getDurabilidadInicial() - picoFinoMetal.fuerza, bloquePiedra.getDurabilidadActual());
+    }
     // Fin Tests contra Piedra
 
     // Tests contra Metal
