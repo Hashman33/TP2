@@ -51,17 +51,38 @@ public class MaterialTests {
 
     @Test
     public void test06SeUsaPicoDeMaderaEnMaterialMaderaYNoReduceDurabilidad() {
-        assertEquals(1, 1);
+
+        HerramientaMadera deMadera = new HerramientaMadera();
+        Pico picoMadera = new Pico(deMadera);
+        Madera bloqueMadera = new Madera();
+
+        picoMadera.desgastar(bloqueMadera);
+
+        assertEquals(10, bloqueMadera.getDurabilidadActual());
     }
 
     @Test
     public void test07SeUsaHachaDePiedraEnMaterialMaderaYSeReduceDurabilidad() {
-        assertEquals(1, 1);
+
+        HerramientaPiedra dePiedra = new HerramientaPiedra();
+        Hacha hachaPiedra = new Hacha(dePiedra);
+        Madera bloqueMadera = new Madera();
+
+        hachaPiedra.desgastar(bloqueMadera);
+
+        assertEquals(5, bloqueMadera.getDurabilidadActual());
     }
 
     @Test
     public void test08SeUsaPicoDePiedraEnMaterialMaderaYNoReduceDurabilidad() {
-        assertEquals(1, 1);
+
+        HerramientaPiedra dePiedra = new HerramientaPiedra();
+        Pico picoPiedra = new Pico(dePiedra);
+        Madera bloqueMadera = new Madera();
+
+        picoPiedra.desgastar(bloqueMadera);
+
+        assertEquals(10, bloqueMadera.getDurabilidadActual());
     }
 
     @Test
