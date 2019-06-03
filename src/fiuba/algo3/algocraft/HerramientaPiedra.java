@@ -21,4 +21,6 @@ public class HerramientaPiedra implements MaterialHerramienta{
     }
 
     public boolean esPiedra() { return true; }
+
+    public boolean esMetal() { return false; }
 }

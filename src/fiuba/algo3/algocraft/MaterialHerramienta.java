@@ -10,4 +10,6 @@ public interface MaterialHerramienta {
 
     boolean esPiedra();
 
+    boolean esMetal();
+
 }

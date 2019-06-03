@@ -18,5 +18,7 @@ public class HerramientaMadera implements MaterialHerramienta {
         throw new HerramientaInexistenteException();
     }
 
-    public boolean esPiedra() { return true; }
+    public boolean esPiedra() { return false; }
+
+    public boolean esMetal() { return false; }
 }

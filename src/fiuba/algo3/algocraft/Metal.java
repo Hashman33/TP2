@@ -15,7 +15,7 @@ public class Metal extends Material {
 
     @Override
     public boolean desgastarCon(Pico pico){
-        if (pico.material.esPiedra()) {
+        if (pico.material.esPiedra() || pico.material.esMetal()) {
             this.desgaste.desgastar(pico.getFuerza(), 1);
         }
         return true;

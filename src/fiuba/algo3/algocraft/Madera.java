@@ -16,7 +16,7 @@ public class Madera extends Material {
 
 
     @Override
-    public boolean desgastarCon(Pico pico) { return true; }
+    public boolean desgastarCon(Pico pico) { return false; }
 
 
     @Override
