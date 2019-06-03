@@ -7,7 +7,7 @@ public class DesgastePorValor extends Desgaste{
     }
 
 
-    public void desgastar(int valor, int factor) {
+    public void desgastar(int valor, double factor) {
         if (durabilidad == 0) throw new DurabilidadCeroException();
         durabilidad -= valor * factor;
         if (durabilidad <= 0) durabilidad = 0;

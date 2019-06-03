@@ -1,5 +1,6 @@
 package algocraft.test.herramienta;
 
+import fiuba.algo3.algocraft.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,28 +9,43 @@ public class MaterialTests {
 
     @Test
     public void test01SeCreaMaderaConUnaDurabilidad() {
-        assertEquals(1, 1);
+
+        Madera madera = new Madera();
+
+        assertEquals(10, madera.durabildadactual());
     }
 
     @Test
     public void test02SeCreaPiedraConUnaDurabilidad() {
-        assertEquals(1, 1);
+
+        Piedra piedra = new Piedra();
+
+        assertEquals(30, piedra.durabildadactual());
     }
 
     @Test
     public void test03SeCreaMetalConUnaDurabilidad() {
-        assertEquals(1, 1);
+
+         Metal metal = new Metal();
+
+        assertEquals(50, metal.durabildadactual());
     }
 
     @Test
     public void test04SeCreaDiamanteConUnaDurabilidad() {
-        assertEquals(1, 1);
+
+        Diamante diamante = new Diamante();
+
+        assertEquals(100, diamante.durabildadactual());
     }
 
     // Test contra Madera
     @Test
     public void test05SeUsaHachaDeMaderaEnMaterialMaderaYSeReduceDurabilidad() {
-        assertEquals(1, 1);
+        HachaMadera hachaMadera = new HachaMadera();
+        Madera madera = new Madera();
+        hachaMadera.desgastar(madera);
+        assertEquals(8, madera.durabildadactual());
     }
 
     @Test

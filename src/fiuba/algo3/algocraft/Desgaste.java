@@ -8,5 +8,5 @@ public abstract class Desgaste {
         return this.durabilidad;
     }
 
-    public abstract void desgastar(int valor, int factor);
+    public abstract void desgastar(int valor, double factor);
 }

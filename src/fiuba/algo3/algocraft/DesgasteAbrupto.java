@@ -10,7 +10,7 @@ public class DesgasteAbrupto extends Desgaste {
     }
 
     @Override
-    public void desgastar(int valor, int factor) {
+    public void desgastar(int valor, double factor) {
         if (durabilidad == 0) throw new DurabilidadCeroException();
         this.usos--;
         if (usos <= 0) durabilidad = 0;

@@ -1,5 +1,7 @@
 package algocraft.test.herramienta;
 
+import fiuba.algo3.algocraft.HachaMadera;
+import fiuba.algo3.algocraft.Madera;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,13 +35,19 @@ public class HerramientaTests {
 
     @Test
     public void test05SeUsaHachaDeMaderaConTodosLosMaterialesYSeDesgastaEnFuncionDeLaFuerza() {
-        assertEquals(1, 1);
+        HachaMadera hachaMadera = new HachaMadera();
+        Madera madera = new Madera();
+        hachaMadera.desgastar(madera);
+        hachaMadera.desgastar(madera);
+        assertEquals(96, hachaMadera.getDurabilidadActual());
     }
 
     @Test
     public void test06SeUsaHachaDePiedraConTodosLosMaterialesYSeDesgastaEnFuncionDeLaFuerza() {
+
         assertEquals(1, 1);
     }
+
 
     @Test
     public void test07SeUsaHachaDeMetalConTodosLosMaterialesYSeDesgastaEnFuncionDeLaFuerzaDivididoDos() {
