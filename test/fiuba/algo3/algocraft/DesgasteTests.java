@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-public class DesgasteTest {
+public class DesgasteTests {
 
     @Test
     public void test01DesgastePorValorSeCreaConLaDurabilidadInicialCorrecta() {
@@ -18,7 +18,7 @@ public class DesgasteTest {
     @Test
     public void test02DesgastePorValorSeDesgastaCorrectamente01() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
-        int durabilidad = desgaste.durabilidad();
+        double durabilidad = desgaste.durabilidad();
         desgaste.desgastar(1,1);
 
         assertEquals(desgaste.durabilidad(), durabilidad - 1);
@@ -26,7 +26,7 @@ public class DesgasteTest {
     @Test
     public void test03DesgastePorValorSeDesgastaCorrectamente02() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
-        int durabilidad = desgaste.durabilidad();
+        double durabilidad = desgaste.durabilidad();
         desgaste.desgastar(1,1);
         desgaste.desgastar(1,1);
         desgaste.desgastar(1,1);
@@ -36,7 +36,7 @@ public class DesgasteTest {
     @Test
     public void test04DesgastePorValorSeDesgastaCorrectamente03() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
-        int durabilidad = desgaste.durabilidad();
+        double durabilidad = desgaste.durabilidad();
         desgaste.desgastar(3,2);
 
 
@@ -45,7 +45,7 @@ public class DesgasteTest {
     @Test
     public void test05DesgastePorValorSeDesgastaCorrectamente04() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
-        int durabilidad = desgaste.durabilidad();
+        double durabilidad = desgaste.durabilidad();
         desgaste.desgastar(3,2);
         desgaste.desgastar(2,1);
 
@@ -66,6 +66,7 @@ public class DesgasteTest {
 
         assertEquals(desgaste.durabilidad(), 0);
     }
+
     @Test
     public void test08DesgastePorValorConDurabilidadCeroLanzaDurabilidadCeroExceptionAlDesgastar() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
@@ -75,6 +76,5 @@ public class DesgasteTest {
                 ()->{ desgaste.desgastar(1,1);});
     }
 
-    // DesgasteAbruptoTests...
-
+    // desgaste abrupto tests
 }
