@@ -7,42 +7,39 @@ public class Madera extends Material{
     }
     @Override
     public boolean desgastarcon( HachaMadera hachaMadera){
-        this.desgaste.desgastar(hachaMadera.GetValorDesgaste(), 1 );
+        this.desgaste.desgastar(hachaMadera.getFuerza(), 1 );
         return true;
     }
 
 
     @Override
     public boolean desgastarcon(HachaMetal hachaMetal){
-        this.desgaste.desgastar(hachaMetal.GetValorDesgaste(), 1);
+        this.desgaste.desgastar(hachaMetal.getFuerza(), 1);
         return true;
     }
 
 
     @Override
     public boolean desgastarcon(HachaPiedra hachaPiedra){
-        this.desgaste.desgastar(hachaPiedra.GetValorDesgaste(), 1);
+        this.desgaste.desgastar(hachaPiedra.getFuerza(), 1);
         return true;
     }
 
 
     @Override
-    public boolean desgastarcon(PicoMadera picoMadera){
-        return false;
-    }
+    public boolean desgastarcon(PicoMadera picoMadera) { return true; }
 
 
     @Override
-    public boolean desgastarcon(PicoPiedra picoPiedra){
-        return false;
-    }
+    public boolean desgastarcon(PicoPiedra picoPiedra) { return true; }
 
     @Override
-    public boolean desgastarcon(PicoMetal picoMetal){ return false; }
+    public boolean desgastarcon(PicoMetal picoMetal) { return true; }
 
 
     @Override
     public boolean desgastarcon(PicoFino picoFino){
+        this.desgaste.desgastar(picoFino.getFuerza(),1);
         return false;
     }
 

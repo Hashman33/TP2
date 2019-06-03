@@ -6,14 +6,14 @@ public class  HachaMadera extends Herramienta {
     public HachaMadera(){
         this.desgaste = new DesgastePorValor(100);
         this.factor = 1;
-        this.valordesgaste = 2;
+        this.fuerza = 2;
 
     }
 
     @Override
     public void desgastar(Material material){
         material.desgastarcon(this);
-        desgaste.desgastar(this.GetValorDesgaste(),this.factor);
+        desgaste.desgastar(this.fuerza,this.factor);
 
     }
 

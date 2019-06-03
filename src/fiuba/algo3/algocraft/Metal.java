@@ -8,47 +8,42 @@ public class Metal extends Material {
     }
 
     @Override
-    public boolean desgastarcon( HachaMadera hachamadera){
-        return false;
+    public boolean desgastarcon( HachaMadera hachaMadera){
+        return true;
     }
 
 
     @Override
-    public boolean desgastarcon(HachaMetal hachaMetal){
-        this.desgaste.desgastar(hachaMetal.GetValorDesgaste(), 1);
+    public boolean desgastarcon(HachaMetal hachaMetal) {
         return true;
     }
 
 
     @Override
     public boolean desgastarcon(HachaPiedra hachaPiedra){
-        this.desgaste.desgastar(hachaPiedra.GetValorDesgaste(), 1);
         return true;
     }
 
 
     @Override
-    public boolean desgastarcon(PicoMadera picoMadera){
-        return false;
-    }
+    public boolean desgastarcon(PicoMadera picoMadera) { return true; }
 
 
     @Override
     public boolean desgastarcon(PicoPiedra picoPiedra){
-        return false;
+        this.desgaste.desgastar(picoPiedra.getFuerza(), 1);
+        return true;
     }
 
 
     @Override
-    public boolean desgastarcon(PicoMetal picoMetal){
-        return false;
-    }
+    public boolean desgastarcon(PicoMetal picoMetal) { return true; }
 
 
 
     public boolean desgastarcon(PicoFino picoFino){
-        this.desgaste.desgastar(picoFino.GetValorDesgaste(),1);
-        return true;
+        this.desgaste.desgastar(picoFino.getFuerza(),1);
+        return false;
     }
 
 }
