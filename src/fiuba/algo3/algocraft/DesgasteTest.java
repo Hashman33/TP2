@@ -1,9 +1,9 @@
-package algocraft.test.desgaste;
+package fiuba.algo3.algocraft;
 
-import fiuba.algo3.algocraft.DesgastePorValor;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class DesgasteTest {
@@ -66,7 +66,7 @@ public class DesgasteTest {
 
         assertEquals(desgaste.durabilidad(), 0);
     }
-    /*
+
     @Test
     public void test08DesgastePorValorConDurabilidadCeroLanzaDurabilidadCeroExceptionAlDesgastar() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
@@ -76,6 +76,5 @@ public class DesgasteTest {
                 ()->{ desgaste.desgastar(1,1);});
     }
 
-    // DesgasteAbruptoTests...
-*/
+    // desgaste abrupto tests
 }

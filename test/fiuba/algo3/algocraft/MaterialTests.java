@@ -1,4 +1,4 @@
-package algocraft.test.herramienta;
+package fiuba.algo3.algocraft;
 
 import fiuba.algo3.algocraft.*;
 import org.junit.jupiter.api.Test;
