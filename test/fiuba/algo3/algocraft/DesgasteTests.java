@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-public class DesgasteTest {
+public class DesgasteTests {
 
     @Test
     public void test01DesgastePorValorSeCreaConLaDurabilidadInicialCorrecta() {
