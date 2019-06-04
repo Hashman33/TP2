@@ -6,4 +6,4 @@ SUEPUESTOS:
 
 El pico fino puede desgastar cualquier material
 
-No se puede crear un pico fino de madera, se lanza exception
+No se puede desgastar madera con un pico fino
