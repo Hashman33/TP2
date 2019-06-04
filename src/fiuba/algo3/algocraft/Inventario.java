@@ -1,11 +1,14 @@
 package fiuba.algo3.algocraft;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Inventario {
 
     Inventario() {
         this.herramientaEquipada = null;
+        this.herramientas = new ArrayList<Herramienta>();
+        this.materiales = new ArrayList<Material>();
     }
 
     private List<Herramienta> herramientas;
