@@ -14,7 +14,7 @@ public class Hacha extends Herramienta{
     @Override
     public void desgastar(Material material){
         material.desgastarCon(this);
-        desgaste.desgastar(this.fuerza,this.factor);
+        desgaste.desgastarHerramienta(this);
 
     }
 

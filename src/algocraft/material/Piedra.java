@@ -18,14 +18,14 @@ public class Piedra extends Material {
 
     @Override
     public boolean desgastarCon(Pico pico){
-        this.desgaste.desgastar(pico.getFuerza(),1);
+        this.desgaste.desgastar(pico);
         return true;
     }
 
 
     @Override
     public boolean desgastarCon(PicoFino picoFino){
-        this.desgaste.desgastar(picoFino.getFuerza(),1);
+        this.desgaste.desgastar(picoFino);
         return false;
     }
 

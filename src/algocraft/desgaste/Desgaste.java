@@ -1,5 +1,8 @@
 package algocraft.desgaste;
 
+import algocraft.herramienta.Herramienta;
+import algocraft.herramienta.PicoFino;
+
 public abstract class Desgaste {
 
     protected double durabilidad;
@@ -13,5 +16,9 @@ public abstract class Desgaste {
         return this.durabilidadInicial;
     }
 
-    public abstract void desgastar(double valor, double factor);
+    public abstract void desgastar(Herramienta herramienta);
+
+    public abstract void desgastarHerramienta(Herramienta herramienta);
+
+    public abstract  void desgastarPicoFino(PicoFino picoFino);
 }

@@ -1,5 +1,8 @@
 package algocraft.desgaste;
 
+import algocraft.herramienta.Herramienta;
+import algocraft.herramienta.PicoFino;
+
 public class DesgastePorValor extends Desgaste{
 
     public DesgastePorValor(double durabilidadInicial) {
@@ -10,9 +13,22 @@ public class DesgastePorValor extends Desgaste{
     }
 
 
-    public void desgastar(double valor, double factor) {
+    public void desgastar(Herramienta herramienta) {
         if (durabilidad == 0) throw new DurabilidadCeroException();
-        durabilidad -=  valor * factor;
+        durabilidad -=  herramienta.getFuerza();
+        if (durabilidad <= 0) durabilidad = 0;
+    }
+
+    public void desgastarHerramienta(Herramienta herramienta){
+        if(durabilidad == 0 ) throw new DurabilidadCeroException();
+        durabilidad -= herramienta.getFactor() * herramienta.getFuerza();
+        if (durabilidad <= 0) durabilidad = 0;
+
+    }
+
+    public void desgastarPicoFino(PicoFino picoFino){
+        if(durabilidad == 0 ) throw new DurabilidadCeroException();
+        durabilidad -= picoFino.getDurabilidadActual() * 0.1;
         if (durabilidad <= 0) durabilidad = 0;
     }
 

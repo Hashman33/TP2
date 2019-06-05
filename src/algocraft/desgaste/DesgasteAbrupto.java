@@ -1,5 +1,8 @@
 package algocraft.desgaste;
 
+import algocraft.herramienta.Herramienta;
+import algocraft.herramienta.PicoFino;
+
 public class DesgasteAbrupto extends Desgaste {
 
     private int usos;
@@ -10,10 +13,24 @@ public class DesgasteAbrupto extends Desgaste {
         this.usos = usos;
     }
 
+
     @Override
-    public void desgastar(double valor, double factor) {
+    public void desgastarHerramienta(Herramienta Herramienta) {
         if (durabilidad == 0) throw new DurabilidadCeroException();
         this.usos--;
         if (usos <= 0) durabilidad = 0;
     }
+    @Override
+    public void desgastar(Herramienta herramienta){
+        if (durabilidad == 0) throw new DurabilidadCeroException();
+        this.usos--;
+        if (usos <= 0) durabilidad = 0;
+    }
+    @Override
+    public void desgastarPicoFino(PicoFino picoFino){
+        if (durabilidad == 0) throw new DurabilidadCeroException();
+        this.usos--;
+        if (usos <= 0) durabilidad = 0;
+    }
+
 }

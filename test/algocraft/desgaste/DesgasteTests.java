@@ -1,5 +1,8 @@
 package algocraft.desgaste;
 
+import algocraft.herramienta.Hacha;
+import algocraft.herramienta.HerramientaMadera;
+import algocraft.herramienta.HerramientaPiedra;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,50 +22,61 @@ public class DesgasteTests {
     public void test02DesgastePorValorSeDesgastaCorrectamente01() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
         double durabilidad = desgaste.durabilidad();
-        desgaste.desgastar(1,1);
+        Hacha hacha = new Hacha ( new HerramientaMadera());
+        desgaste.desgastar(hacha);
 
-        assertEquals(desgaste.durabilidad(), durabilidad - 1);
+        assertEquals(desgaste.durabilidad(), durabilidad - 2);
     }
     @Test
     public void test03DesgastePorValorSeDesgastaCorrectamente02() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
         double durabilidad = desgaste.durabilidad();
-        desgaste.desgastar(1,1);
-        desgaste.desgastar(1,1);
-        desgaste.desgastar(1,1);
-
-        assertEquals(desgaste.durabilidad(), durabilidad - 3);
-    }
-    @Test
-    public void test04DesgastePorValorSeDesgastaCorrectamente03() {
-        DesgastePorValor desgaste = new DesgastePorValor(10);
-        double durabilidad = desgaste.durabilidad();
-        desgaste.desgastar(3,2);
-
+        Hacha hacha = new Hacha ( new HerramientaMadera());
+        desgaste.desgastar(hacha);
+        desgaste.desgastar(hacha);
+        desgaste.desgastar(hacha);
 
         assertEquals(desgaste.durabilidad(), durabilidad - 6);
     }
     @Test
-    public void test05DesgastePorValorSeDesgastaCorrectamente04() {
+    public void test04DesgasteHerramientaDesgastaCorrectamenteLaHerramienta03() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
         double durabilidad = desgaste.durabilidad();
-        desgaste.desgastar(3,2);
-        desgaste.desgastar(2,1);
+        Hacha hacha = new Hacha ( new HerramientaMadera());
+        desgaste.desgastarHerramienta(hacha);
+
+        assertEquals(desgaste.durabilidad(), durabilidad - 2);
+    }
+    @Test
+    public void test05DesgasteHerramientaDesgastaCorrectamenteLaHerramienta04() {
+        DesgastePorValor desgaste = new DesgastePorValor(20);
+        double durabilidad = desgaste.durabilidad();
+        Hacha hacha = new Hacha ( new HerramientaPiedra());
+
+        desgaste.desgastar(hacha);
+        desgaste.desgastar(hacha);
 
 
-        assertEquals(desgaste.durabilidad(), durabilidad - 8);
+        assertEquals(desgaste.durabilidad(), durabilidad - 10);
     }
     @Test
     public void test06DesgastePorValorSeDesgastaHastaAgotarDurabilidadYDaCero01() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
-        desgaste.desgastar(10,1);
+        Hacha hacha = new Hacha ( new HerramientaMadera());
+        for (int i = 0; i < 5; i++){
+            desgaste.desgastar(hacha);
+        }
 
         assertEquals(desgaste.durabilidad(), 0);
     }
     @Test
     public void test07DesgastePorValorSeDesgastaHastaAgotarDurabilidadYDaCero02() {
-        DesgastePorValor desgaste = new DesgastePorValor(10);
-        desgaste.desgastar(15,1);
+        DesgastePorValor desgaste = new DesgastePorValor(16);
+
+        Hacha hacha = new Hacha ( new HerramientaMadera());
+        for (int i = 0; i < 8; i++){
+            desgaste.desgastar(hacha);
+        }
 
         assertEquals(desgaste.durabilidad(), 0);
     }
@@ -70,10 +84,13 @@ public class DesgasteTests {
     @Test
     public void test08DesgastePorValorConDurabilidadCeroLanzaDurabilidadCeroExceptionAlDesgastar() {
         DesgastePorValor desgaste = new DesgastePorValor(10);
-        desgaste.desgastar(15,1);
+        Hacha hacha = new Hacha ( new HerramientaMadera());
+        for (int i = 0; i < 5; i++){
+            desgaste.desgastar(hacha);
+        }
 
         assertThrows(DurabilidadCeroException.class,
-                ()->{ desgaste.desgastar(1,1);});
+                ()->{ desgaste.desgastar(hacha);});
     }
 
     // desgaste abrupto tests
