@@ -2,6 +2,6 @@
 
 Grupo #13 - Turno Noche
 
-SUEPUESTOS:
+SUPUESTOS:
 
 No se puede desgastar madera con un pico fino
