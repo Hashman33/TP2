@@ -30,12 +30,12 @@ public class Inventario {
     }
 
     public void quitar(Herramienta herramienta) {
-        if (!pertenece(herramienta)) return;
+        if (!pertenece(herramienta)) throw new ElementoNoEstaEnInventarioException();
         herramientas.remove(herramienta);
     }
 
     public void quitar(Material material) {
-        if (!pertenece(material)) return;
+        if (!pertenece(material)) throw new ElementoNoEstaEnInventarioException();;
         materiales.remove(material);
     }
 
@@ -50,5 +50,7 @@ public class Inventario {
     public boolean pertenece(Material material) {
         return this.materiales.contains(material);
     }
+
+    public int cantidadDeElementos() { return this.materiales.size() + this.herramientas.size(); }
 
 }
