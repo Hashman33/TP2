@@ -2,9 +2,8 @@ package algocraft;
 
 import algocraft.herramienta.*;
 
+import algocraft.jugador.Jugador;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class JugadorTests {

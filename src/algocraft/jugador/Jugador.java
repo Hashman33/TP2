@@ -1,12 +1,13 @@
-package algocraft;
+package algocraft.jugador;
 
 import algocraft.herramienta.*;
+import algocraft.jugador.Inventario;
 
 public class Jugador {
 
     public Inventario inventario;
 
-    Jugador() {
+    public Jugador() {
 
         Hacha hachaMadera = new Hacha(new HerramientaMadera());
 

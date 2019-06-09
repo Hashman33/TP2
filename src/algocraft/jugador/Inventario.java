@@ -1,4 +1,4 @@
-package algocraft;
+package algocraft.jugador;
 
 import algocraft.herramienta.*;
 import algocraft.material.*;
@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Inventario {
 
-    Inventario() {
+    public Inventario() {
         this.herramientaEquipada = null;
         this.herramientas = new ArrayList<Herramienta>();
         this.materiales = new ArrayList<Material>();
