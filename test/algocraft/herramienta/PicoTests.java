@@ -100,7 +100,7 @@ public class PicoTests {
     }
 
     @Test
-    public void test08SeUsaHachaDeMaderaHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+    public void test08SeUsaPicoDeMaderaHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
         Pico picoMadera = new Pico(new HerramientaMadera());                  // FUERZA = 2
 
         for (int i = 0; i < 50; i++){
@@ -112,7 +112,7 @@ public class PicoTests {
     }
 
     @Test
-    public void test09SeUsaHachaDePiedraHastaRomperse() {
+    public void test09SeUsaPicoDePiedraHastaRomperse() {
         Pico picoPiedra = new Pico(new HerramientaPiedra());                  // FUERZA = 4
 
         for (int i = 0; i < 76; i++){
@@ -123,7 +123,7 @@ public class PicoTests {
     }
 
     @Test
-    public void test10SeUsaHachaDePiedraHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+    public void test10SeUsaPicoDePiedraHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
         Pico picoPiedra = new Pico(new HerramientaPiedra());                  // FUERZA = 4
 
         for (int i = 0; i < 76; i++){
@@ -135,7 +135,7 @@ public class PicoTests {
     }
 
     @Test
-    public void test11SeUsaHachaDeMetalHastaRomperse() {
+    public void test11SeUsaPicoDeMetalHastaRomperse() {
         Pico picoMetal = new Pico(new HerramientaMetal());                  // FUERZA = 12 / SE ROMPE AL DECIMO USO
 
         for (int i = 0; i < 10; i++){
@@ -146,7 +146,7 @@ public class PicoTests {
     }
 
     @Test
-    public void test12SeUsaHachaDeMetalHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+    public void test12SeUsaPicoDeMetalHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
         Pico picoMetal = new Pico(new HerramientaMetal());                  // FUERZA = 12 / SE ROMPE AL DECIMO USO
 
         for (int i = 0; i < 10; i++){
