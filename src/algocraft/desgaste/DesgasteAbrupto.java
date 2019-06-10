@@ -29,4 +29,7 @@ public class DesgasteAbrupto extends Desgaste {
         this.desgastarHerramienta(picoFino);;
     }
 
+    public int getUsos() {
+        return this.usos;
+    }
 }
