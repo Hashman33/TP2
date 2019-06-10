@@ -4,6 +4,7 @@ import algocraft.material.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PicoTests {
 
@@ -85,6 +86,75 @@ public class PicoTests {
         picoMetal.desgastar(diamante);
 
         assertEquals(durabilidadInicial, picoMetal.getDurabilidadActual());
+    }
+
+    @Test
+    public void test07SeUsaPicoDeMaderaHastaRomperse() {
+        Pico picoMadera = new Pico(new HerramientaMadera());                  // FUERZA = 2
+
+        for (int i = 0; i < 50; i++){
+            picoMadera.desgastar(new Piedra());
+        }
+
+        assertEquals(0, picoMadera.getDurabilidadActual());
+    }
+
+    @Test
+    public void test08SeUsaHachaDeMaderaHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+        Pico picoMadera = new Pico(new HerramientaMadera());                  // FUERZA = 2
+
+        for (int i = 0; i < 50; i++){
+            picoMadera.desgastar(new Madera());
+        }
+
+        assertThrows(HerramientaEstaRotaException.class,
+                ()->{ picoMadera.desgastar(new Madera());});
+    }
+
+    @Test
+    public void test09SeUsaHachaDePiedraHastaRomperse() {
+        Pico picoPiedra = new Pico(new HerramientaPiedra());                  // FUERZA = 4
+
+        for (int i = 0; i < 76; i++){
+            picoPiedra.desgastar(new Madera());
+        }
+
+        assertEquals(0, picoPiedra.getDurabilidadActual());
+    }
+
+    @Test
+    public void test10SeUsaHachaDePiedraHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+        Pico picoPiedra = new Pico(new HerramientaPiedra());                  // FUERZA = 4
+
+        for (int i = 0; i < 76; i++){
+            picoPiedra.desgastar(new Madera());
+        }
+
+        assertThrows(HerramientaEstaRotaException.class,
+                ()->{ picoPiedra.desgastar(new Madera());});
+    }
+
+    @Test
+    public void test11SeUsaHachaDeMetalHastaRomperse() {
+        Pico picoMetal = new Pico(new HerramientaMetal());                  // FUERZA = 12 / SE ROMPE AL DECIMO USO
+
+        for (int i = 0; i < 10; i++){
+            picoMetal.desgastar(new Madera());
+        }
+
+        assertEquals(0, picoMetal.getDurabilidadActual());
+    }
+
+    @Test
+    public void test12SeUsaHachaDeMetalHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+        Pico picoMetal = new Pico(new HerramientaMetal());                  // FUERZA = 12 / SE ROMPE AL DECIMO USO
+
+        for (int i = 0; i < 10; i++){
+            picoMetal.desgastar(new Madera());
+        }
+
+        assertThrows(HerramientaEstaRotaException.class,
+                ()->{ picoMetal.desgastar(new Madera());});
     }
 }
 

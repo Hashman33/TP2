@@ -13,7 +13,11 @@ public class PicoFino extends Herramienta {
     @Override
     public void desgastar(Material material){
         if (material.desgastarCon(this)) {
-            desgaste.desgastarPicoFino(this);
+            try {
+                desgaste.desgastarPicoFino(this);
+            } catch (DurabilidadCeroException e) {
+                throw new HerramientaEstaRotaException();
+            }
         }
     }
 }

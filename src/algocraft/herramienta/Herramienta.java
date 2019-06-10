@@ -9,10 +9,9 @@ public abstract class Herramienta {
     protected double factor;
     protected int fuerza;
 
-    public void desgastar(Material material){
+    public void desgastar(Material material) {
         material.desgastarCon(this);
-        desgaste.desgastarMaterial(this);
-
+        desgaste.desgastarHerramienta(this);
     }
 
     public double getFactor() {

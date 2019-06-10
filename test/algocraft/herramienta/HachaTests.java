@@ -4,6 +4,7 @@ import algocraft.material.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class HachaTests {
 
@@ -80,6 +81,75 @@ public class HachaTests {
         hachaMetal.desgastar(diamante);
 
         assertEquals(durabilidadInicial - (4 * (10 / 2)), hachaMetal.getDurabilidadActual());
+    }
+
+    @Test
+    public void test07SeUsaHachaDeMaderaHastaRomperse() {
+        Hacha hachaMadera = new Hacha(new HerramientaMadera());                  // FUERZA = 2
+
+        for (int i = 0; i < 50; i++){
+            hachaMadera.desgastar(new Madera());
+        }
+
+        assertEquals(0, hachaMadera.getDurabilidadActual());
+    }
+
+    @Test
+    public void test08SeUsaHachaDeMaderaHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+        Hacha hachaMadera = new Hacha(new HerramientaMadera());                  // FUERZA = 2
+
+        for (int i = 0; i < 50; i++){
+            hachaMadera.desgastar(new Madera());
+        }
+
+        assertThrows(HerramientaEstaRotaException.class,
+                ()->{ hachaMadera.desgastar(new Madera());});
+    }
+
+    @Test
+    public void test09SeUsaHachaDePiedraHastaRomperse() {
+        Hacha hachaPiedra = new Hacha(new HerramientaPiedra());                  // FUERZA = 5
+
+        for (int i = 0; i < 40; i++){
+            hachaPiedra.desgastar(new Madera());
+        }
+
+        assertEquals(0, hachaPiedra.getDurabilidadActual());
+    }
+
+    @Test
+    public void test10SeUsaHachaDePiedraHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+        Hacha hachaPiedra = new Hacha(new HerramientaPiedra());                  // FUERZA = 5
+
+        for (int i = 0; i < 40; i++){
+            hachaPiedra.desgastar(new Madera());
+        }
+
+        assertThrows(HerramientaEstaRotaException.class,
+                ()->{ hachaPiedra.desgastar(new Madera());});
+    }
+
+    @Test
+    public void test11SeUsaHachaDeMetalHastaRomperse() {
+        Hacha hachaMetal = new Hacha(new HerramientaMetal());                  // FUERZA = 10
+
+        for (int i = 0; i < 80; i++){
+            hachaMetal.desgastar(new Madera());
+        }
+
+        assertEquals(0, hachaMetal.getDurabilidadActual());
+    }
+
+    @Test
+    public void test12SeUsaHachaDeMetalHastaRomperseYLanzaHerramientaEstaRotaExceptionAlDesgastrse() {
+        Hacha hachaMetal = new Hacha(new HerramientaMetal());                  // FUERZA = 10
+
+        for (int i = 0; i < 80; i++){
+            hachaMetal.desgastar(new Madera());
+        }
+
+        assertThrows(HerramientaEstaRotaException.class,
+                ()->{ hachaMetal.desgastar(new Madera());});
     }
 
 }

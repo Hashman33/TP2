@@ -43,4 +43,6 @@ public class PicoFinoTests {
         picoFino.desgastar(bloqueMetal);
         assertEquals(durabilidadInicial, picoFino.getDurabilidadActual());
     }
+
+    // LA CANTIDAD DE USOS PARA LA ROTURA DE UN PICO FINO TIENDE A INFINITO (NO SE PUEDE SIMULAR UNA ROTURA)
 }
