@@ -24,7 +24,7 @@ public class Diamante extends Material {
 
     @Override
     public boolean desgastarCon(PicoFino picoFino){
-        this.desgaste.desgastar(picoFino);
+        this.desgaste.desgastarMaterial(picoFino);
         return true;
     }
 }

@@ -23,7 +23,7 @@ public class DesgasteTests {
         DesgastePorValor desgaste = new DesgastePorValor(10);
         double durabilidad = desgaste.durabilidad();
         Hacha hacha = new Hacha ( new HerramientaMadera());
-        desgaste.desgastar(hacha);
+        desgaste.desgastarMaterial(hacha);
 
         assertEquals(desgaste.durabilidad(), durabilidad - 2);
     }
@@ -32,9 +32,9 @@ public class DesgasteTests {
         DesgastePorValor desgaste = new DesgastePorValor(10);
         double durabilidad = desgaste.durabilidad();
         Hacha hacha = new Hacha ( new HerramientaMadera());
-        desgaste.desgastar(hacha);
-        desgaste.desgastar(hacha);
-        desgaste.desgastar(hacha);
+        desgaste.desgastarMaterial(hacha);
+        desgaste.desgastarMaterial(hacha);
+        desgaste.desgastarMaterial(hacha);
 
         assertEquals(desgaste.durabilidad(), durabilidad - 6);
     }
@@ -53,8 +53,8 @@ public class DesgasteTests {
         double durabilidad = desgaste.durabilidad();
         Hacha hacha = new Hacha ( new HerramientaPiedra());
 
-        desgaste.desgastar(hacha);
-        desgaste.desgastar(hacha);
+        desgaste.desgastarMaterial(hacha);
+        desgaste.desgastarMaterial(hacha);
 
 
         assertEquals(desgaste.durabilidad(), durabilidad - 10);
@@ -64,7 +64,7 @@ public class DesgasteTests {
         DesgastePorValor desgaste = new DesgastePorValor(10);
         Hacha hacha = new Hacha ( new HerramientaMadera());
         for (int i = 0; i < 5; i++){
-            desgaste.desgastar(hacha);
+            desgaste.desgastarMaterial(hacha);
         }
 
         assertEquals(desgaste.durabilidad(), 0);
@@ -75,7 +75,7 @@ public class DesgasteTests {
 
         Hacha hacha = new Hacha ( new HerramientaMadera());
         for (int i = 0; i < 8; i++){
-            desgaste.desgastar(hacha);
+            desgaste.desgastarMaterial(hacha);
         }
 
         assertEquals(desgaste.durabilidad(), 0);
@@ -86,11 +86,11 @@ public class DesgasteTests {
         DesgastePorValor desgaste = new DesgastePorValor(10);
         Hacha hacha = new Hacha ( new HerramientaMadera());
         for (int i = 0; i < 5; i++){
-            desgaste.desgastar(hacha);
+            desgaste.desgastarMaterial(hacha);
         }
 
         assertThrows(DurabilidadCeroException.class,
-                ()->{ desgaste.desgastar(hacha);});
+                ()->{ desgaste.desgastarMaterial(hacha);});
     }
 
     // desgaste abrupto tests

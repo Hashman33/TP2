@@ -13,7 +13,7 @@ public class Madera extends Material {
 
     @Override
     public boolean desgastarCon(Hacha hacha){
-        this.desgaste.desgastar(hacha);
+        this.desgaste.desgastarMaterial(hacha);
         return true;
     }
 

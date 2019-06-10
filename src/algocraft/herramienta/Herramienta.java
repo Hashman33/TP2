@@ -11,7 +11,7 @@ public abstract class Herramienta {
 
     public void desgastar(Material material){
         material.desgastarCon(this);
-        desgaste.desgastar(this);
+        desgaste.desgastarMaterial(this);
 
     }
 

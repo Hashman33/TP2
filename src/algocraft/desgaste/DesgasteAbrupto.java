@@ -21,16 +21,12 @@ public class DesgasteAbrupto extends Desgaste {
         if (usos <= 0) durabilidad = 0;
     }
     @Override
-    public void desgastar(Herramienta herramienta){
-        if (durabilidad == 0) throw new DurabilidadCeroException();
-        this.usos--;
-        if (usos <= 0) durabilidad = 0;
+    public void desgastarMaterial(Herramienta herramienta){
+        this.desgastarHerramienta(herramienta);
     }
     @Override
     public void desgastarPicoFino(PicoFino picoFino){
-        if (durabilidad == 0) throw new DurabilidadCeroException();
-        this.usos--;
-        if (usos <= 0) durabilidad = 0;
+        this.desgastarHerramienta(picoFino);;
     }
 
 }

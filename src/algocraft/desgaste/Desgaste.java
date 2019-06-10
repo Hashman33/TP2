@@ -16,7 +16,7 @@ public abstract class Desgaste {
         return this.durabilidadInicial;
     }
 
-    public abstract void desgastar(Herramienta herramienta);
+    public abstract void desgastarMaterial(Herramienta herramienta);
 
     public abstract void desgastarHerramienta(Herramienta herramienta);
 
