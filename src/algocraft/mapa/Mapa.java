@@ -53,6 +53,10 @@ public class Mapa {
         jugador.setCoordenadas(coordenadaX, coordenadaY);
     }
 
+    public void insertarJugador(Jugador jugador, int x, int y) {
+        jugador.setCoordenadas(x, y);
+    }
+
     public boolean moverJugadorArriba(Jugador jugador) {
 
         int coordenadaX = jugador.getCoordenadaX();
