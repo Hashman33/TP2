@@ -59,7 +59,7 @@ public class Mapa {
         int coordenadaY = jugador.getCoordenadaY();
 
         if (coordenadaY == 0) { return; }           // LIMITE DE MAPA NO SE MUEVE
-        if (tablero [coordenadaY + 1][coordenadaX].colocarJugador(jugador)) {
+        if (tablero [coordenadaY - 1][coordenadaX].colocarJugador(jugador)) {
             tablero [coordenadaY][coordenadaX].removerJugador();
         }
     }
@@ -70,7 +70,7 @@ public class Mapa {
         int coordenadaY = jugador.getCoordenadaY();
 
         if (coordenadaY == LARGO - 1) { return; }       // LIMITE DE MAPA NO SE MUEVE
-        if (tablero [coordenadaY - 1][coordenadaX].colocarJugador(jugador)) {
+        if (tablero [coordenadaY + 1][coordenadaX].colocarJugador(jugador)) {
             tablero [coordenadaY][coordenadaX].removerJugador();
         }
     }
