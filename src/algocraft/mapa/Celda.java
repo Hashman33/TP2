@@ -16,6 +16,13 @@ public class Celda {
 
     }
 
+    public Celda(Material material) {
+        this.material = material;
+    }
+
+    public Celda(Jugador jugador) { this.jugador = jugador; }
+
+
     public boolean colocarMaterial(Material materialAserColocado){
 
         if (estaVacia()){
