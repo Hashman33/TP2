@@ -31,11 +31,19 @@ public class Jugador {
 
     public int getCoordenadaY() { return coordenadaY; }
 
-    public void moverArriba(Mapa mapa) { mapa.moverJugadorArriba(this); }
+    public void moverArriba(Mapa mapa) {
+        if (mapa.moverJugadorArriba(this)) coordenadaY --;
+    }
 
-    public void moverAbajo(Mapa mapa) { mapa.moverJugadorAbajo(this); }
+    public void moverAbajo(Mapa mapa) {
+        if (mapa.moverJugadorAbajo(this)) coordenadaY ++;
+    }
 
-    public void moverIzquierda(Mapa mapa) { mapa.moverJugadorIzquierda(this); }
+    public void moverIzquierda(Mapa mapa) {
+        if (mapa.moverJugadorIzquierda(this)) coordenadaX --;
+    }
 
-    public void moverDerecha(Mapa mapa) { mapa.moverJugadorDerecha(this); }
+    public void moverDerecha(Mapa mapa) {
+        if (mapa.moverJugadorDerecha(this)) coordenadaX ++;
+    }
 }

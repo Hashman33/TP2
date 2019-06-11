@@ -53,47 +53,58 @@ public class Mapa {
         jugador.setCoordenadas(coordenadaX, coordenadaY);
     }
 
-    public void moverJugadorArriba(Jugador jugador) {
+    public boolean moverJugadorArriba(Jugador jugador) {
 
         int coordenadaX = jugador.getCoordenadaX();
         int coordenadaY = jugador.getCoordenadaY();
 
-        if (coordenadaY == 0) { return; }           // LIMITE DE MAPA NO SE MUEVE
+        if (coordenadaY == 0) { return false; }           // LIMITE DE MAPA NO SE MUEVE
         if (tablero [coordenadaY - 1][coordenadaX].colocarJugador(jugador)) {
             tablero [coordenadaY][coordenadaX].removerJugador();
+            return true;
         }
+        return false;
     }
 
-    public void moverJugadorAbajo(Jugador jugador) {
+    public boolean moverJugadorAbajo(Jugador jugador) {
 
         int coordenadaX = jugador.getCoordenadaX();
         int coordenadaY = jugador.getCoordenadaY();
 
-        if (coordenadaY == LARGO - 1) { return; }       // LIMITE DE MAPA NO SE MUEVE
+        if (coordenadaY == LARGO - 1) { return false; }       // LIMITE DE MAPA NO SE MUEVE
         if (tablero [coordenadaY + 1][coordenadaX].colocarJugador(jugador)) {
             tablero [coordenadaY][coordenadaX].removerJugador();
+            return true;
         }
+        return false;
     }
 
-    public void moverJugadorIzquierda(Jugador jugador) {
+    public boolean moverJugadorIzquierda(Jugador jugador) {
 
         int coordenadaX = jugador.getCoordenadaX();
         int coordenadaY = jugador.getCoordenadaY();
 
-        if (coordenadaX == 0) { return; }           // LIMITE DE MAPA NO SE MUEVE
+        if (coordenadaX == 0) { return false; }           // LIMITE DE MAPA NO SE MUEVE
         if (tablero [coordenadaY][coordenadaX - 1].colocarJugador(jugador)) {
             tablero [coordenadaY][coordenadaX].removerJugador();
+            return true;
         }
+        return false;
+
     }
 
-    public void moverJugadorDerecha(Jugador jugador) {
+    public boolean moverJugadorDerecha(Jugador jugador) {
 
         int coordenadaX = jugador.getCoordenadaX();
         int coordenadaY = jugador.getCoordenadaY();
 
-        if (coordenadaX == ANCHO - 1) { return; }       // LIMITE DE MAPA NO SE MUEVE
+        if (coordenadaX == ANCHO - 1) { return false; }       // LIMITE DE MAPA NO SE MUEVE
         if (tablero [coordenadaY][coordenadaX + 1].colocarJugador(jugador)) {
             tablero [coordenadaY][coordenadaX].removerJugador();
+            return true;
         }
+        return false;
     }
+
+    public Celda[][] getTablero() { return tablero; }
 }
