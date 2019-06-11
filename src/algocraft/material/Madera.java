@@ -24,4 +24,7 @@ public class Madera extends Material {
 
     @Override
     public boolean desgastarCon(PicoFino picoFino){ return false; }
+
+    public String toString(){ return "Mad ";}
+
 }

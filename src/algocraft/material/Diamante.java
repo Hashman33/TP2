@@ -27,4 +27,6 @@ public class Diamante extends Material {
         this.desgaste.desgastarMaterial(picoFino);
         return true;
     }
+
+    public String toString(){ return "dia ";}
 }

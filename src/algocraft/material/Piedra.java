@@ -29,4 +29,6 @@ public class Piedra extends Material {
         return false;
     }
 
+    public String toString(){ return "pie ";}
+
 }

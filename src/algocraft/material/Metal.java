@@ -31,4 +31,6 @@ public class Metal extends Material {
         return false;
     }
 
+    public String toString(){ return "Met ";}
+
 }

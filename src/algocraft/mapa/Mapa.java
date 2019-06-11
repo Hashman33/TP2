@@ -33,11 +33,39 @@ public class Mapa {
 
                  else if (i > 13 && i < 19 && j > 2 && j < 11) { tablero [i][j] = new Celda(new Madera()); }
 
-                 else { tablero[i][j] = new Celda(); }
+               tablero[i][j] = new Celda();
              }
          }
 
+
     }
+
+    public void maparandom(){
+        for( int i = 0; i < ANCHO; i++ ){
+
+            for( int j = 0; j< LARGO; j++){
+
+
+                tablero[i][j] = new Celda();
+            }
+        }
+        RandomMap generador = new RandomMap(this,ANCHO,LARGO);
+        generador.disponerMaterialMadera(30,20);
+        generador.disponerMaterialPiedra(25,15);
+        generador.disponerMaterialMetal(20,10);
+        generador.disponerMaterialDiamante(6,4);
+
+    }
+
+    public void imprimirMapa(){
+        for(int i = 0; i< ANCHO; i++){
+            for(int j = 0 ; j< LARGO ;  j++ ){
+                System.out.print(tablero[i][j].obtenerMaterial() + " ");
+            }
+            System.out.println();
+        }
+    }
+
 
     // El Jugador se inserta en una celda Random vacía.
     public void insertarJugador(Jugador jugador) {
@@ -52,6 +80,18 @@ public class Mapa {
 
         jugador.setCoordenadas(coordenadaX, coordenadaY);
     }
+
+    public boolean insertarMaterial(Material material, int coordenadaX, int coordenadaY){
+
+        return tablero[coordenadaY][coordenadaX].colocarMaterial(material);
+
+
+
+    }
+
+    //public boolean coordenadaEnMapa(int coordenadaX, int coordenadaY){
+
+    //}
 
     public void moverJugadorArriba(Jugador jugador) {
 
