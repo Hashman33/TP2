@@ -1,5 +1,8 @@
 package algocraft.mapa;
 
+import algocraft.material.*;
+import algocraft.jugador.*;
+
 // Utilizamos patron Singleton
 public class Mapa {
 
@@ -21,12 +24,19 @@ public class Mapa {
 
              for( int j = 0; j< LARGO; j++){
 
-                 tablero[i][j] = new Celda();
+                 if (i > 0 && i < 3 && j > 6 && j < 14) { tablero [i][j] = new Celda(new Metal()); }
+
+                 if (i > 2 && i < 6 && j > 16 && j < 19) { tablero [i][j] = new Celda(new Diamante()); }
+
+                 if (i > 8 && i < 12 && j > 0 && j < 7) { tablero [i][j] = new Celda(new Piedra()); }
+
+                 if (i > 13 && i < 19 && j > 2 && j < 11) { tablero [i][j] = new Celda(new Madera()); }
+
+                 if (i == 14 && j == 14) { tablero [i][j] = new Celda(new Jugador()); }
+
+                 else { tablero[i][j] = new Celda(); }
              }
          }
 
-
-
     }
-
 }
