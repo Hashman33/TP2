@@ -14,6 +14,10 @@ public class Celda {
         return (material == null);
     }
 
+    public void vaciar() {
+        this.material = null;
+    }
+
     public Material obtenerMaterial() {
         return this.material;
     }

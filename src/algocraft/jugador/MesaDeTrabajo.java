@@ -17,7 +17,9 @@ public class MesaDeTrabajo {
     private Herramienta crafteoActual = null;
 
     public MesaDeTrabajo() {
+
         tabla = new Celda[FILAS][COLUMNAS];
+        inicializarMesaDeTrabajo();
     }
 
     public void evaluar() {
@@ -48,16 +50,39 @@ public class MesaDeTrabajo {
     }
 
     public Herramienta obtenerCrafteoActual() {
+        if (this.crafteoActual == null) return null;
+
         limpiarMesaDeTrabajo();
-        return crafteoActual;
+        return this.crafteoActual;
     }
 
-    public void limpiarMesaDeTrabajo() {
+    private void limpiarMesaDeTrabajo() {
         for (Celda[] fila : tabla) {
             for (Celda celda: fila) {
-                celda = null;
+                celda.vaciar();
             }
         }
+    }
+
+    private void inicializarMesaDeTrabajo() {
+        for(int i = 0; i < FILAS; i++) {
+            for(int j = 0; j < COLUMNAS; j++) {
+                this.tabla[i][j] = new Celda(null);
+            }
+        }
+    }
+
+    public boolean estaVacia() {
+
+        boolean vacia = true;
+
+        for (Celda[] fila : this.tabla) {
+            for (Celda celda: fila) {
+                if (!celda.estaVacia()) return celda.estaVacia();
+            }
+        }
+
+        return vacia;
     }
 
 }
