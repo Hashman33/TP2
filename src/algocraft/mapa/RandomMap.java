@@ -4,7 +4,7 @@ import algocraft.material.*;
 
 import java.util.Random;
 
-public class RandomMap {
+/*public class RandomMap {
 
     private Mapa mapa;
     private int ancho;
@@ -138,4 +138,4 @@ public class RandomMap {
 
 
 
-}
+}*/

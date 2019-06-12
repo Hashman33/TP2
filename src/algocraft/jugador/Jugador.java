@@ -31,9 +31,7 @@ public class Jugador {
 
     public int getCoordenadaY() { return coordenadaY; }
 
-    public void moverArriba(Mapa mapa) {
-        if (mapa.moverJugadorArriba(this)) coordenadaY --;
-    }
+    public void moverArriba(Mapa mapa) { if (mapa.moverJugadorArriba(this)) coordenadaY --; }
 
     public void moverAbajo(Mapa mapa) {
         if (mapa.moverJugadorAbajo(this)) coordenadaY ++;
