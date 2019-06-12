@@ -1,4 +1,4 @@
-package algocraft.mapa;
+package algocraft.matriz;
 
 import algocraft.jugador.Jugador;
 import algocraft.material.Madera;
@@ -14,41 +14,16 @@ public class CeldaTests {
         assert(celda.estaVacia());
     }
 
-    @Test
-    public void test02CeldaSeIniciaConMaterialYNoEstaVacia(){
-        Celda celda  = new Celda(new Madera());
-        assert(!celda.estaVacia());
-    }
 
     @Test
-    public void test03UnaCeldaSeIniciaConMaterialYLoDevuelveCorrectamente(){
-        Madera madera = new Madera();
-        Celda celda  = new Celda(madera);
-        assertEquals(madera, celda.obtenerMaterial());
-    }
-
-    @Test
-    public void test04CeldaSeIniciaConJugadorYNoEstaVacia(){
-        Celda celda  = new Celda(new Jugador());
-        assert(!celda.estaVacia());
-    }
-
-    @Test
-    public void test05CeldaSeIniciaConJuagadorYLoDevuelveCorrectamente(){
-        Jugador jugador = new Jugador();
-        Celda celda  = new Celda(jugador);
-        assertEquals(jugador, celda.obtenerJugador());
-    }
-
-    @Test
-    public void test06CeldaSeLeAgregaUnMaterialYnoEstaVacia(){
+    public void test02CeldaSeLeAgregaUnMaterialYnoEstaVacia(){
         Celda celda = new Celda();
         celda.colocarMaterial(new Madera());
         assert(!celda.estaVacia());
     }
 
     @Test
-    public void test07CeldaSeLeAgregaUnMaterialCorrectamenteACelda(){
+    public void test03CeldaSeLeAgregaUnMaterialCorrectamenteACelda(){
 
         Celda celda = new Celda();
         Madera madera = new Madera();
@@ -58,7 +33,7 @@ public class CeldaTests {
     }
 
     @Test
-    public void test08CeldaSeLeAgregaUnJugadorCorrectamenteACelda(){
+    public void test04CeldaSeLeAgregaUnJugadorCorrectamenteACelda(){
 
         Celda celda = new Celda();
         Jugador jugador = new Jugador();
@@ -68,7 +43,7 @@ public class CeldaTests {
     }
 
     @Test
-    public void test09CeldaSeIntentaAgregarUnMaterialEnUnaCeldaOcupadaPorMaterialYnoSeModifica(){
+    public void test05CeldaSeIntentaAgregarUnMaterialEnUnaCeldaOcupadaPorMaterialYnoSeModifica(){
         Celda celda = new Celda();
         Madera madera = new Madera();
         celda.colocarMaterial(madera);
@@ -79,7 +54,7 @@ public class CeldaTests {
     }
 
     @Test
-    public void test10CeldaSeIntentaAgregarUnMaterialEnUnaCeldaOcupadaPorJugadorYnoSeModifica(){
+    public void test06CeldaSeIntentaAgregarUnMaterialEnUnaCeldaOcupadaPorJugadorYnoSeModifica(){
         Celda celda = new Celda();
         Jugador jugador = new Jugador();
         celda.colocarJugador(jugador);
@@ -90,7 +65,7 @@ public class CeldaTests {
     }
 
     @Test
-    public void test11CeldaSeRemueveMaterialCorrectamente(){
+    public void test07CeldaSeRemueveMaterialCorrectamente(){
         Celda celda = new Celda();
         Madera madera = new Madera();
         celda.colocarMaterial(madera);
@@ -101,7 +76,7 @@ public class CeldaTests {
     }
 
     @Test
-    public void test12CeldaSeRemueveJugadorCorrectamente(){
+    public void test08CeldaSeRemueveJugadorCorrectamente(){
 
         Celda celda = new Celda();
         Jugador jugador = new Jugador();

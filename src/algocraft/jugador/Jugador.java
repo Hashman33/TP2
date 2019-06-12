@@ -22,7 +22,7 @@ public class Jugador {
         return this.inventario.herramientaEquipada;
     }
 
-    public void setCoordenadas(int x, int y) {
+    public void setCoordenadas(int y, int x) {
         coordenadaX = x;
         coordenadaY = y;
     }

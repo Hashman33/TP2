@@ -1,4 +1,4 @@
-package algocraft.mapa;
+package algocraft.matriz;
 
 import algocraft.jugador.Jugador;
 import algocraft.material.Material;
@@ -15,13 +15,6 @@ public class Celda {
         jugador = null;
 
     }
-
-    public Celda(Material material) {
-        this.material = material;
-    }
-
-    public Celda(Jugador jugador) { this.jugador = jugador; }
-
 
     public boolean colocarMaterial(Material materialAserColocado){
 
@@ -55,17 +48,8 @@ public class Celda {
         return material;
     }
 
-    public void removerMaterial(){
+    public void removerMaterial() { material = null; }
 
-        material = null;
-
-    }
-
-    public void removerJugador(){
-
-        jugador = null;
-
-    }
-
+    public void removerJugador() { jugador = null; }
 
 }

@@ -9,6 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class JugadorTests {
 
+    Mapa mapa = Mapa.obtenerInstancia();
+    private int largo = mapa.getLargo();
+    private int ancho = mapa.getAncho();
+
     @Test
     public void test01JugadorIniciaConHachaDeMadera() {
 
@@ -26,7 +30,7 @@ public class JugadorTests {
         mapa.insertarJugador(jugador);
         int coordX = jugador.getCoordenadaX();
         int coordY = jugador.getCoordenadaY();
-        mapa.getTablero()[coordX][coordY].removerJugador();
+        mapa.removerJugador(coordY, coordX);
 
         assert(coordX >= 0 && coordX < 20 && coordY >= 0 && coordY < 20 );
     }
@@ -36,16 +40,16 @@ public class JugadorTests {
         Jugador jugador = new Jugador();
 
         Mapa mapa = Mapa.obtenerInstancia();
-        mapa.insertarJugador(jugador, 14, 14);
+        mapa.insertarJugador(14, 14, jugador);
         int coordX = jugador.getCoordenadaX();
         int coordY = jugador.getCoordenadaY();
-        mapa.getTablero()[coordX][coordY].removerJugador();
+        mapa.removerJugador(14, 14);
 
         assert(coordX == 14 && coordY == 14);
     }
 
     @Test
-    public void test04JugadorSeMueveHaciaArribaSiLaCeldaEstaVacia() {
+    public void test04JugadorEnPosicionRandomSeMueveHaciaArribaSiLaCeldaEstaVaciaYNoEstaEnUnBorde() {
         Jugador jugador = new Jugador();
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -54,16 +58,18 @@ public class JugadorTests {
         int coordenadaY = jugador.getCoordenadaY();
 
         int coordenadaYFinal = coordenadaY;
-        if (mapa.getTablero()[coordenadaY - 1][coordenadaX].estaVacia()) coordenadaYFinal --;
+        if (mapa.celdaEstaVacia(coordenadaY - 1, coordenadaX) && coordenadaY != 0) {
+            coordenadaYFinal --;
+        }
         jugador.moverArriba(mapa);
-        mapa.getTablero()[coordenadaX][coordenadaY].removerJugador();
+        mapa.removerJugador(coordenadaY, coordenadaX);
 
         assertEquals(coordenadaYFinal, jugador.getCoordenadaY());
         assertEquals(coordenadaX, jugador.getCoordenadaX());
     }
 
     @Test
-    public void test05JugadorSeMueveHaciaAbajoSiLaCeldaEstaVacia() {
+    public void test05JugadorEnPosicionRandomSeMueveHaciaAbajoSiLaCeldaEstaVaciaYNoEstaEnUnBorde() {
         Jugador jugador = new Jugador();
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -72,16 +78,18 @@ public class JugadorTests {
         int coordenadaY = jugador.getCoordenadaY();
 
         int coordenadaYFinal = coordenadaY;
-        if (mapa.getTablero()[coordenadaY + 1][coordenadaX].estaVacia()) coordenadaYFinal ++;
+        if (mapa.celdaEstaVacia(coordenadaY + 1, coordenadaX) && coordenadaY != largo - 1) {
+            coordenadaYFinal ++;
+        }
         jugador.moverAbajo(mapa);
-        mapa.getTablero()[coordenadaX][coordenadaY].removerJugador();
+        mapa.removerJugador(coordenadaY, coordenadaX);
 
         assertEquals(coordenadaYFinal, jugador.getCoordenadaY());
         assertEquals(coordenadaX, jugador.getCoordenadaX());
     }
 
     @Test
-    public void test06JugadorSeMueveHaciaLaIzquierdaSiLaCeldaEstaVacia() {
+    public void test06JugadorEnPosicionRandomSeMueveHaciaIzquierdaSiLaCeldaEstaVaciaYNoEstaEnUnBorde() {
         Jugador jugador = new Jugador();
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -90,16 +98,18 @@ public class JugadorTests {
         int coordenadaY = jugador.getCoordenadaY();
 
         int coordenadaXFinal = coordenadaX;
-        if (mapa.getTablero()[coordenadaY][coordenadaX - 1].estaVacia()) coordenadaXFinal --;
+        if (mapa.celdaEstaVacia(coordenadaY, coordenadaX - 1) && coordenadaX != 0) {
+            coordenadaXFinal --;
+        }
         jugador.moverIzquierda(mapa);
-        mapa.getTablero()[coordenadaX][coordenadaY].removerJugador();
+        mapa.removerJugador(coordenadaY, coordenadaX);
 
         assertEquals(coordenadaXFinal, jugador.getCoordenadaX());
         assertEquals(coordenadaY, jugador.getCoordenadaY());
     }
 
     @Test
-    public void test07JugadorSeMueveHaciaLaDerechaSiLaCeldaEstaVacia() {
+    public void test07JugadorEnPosicionRandomSeMueveHaciaArribaSiLaCeldaEstaVaciaYNoEstaEnUnBorde() {
         Jugador jugador = new Jugador();
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -108,9 +118,11 @@ public class JugadorTests {
         int coordenadaY = jugador.getCoordenadaY();
 
         int coordenadaXFinal = coordenadaX;
-        if (mapa.getTablero()[coordenadaY][coordenadaX + 1].estaVacia()) coordenadaXFinal ++;
+        if (mapa.celdaEstaVacia(coordenadaY, coordenadaX + 1) && coordenadaX != ancho - 1) {
+            coordenadaXFinal ++;
+        }
         jugador.moverDerecha(mapa);
-        mapa.getTablero()[coordenadaX][coordenadaY].removerJugador();
+        mapa.removerJugador(coordenadaY, coordenadaX);
 
         assertEquals(coordenadaXFinal, jugador.getCoordenadaX());
         assertEquals(coordenadaY, jugador.getCoordenadaY());
