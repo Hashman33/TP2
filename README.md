@@ -10,13 +10,14 @@ ESTADO DEL TP:
 	- Los materiales se desgastan de manera correcta dependiendo de la herramienta (DOUBLE DISPACH).
 	- Las herramientas se desgastan correctamente.
 	- Jugador se crea correctamente con un Hacha de Madera equipada.
-	- Se implementó un Mapa (singleton) que está compuesta por una Matriz que admite Celdas compuestas por un Material o Jugador.
+	- Se implementó un Mapa (singleton) que está compuesta por una Matriz compuesta por Celdas que admiten un Material o Jugador.
 	- El Mapa se inicia con Materiales dentro del mismo insertados manualmente.
 	- El Jugador puede insertarse en el Mapa en el Origen (0,0) o en una posición dada.
 	- El Jugador puede moverese libremente en el mapa mientras la celda a ocupar este vacía.
 	- El Jugador posee un inventario de materiales y herramientas, puede incorporar y remover elementos del mismo.
 	
 	En implentación:
+	- Clase MapaRandom 
 	- Clase MesaDeTrabajo para la creación de herramientas.
 	- Clase Juego con el inicio del juego.
 	
