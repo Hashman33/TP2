@@ -3,8 +3,8 @@ package algocraft.jugador;
 import algocraft.herramienta.*;
 import algocraft.mapa.*;
 
+import algocraft.utilidades.VectorPosicion2I;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class JugadorTests {
@@ -20,28 +20,26 @@ public class JugadorTests {
     }
 
     @Test
-    public void test02JugadorSeInsertaEnElMapaEnPosicionRandomCorrectamente() {
+    public void test02JugadorSeInsertaEnElOrigenDelMapaCorrectamente() {
         Jugador jugador = new Jugador();
 
         Mapa mapa = Mapa.obtenerInstancia();
-        mapa.insertarJugador(jugador);
-        int coordX = jugador.getCoordenadaX();
-        int coordY = jugador.getCoordenadaY();
-        mapa.removerJugador(coordY, coordX);
+        mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        assert (coordX >= 0 && coordX < 20 && coordY >= 0 && coordY < 20);
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 0)));
+
+        mapa.removerJugador(jugador.getPosicion());
     }
 
     @Test
     public void test03JugadorSeInsertaEnElMapaEnPosicionDefinidaCorrectamente() {
-        Jugador jugador = new Jugador();
+        Jugador jugador = new Jugador(new VectorPosicion2I(14, 14));
 
         Mapa mapa = Mapa.obtenerInstancia();
-        mapa.insertarJugador(14, 14, jugador);
-        int coordX = jugador.getCoordenadaX();
-        int coordY = jugador.getCoordenadaY();
-        mapa.removerJugador(14, 14);
+        mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        assert (coordX == 14 && coordY == 14);
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(14, 14)));
+
+        mapa.removerJugador(jugador.getPosicion());
     }
 }
