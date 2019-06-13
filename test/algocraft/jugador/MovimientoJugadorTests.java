@@ -1,6 +1,8 @@
 package algocraft.jugador;
 
 import algocraft.mapa.Mapa;
+import algocraft.material.Piedra;
+import algocraft.utilidades.VectorPosicion2I;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -261,6 +263,92 @@ public class MovimientoJugadorTests {
 
         assertEquals(largo - 1, jugador.getCoordenadaY());
         assertEquals(ancho - 1, jugador.getCoordenadaX());
+    }
+
+    // Test de movimiento con el VectorPosicion2I //
+    @Test
+    public void test001JugadorEnElOrigenSeMueveHaciaAbajo() {
+        Jugador jugador = new Jugador();
+
+        Mapa mapa = Mapa.obtenerInstancia();
+        mapa.insertarJugador(jugador, jugador.getPosicion());
+
+        jugador.mover(mapa, new VectorPosicion2I(0, 1));
+
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 1)));
+    }
+
+    @Test
+    public void test002JugadorEnElOrigenSeMueveHaciaLaDerecha() {
+        Jugador jugador = new Jugador();
+
+        Mapa mapa = Mapa.obtenerInstancia();
+        mapa.insertarJugador(jugador, jugador.getPosicion());
+
+        jugador.mover(mapa, new VectorPosicion2I(1, 0));
+
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 0)));
+    }
+
+    @Test
+    public void test003JugadorEnElOrigenNoSeMueveHaciaLaIzquierda() {
+        Jugador jugador = new Jugador();
+
+        Mapa mapa = Mapa.obtenerInstancia();
+        mapa.insertarJugador(jugador, jugador.getPosicion());
+
+        jugador.mover(mapa, new VectorPosicion2I(-1, 0));
+
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 0)));
+    }
+
+    @Test
+    public void test004JugadorEnElOrigenNoSeMueveHaciaArriba() {
+        Jugador jugador = new Jugador();
+
+        Mapa mapa = Mapa.obtenerInstancia();
+        mapa.insertarJugador(jugador, jugador.getPosicion());
+
+        jugador.mover(mapa, new VectorPosicion2I(0, -1));
+
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 0)));
+    }
+
+    @Test
+    public void test005JugadorNoSeMueveSobreUnCasilleroOcupado() {
+        Jugador jugador = new Jugador(new VectorPosicion2I(1, 1));
+
+        Mapa mapa = Mapa.obtenerInstancia();
+        mapa.insertarJugador(jugador, jugador.getPosicion());
+
+        // Rodeo al jugador de piedras
+        mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(0,0));
+        mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(1,0));
+        mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(2,0));
+        mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(0,1));
+        mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(0,2));
+        mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(1,2));
+        mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(2,2));
+        mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(2,1));
+
+        jugador.mover(mapa, new VectorPosicion2I(0, -1));
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
+        jugador.mover(mapa, new VectorPosicion2I(0, 1));
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
+        jugador.mover(mapa, new VectorPosicion2I(1, 0));
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
+        jugador.mover(mapa, new VectorPosicion2I(-1, 0));
+        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
+
+        // Al final los saco porque es un singleton
+        mapa.removerMaterial(new VectorPosicion2I(0,0));
+        mapa.removerMaterial(new VectorPosicion2I(1,0));
+        mapa.removerMaterial(new VectorPosicion2I(2,0));
+        mapa.removerMaterial(new VectorPosicion2I(0,1));
+        mapa.removerMaterial(new VectorPosicion2I(0,2));
+        mapa.removerMaterial(new VectorPosicion2I(1,2));
+        mapa.removerMaterial(new VectorPosicion2I(2,2));
+        mapa.removerMaterial(new VectorPosicion2I(2,1));
     }
 }
 

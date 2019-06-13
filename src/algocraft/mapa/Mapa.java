@@ -4,6 +4,7 @@ import algocraft.material.*;
 import algocraft.jugador.*;
 import algocraft.matriz.*;
 import algocraft.matriz.Celda;
+import algocraft.utilidades.VectorPosicion2I;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -165,4 +166,56 @@ public class Mapa {
     public static int getAncho() { return ANCHO; }
 
     public static int getLargo() { return  LARGO; }
+
+    // Hecho con el VectorPosicion2I //
+
+    // Propuesta de movimiento: Cuando funcione el juego vos apretas una tecla y se mueve. Depende la tecla
+    // le pasas un vector distinto y se mueve a donde corresponde
+    public boolean moverJugador(Jugador jugador, VectorPosicion2I movimiento) {
+
+        // Tecla arriba: + (0 -1)
+        // Tecla abajo: + (0 1)
+        // Tecla izquierda: + (-1 0)
+        // Tecla derecha: + (1 0)
+        // Tambien en diagonal se podria con (1 1), (-1 1), etc.
+        Celda celdaActual = tablero.obtenerCelda(jugador.getPosicion());
+
+        VectorPosicion2I nuevaPosicion = jugador.getPosicion().sumar(movimiento);
+
+        Celda celdaAVisitar = tablero.obtenerCelda(nuevaPosicion);
+
+        if (celdaAVisitar == null) return false;
+
+        if (!celdaAVisitar.colocar(jugador)) return false;
+
+        celdaActual.removerJugador();
+
+        return true;
+    }
+
+    public boolean insertarJugador(Jugador jugador, VectorPosicion2I posicion) {
+
+        Celda celda = tablero.obtenerCelda(posicion);
+        if (celda.colocar(jugador)) {
+            jugador.setCoordenadas(posicion);
+            return true;
+        }
+        return false;
+    }
+
+    public void removerJugador(VectorPosicion2I posicion) {
+
+        Celda celda = tablero.obtenerCelda(posicion);
+        celda.removerJugador();
+    }
+
+    public boolean insertarMaterial(Material material, VectorPosicion2I posicion) {
+        Celda celda = tablero.obtenerCelda(posicion);
+        return celda.colocar(material);
+    }
+
+    public void removerMaterial(VectorPosicion2I posicion) {
+        Celda celda = tablero.obtenerCelda(posicion);
+        celda.removerMaterial();
+    }
 }

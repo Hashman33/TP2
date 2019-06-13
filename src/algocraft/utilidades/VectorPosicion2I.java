@@ -6,13 +6,11 @@ public class VectorPosicion2I {
     public int y;
 
     public VectorPosicion2I(int x, int y) {
-        this.x = x;
-        this.y = y;
+        setCoordenadas(x, y);
     }
 
     public VectorPosicion2I() {
-        this.x = 0;
-        this.y = 0;
+        setCoordenadas(0, 0);
     }
 
     public VectorPosicion2I sumar(VectorPosicion2I vector) {
@@ -31,5 +29,18 @@ public class VectorPosicion2I {
 
     public int getY() {
         return y;
+    }
+
+    public void setCoordenadas(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void imprimir() {
+        System.out.println("(" + this.getX() + " " + this.getY() + ")\n");
+    }
+
+    public boolean esIgualA(VectorPosicion2I vector) {
+        return vector.x == this.x && vector.y == this.y;
     }
 }

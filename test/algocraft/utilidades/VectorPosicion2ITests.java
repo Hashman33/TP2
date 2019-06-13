@@ -40,5 +40,22 @@ public class VectorPosicion2ITests {
         assert(vectorEscalado.getX() == 20 && vectorEscalado.getY() == 20);
     }
 
+    @Test
+    public void test05ComparoDosVectoresIguales() {
+        VectorPosicion2I vector1 = new VectorPosicion2I(2, 2);
+        VectorPosicion2I vector2 = new VectorPosicion2I(2, 2);
+
+        assert(vector1.esIgualA(vector2));
+        assert(vector2.esIgualA(vector1));
+    }
+
+    @Test
+    public void test05ComparoDosVectoresDistintos() {
+        VectorPosicion2I vector1 = new VectorPosicion2I(2, 2);
+        VectorPosicion2I vector2 = new VectorPosicion2I(1, 2);
+
+        assert(!vector1.esIgualA(vector2));
+        assert(!vector2.esIgualA(vector1));
+    }
 
 }

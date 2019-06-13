@@ -21,7 +21,6 @@ public class Fila {
     }
 
     public Celda obtenerCelda(int coordX) {
-
         return fila.get(coordX);
     }
 
