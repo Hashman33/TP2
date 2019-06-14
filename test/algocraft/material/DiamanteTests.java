@@ -4,6 +4,7 @@ import algocraft.herramienta.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DiamanteTests {
 
@@ -94,6 +95,17 @@ public class DiamanteTests {
         mano.desgastar(bloqueDiamante);
 
         assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
+    }
+
+    @Test
+    public void test09SeUsaPicoFinoEnMaterialDiamanteCincoVecesYLanzaMaterialDestruidoException() {
+        PicoFino picoFino = new PicoFino();
+        Diamante bloqueDiamante = new Diamante();
+
+        for (int i = 0; i < 4; i++) picoFino.desgastar(bloqueDiamante);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ picoFino.desgastar(bloqueDiamante);});
     }
 
 }

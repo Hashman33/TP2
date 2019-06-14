@@ -18,12 +18,14 @@ public class Piedra extends Material {
     @Override
     public void desgastarCon(Pico pico){
         this.desgaste.desgastarMaterial(pico);
+        if (desgaste.durabilidad() == 0) throw new MaterialDestruidoException();
     }
 
 
     @Override
     public void desgastarCon(PicoFino picoFino){
         this.desgaste.desgastarMaterial(picoFino);
+        if (desgaste.durabilidad() == 0) throw new MaterialDestruidoException();
     }
 
     @Override

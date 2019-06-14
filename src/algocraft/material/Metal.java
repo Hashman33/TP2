@@ -18,6 +18,7 @@ public class Metal extends Material {
     public void desgastarCon(Pico pico){
         if (pico.getMaterial().esPiedra() || pico.getMaterial().esMetal()) {
             this.desgaste.desgastarMaterial(pico);
+            if (desgaste.durabilidad() == 0) throw new MaterialDestruidoException();
         }
     }
 
@@ -25,6 +26,7 @@ public class Metal extends Material {
     @Override
     public void desgastarCon(PicoFino picoFino){
         this.desgaste.desgastarMaterial(picoFino);
+        if (desgaste.durabilidad() == 0) throw new MaterialDestruidoException();
     }
 
     @Override

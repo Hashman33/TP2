@@ -4,6 +4,7 @@ import algocraft.herramienta.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MetalTests {
 
@@ -78,12 +79,12 @@ public class MetalTests {
 
     @Test
     public void test07SeUsaPicoFinoContraMetalSeReduceDurabilidad() {
-        PicoFino picoFinoPiedra = new PicoFino();
+        PicoFino picoFino = new PicoFino();
         Metal bloqueMetal = new Metal();
 
-        picoFinoPiedra.desgastar(bloqueMetal);
+        picoFino.desgastar(bloqueMetal);
 
-        assertEquals(bloqueMetal.getDurabilidadInicial() - picoFinoPiedra.getFuerza(), bloqueMetal.getDurabilidadActual());
+        assertEquals(bloqueMetal.getDurabilidadInicial() - picoFino.getFuerza(), bloqueMetal.getDurabilidadActual());
     }
 
     @Test
@@ -94,5 +95,39 @@ public class MetalTests {
         mano.desgastar(bloqueMetal);
 
         assertEquals(bloqueMetal.getDurabilidadInicial(), bloqueMetal.getDurabilidadActual());
+    }
+
+    @Test
+    public void test09SeUsaPicoFinoEnMaterialMetalTresVecesYLanzaMaterialDestruidoException() {
+        PicoFino picoFino = new PicoFino();
+        Metal bloqueMetal = new Metal();
+
+        picoFino.desgastar(bloqueMetal);
+        picoFino.desgastar(bloqueMetal);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ picoFino.desgastar(bloqueMetal);});
+    }
+
+    @Test
+    public void test10SeUsaPicoDeMetalEnMaterialMetalCincoVecesYLanzaMaterialDestruidoException() {
+        Pico picoMetal = new Pico(new HerramientaMetal());
+        Metal bloqueMetal = new Metal();
+
+        for (int i = 0; i < 4; i++) picoMetal.desgastar(bloqueMetal);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ picoMetal.desgastar(bloqueMetal);});
+    }
+
+    @Test
+    public void test11SeUsaPicoDePiedraEnMaterialMetalTreceVecesYLanzaMaterialDestruidoException() {
+        Pico picoPiedra = new Pico(new HerramientaPiedra());
+        Metal bloqueMetal = new Metal();
+
+        for (int i = 0; i < 12; i++) picoPiedra.desgastar(bloqueMetal);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ picoPiedra.desgastar(bloqueMetal);});
     }
 }

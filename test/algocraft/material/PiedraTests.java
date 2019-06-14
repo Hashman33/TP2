@@ -4,6 +4,7 @@ import algocraft.herramienta.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PiedraTests {
 
@@ -99,4 +100,50 @@ public class PiedraTests {
 
         assertEquals(bloquePiedra.getDurabilidadInicial(), bloquePiedra.getDurabilidadActual());
     }
+
+    @Test
+    public void test09SeUsaPicoFinoEnMaterialPiedraDosVecesYLanzaMaterialDestruidoException() {
+        PicoFino picoFino = new PicoFino();
+        Piedra bloquePiedra = new Piedra();
+
+        picoFino.desgastar(bloquePiedra);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ picoFino.desgastar(bloquePiedra);});
+    }
+
+    @Test
+    public void test10SeUsaPicoDeMetalEnMaterialPiedraTresVecesYLanzaMaterialDestruidoException() {
+        Pico picoMetal = new Pico(new HerramientaMetal());
+        Piedra bloquePiedra = new Piedra();
+
+        for (int i = 0; i < 2; i++) picoMetal.desgastar(bloquePiedra);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ picoMetal.desgastar(bloquePiedra);});
+    }
+
+    @Test
+    public void test11SeUsaPicoDePiedraEnMaterialPiedraOchoVecesYLanzaMaterialDestruidoException() {
+        Pico picoPiedra = new Pico(new HerramientaPiedra());
+        Piedra bloquePiedra = new Piedra();
+
+        for (int i = 0; i < 7; i++) picoPiedra.desgastar(bloquePiedra);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ picoPiedra.desgastar(bloquePiedra);});
+    }
+
+    @Test
+    public void test12SeUsaPicoDeMaderaEnMaterialPiedraQuinceVecesYLanzaMaterialDestruidoException() {
+        Pico picoMadera = new Pico(new HerramientaMadera());
+        Piedra bloquePiedra = new Piedra();
+
+        for (int i = 0; i < 14; i++) picoMadera.desgastar(bloquePiedra);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ picoMadera.desgastar(bloquePiedra);});
+    }
+
+
 }

@@ -75,7 +75,7 @@ public class HachaTests {
         Metal bloqueMetal = new Metal();
         Diamante diamante = new Diamante();
 
-        hachaMetal.desgastar(bloqueMadera);
+        try {hachaMetal.desgastar(bloqueMadera);} catch (MaterialDestruidoException e) {}
         hachaMetal.desgastar(bloquePiedra);
         hachaMetal.desgastar(bloqueMetal);
         hachaMetal.desgastar(diamante);
@@ -134,7 +134,7 @@ public class HachaTests {
         Hacha hachaMetal = new Hacha(new HerramientaMetal());                  // FUERZA = 10
 
         for (int i = 0; i < 80; i++){
-            hachaMetal.desgastar(new Madera());
+            hachaMetal.desgastar(new Metal());
         }
 
         assertEquals(0, hachaMetal.getDurabilidadActual());
@@ -145,7 +145,7 @@ public class HachaTests {
         Hacha hachaMetal = new Hacha(new HerramientaMetal());                  // FUERZA = 10
 
         for (int i = 0; i < 80; i++){
-            hachaMetal.desgastar(new Madera());
+            hachaMetal.desgastar(new Metal());
         }
 
         assertThrows(HerramientaEstaRotaException.class,

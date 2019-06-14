@@ -21,6 +21,7 @@ public class Diamante extends Material {
     @Override
     public void desgastarCon(PicoFino picoFino){
         this.desgaste.desgastarMaterial(picoFino);
+        if (desgaste.durabilidad() == 0) throw new MaterialDestruidoException();
     }
 
     @Override

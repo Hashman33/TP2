@@ -4,6 +4,7 @@ import algocraft.herramienta.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MaderaTests {
 
@@ -66,7 +67,7 @@ public class MaderaTests {
         Hacha hachaMetal = new Hacha(new HerramientaMetal());
         Madera bloqueMadera = new Madera();
 
-        hachaMetal.desgastar(bloqueMadera);
+        try {hachaMetal.desgastar(bloqueMadera);} catch (MaterialDestruidoException e) {}
 
         assertEquals(bloqueMadera.getDurabilidadInicial() - hachaMetal.getFuerza(), bloqueMadera.getDurabilidadActual());
     }
@@ -100,4 +101,36 @@ public class MaderaTests {
 
         assertEquals(bloqueMadera.getDurabilidadInicial(), bloqueMadera.getDurabilidadActual());
     }
+
+    @Test
+    public void test09SeUsaHachaDeMetalEnMaterialMaderaUnaVezYLanzaMaterialDestruidoException() {
+        Hacha hachaMetal = new Hacha(new HerramientaMetal());
+        Madera bloqueMadera = new Madera();
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ hachaMetal.desgastar(bloqueMadera);});
+    }
+
+    @Test
+    public void test10SeUsaHachaDePiedraEnMaterialMaderaDosVecesYLanzaMaterialDestruidoException() {
+        Hacha hachaPiedra = new Hacha(new HerramientaPiedra());
+        Madera bloqueMadera = new Madera();
+
+        hachaPiedra.desgastar(bloqueMadera);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ hachaPiedra.desgastar(bloqueMadera);});
+    }
+
+    @Test
+    public void test11SeUsaHachaDeMaderaEnMaterialMaderaCincoVecesYLanzaMaterialDestruidoException() {
+        Hacha hachaMadera = new Hacha(new HerramientaMadera());
+        Madera bloqueMadera = new Madera();
+
+        for (int i = 0; i < 4; i++) hachaMadera.desgastar(bloqueMadera);
+
+        assertThrows(MaterialDestruidoException.class,
+                ()->{ hachaMadera.desgastar(bloqueMadera);});
+    }
+
 }

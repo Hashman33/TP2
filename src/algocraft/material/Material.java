@@ -7,10 +7,6 @@ public abstract class Material {
 
     protected Desgaste desgaste;
 
-    public  boolean desgastarCon(Herramienta herramienta){
-        return this.desgastarCon(herramienta);
-
-    }
 
     public abstract void desgastarCon(Hacha hacha);
 

@@ -14,6 +14,7 @@ public class Madera extends Material {
     @Override
     public void desgastarCon(Hacha hacha){
         this.desgaste.desgastarMaterial(hacha);
+        if (desgaste.durabilidad() == 0) throw new MaterialDestruidoException();
     }
 
     @Override
