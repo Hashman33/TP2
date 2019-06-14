@@ -70,6 +70,7 @@ public class MaderaTests {
 
         assertEquals(bloqueMadera.getDurabilidadInicial() - hachaMetal.getFuerza(), bloqueMadera.getDurabilidadActual());
     }
+
     @Test
     public void test06SeUsaPicoDeMetalEnMaterialMaderaYNoReduceDurabilidad() {
         Pico picoMetal = new Pico(new HerramientaMetal());
@@ -79,12 +80,23 @@ public class MaderaTests {
 
         assertEquals(bloqueMadera.getDurabilidadInicial(), bloqueMadera.getDurabilidadActual());
     }
+
     @Test
     public void test07SeUsaPicoFinoContraMaderaNoReduceDurabilidad() {
         PicoFino picoFino = new PicoFino();
         Madera bloqueMadera = new Madera();
 
         picoFino.desgastar(bloqueMadera);
+
+        assertEquals(bloqueMadera.getDurabilidadInicial(), bloqueMadera.getDurabilidadActual());
+    }
+
+    @Test
+    public void test08SeUsaManoContraMaderaNoReduceDurabilidad() {
+        Mano mano = new Mano();
+        Madera bloqueMadera = new Madera();
+
+        mano.desgastar(bloqueMadera);
 
         assertEquals(bloqueMadera.getDurabilidadInicial(), bloqueMadera.getDurabilidadActual());
     }

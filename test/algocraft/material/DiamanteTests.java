@@ -25,6 +25,7 @@ public class DiamanteTests {
 
         assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
     }
+
     @Test
     public void test02SeUsaHachaDePiedraContraDiamanteNoReduceDurabilidad() {
         Hacha hachaPiedra = new Hacha(new HerramientaPiedra());
@@ -34,6 +35,7 @@ public class DiamanteTests {
 
         assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
     }
+
     @Test
     public void test03SeUsaHachaDeMetalContraDiamanteNoReduceDurabilidad() {
         Hacha hachaMetal = new Hacha(new HerramientaMetal());
@@ -43,6 +45,7 @@ public class DiamanteTests {
 
         assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
     }
+
     @Test
     public void test04SeUsaPicoDeMaderaContraDiamanteNoReduceDurabilidad() {
         Pico picoMadera = new Pico(new HerramientaMadera());
@@ -52,6 +55,7 @@ public class DiamanteTests {
 
         assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
     }
+
     @Test
     public void test05SeUsaPicoDePiedraContraDiamanteNoReduceDurabilidad() {
         Pico picoPiedra = new Pico(new HerramientaPiedra());
@@ -61,6 +65,7 @@ public class DiamanteTests {
 
         assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
     }
+
     @Test
     public void test06SeUsaPicoDeMetalContraDiamanteNoReduceDurabilidad() {
         Pico picoMetal = new Pico(new HerramientaMetal());
@@ -70,6 +75,7 @@ public class DiamanteTests {
 
         assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
     }
+
     @Test
     public void test07SeUsaPicoFinoContraDiamanteSeReduceDurabilidad() {
         PicoFino picoFinoPiedra = new PicoFino();
@@ -79,4 +85,15 @@ public class DiamanteTests {
 
         assertEquals(bloqueDiamante.getDurabilidadInicial() - picoFinoPiedra.getFuerza(), bloqueDiamante.getDurabilidadActual());
     }
+
+    @Test
+    public void test08SeUsaManoContraDiamanteNoReduceDurabilidad() {
+        Mano mano = new Mano();
+        Diamante bloqueDiamante = new Diamante();
+
+        mano.desgastar(bloqueDiamante);
+
+        assertEquals(bloqueDiamante.getDurabilidadInicial(), bloqueDiamante.getDurabilidadActual());
+    }
+
 }

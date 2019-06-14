@@ -15,7 +15,6 @@ public class PiedraTests {
         assertEquals(30, bloquePiedra.getDurabilidadActual());
     }
 
-
     @Test
     public void test01SeUsaHachaDeMaderaContraPiedraNoReduceDurabilidad() {
 
@@ -26,6 +25,7 @@ public class PiedraTests {
 
         assertEquals(bloquePiedra.getDurabilidadInicial(), bloquePiedra.getDurabilidadActual());
     }
+
     @Test
     public void test02SeUsaHachaDePiedraContraPiedraNoReduceDurabilidad() {
 
@@ -36,6 +36,7 @@ public class PiedraTests {
 
         assertEquals(bloquePiedra.getDurabilidadInicial(), bloquePiedra.getDurabilidadActual());
     }
+
     @Test
     public void test03SeUsaHachaDeMetalContraPiedraNoReduceDurabilidad() {
 
@@ -46,6 +47,7 @@ public class PiedraTests {
 
         assertEquals(bloquePiedra.getDurabilidadInicial(), bloquePiedra.getDurabilidadActual());
     }
+
     @Test
     public void test04SeUsaPicoDeMaderaContraPiedraSeReduceDurabilidad() {
 
@@ -56,6 +58,7 @@ public class PiedraTests {
 
         assertEquals(bloquePiedra.getDurabilidadInicial() - picoMadera.getFuerza(), bloquePiedra.getDurabilidadActual());
     }
+
     @Test
     public void test05SeUsaPicoDePiedraContraPiedraSeReduceDurabilidad() {
 
@@ -66,6 +69,7 @@ public class PiedraTests {
 
         assertEquals(bloquePiedra.getDurabilidadInicial() - picoPiedra.getFuerza(), bloquePiedra.getDurabilidadActual());
     }
+
     @Test
     public void test06SeUsaPicoDeMetalContraPiedraSeReduceDurabilidad() {
         Pico picoMetal = new Pico(new HerramientaMetal());
@@ -75,6 +79,7 @@ public class PiedraTests {
 
         assertEquals(bloquePiedra.getDurabilidadInicial() - picoMetal.getFuerza(), bloquePiedra.getDurabilidadActual());
     }
+
     @Test
     public void test07SeUsaPicoFinoContraPiedraSeReduceDurabilidad() {
         PicoFino picoFinoPiedra = new PicoFino();
@@ -83,5 +88,15 @@ public class PiedraTests {
         picoFinoPiedra.desgastar(bloquePiedra);
 
         assertEquals(bloquePiedra.getDurabilidadInicial() - picoFinoPiedra.getFuerza(), bloquePiedra.getDurabilidadActual());
+    }
+
+    @Test
+    public void test08SeUsaManoContraPiedraNoReduceDurabilidad() {
+        Mano mano = new Mano();
+        Piedra bloquePiedra = new Piedra();
+
+        mano.desgastar(bloquePiedra);
+
+        assertEquals(bloquePiedra.getDurabilidadInicial(), bloquePiedra.getDurabilidadActual());
     }
 }
