@@ -18,6 +18,8 @@ public abstract class Material {
 
     public abstract boolean desgastarCon(PicoFino picoFino);
 
+    public abstract boolean desgastarCon(Mano mano);
+
 
     public double getDurabilidadActual(){
         return this.desgaste.durabilidad();

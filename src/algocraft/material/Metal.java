@@ -31,6 +31,11 @@ public class Metal extends Material {
         return false;
     }
 
+    @Override
+    public boolean desgastarCon(Mano mano) {
+        return false;
+    }
+
     public String toString(){ return "Met ";}
 
 }

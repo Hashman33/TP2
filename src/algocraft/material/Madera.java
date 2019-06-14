@@ -17,13 +17,17 @@ public class Madera extends Material {
         return true;
     }
 
-
     @Override
     public boolean desgastarCon(Pico pico) { return false; }
 
 
     @Override
     public boolean desgastarCon(PicoFino picoFino){ return false; }
+
+    @Override
+    public boolean desgastarCon(Mano mano) {
+        return false;
+    }
 
     public String toString(){ return "Mad ";}
 

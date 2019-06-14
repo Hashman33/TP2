@@ -28,5 +28,10 @@ public class Diamante extends Material {
         return true;
     }
 
+    @Override
+    public boolean desgastarCon(Mano mano) {
+        return false;
+    }
+
     public String toString(){ return "dia ";}
 }
