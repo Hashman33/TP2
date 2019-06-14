@@ -14,13 +14,13 @@ public class Pico extends Herramienta{
 
     @Override
     public void desgastar(Material material){
-        material.desgastarCon(this);
 
         try {
             desgaste.desgastarHerramienta(this);
         } catch (DurabilidadCeroException e) {
             throw new HerramientaEstaRotaException();
         }
+        material.desgastarCon(this);
     }
 
     public MaterialHerramienta getMaterial(){ return this.material; }

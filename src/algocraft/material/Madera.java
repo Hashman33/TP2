@@ -12,20 +12,22 @@ public class Madera extends Material {
     }
 
     @Override
-    public boolean desgastarCon(Hacha hacha){
+    public void desgastarCon(Hacha hacha){
         this.desgaste.desgastarMaterial(hacha);
-        return true;
     }
 
     @Override
-    public boolean desgastarCon(Pico pico) { return false; }
+    public void desgastarCon(Pico pico) {}
 
 
     @Override
-    public boolean desgastarCon(PicoFino picoFino){ return false; }
+    public void desgastarCon(PicoFino picoFino){}
 
     @Override
-    public boolean desgastarCon(Mano mano) {
+    public void desgastarCon(Mano mano) {}
+
+    @Override
+    public boolean esDiamante() {
         return false;
     }
 

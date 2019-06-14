@@ -12,8 +12,8 @@ public class Mano extends Herramienta {
     }
     @Override
     public void desgastar(Material material){
-        material.desgastarCon(this);
         desgaste.desgastarHerramienta(this);
+        material.desgastarCon(this);
     }
 
 }

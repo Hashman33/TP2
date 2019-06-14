@@ -12,14 +12,15 @@ public abstract class Material {
 
     }
 
-    public abstract boolean desgastarCon(Hacha hacha);
+    public abstract void desgastarCon(Hacha hacha);
 
-    public abstract boolean desgastarCon(Pico pico);
+    public abstract void desgastarCon(Pico pico);
 
-    public abstract boolean desgastarCon(PicoFino picoFino);
+    public abstract void desgastarCon(PicoFino picoFino);
 
-    public abstract boolean desgastarCon(Mano mano);
+    public abstract void desgastarCon(Mano mano);
 
+    public abstract  boolean esDiamante();
 
     public double getDurabilidadActual(){
         return this.desgaste.durabilidad();

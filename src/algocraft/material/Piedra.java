@@ -11,26 +11,26 @@ public class Piedra extends Material {
 
     }
     @Override
-    public boolean desgastarCon(Hacha hacha){
-        return false;
+    public void desgastarCon(Hacha hacha){
     }
 
 
     @Override
-    public boolean desgastarCon(Pico pico){
+    public void desgastarCon(Pico pico){
         this.desgaste.desgastarMaterial(pico);
-        return true;
     }
 
 
     @Override
-    public boolean desgastarCon(PicoFino picoFino){
+    public void desgastarCon(PicoFino picoFino){
         this.desgaste.desgastarMaterial(picoFino);
-        return false;
     }
 
     @Override
-    public boolean desgastarCon(Mano mano) {
+    public void desgastarCon(Mano mano) { }
+
+    @Override
+    public boolean esDiamante() {
         return false;
     }
 

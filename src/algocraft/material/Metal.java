@@ -11,28 +11,28 @@ public class Metal extends Material {
     }
 
     @Override
-    public boolean desgastarCon(Hacha hacha){
-        return false;
-    }
+    public void desgastarCon(Hacha hacha) {}
 
 
     @Override
-    public boolean desgastarCon(Pico pico){
+    public void desgastarCon(Pico pico){
         if (pico.getMaterial().esPiedra() || pico.getMaterial().esMetal()) {
             this.desgaste.desgastarMaterial(pico);
-            return true;
         }
-        return false;
     }
 
 
-    public boolean desgastarCon(PicoFino picoFino){
+    @Override
+    public void desgastarCon(PicoFino picoFino){
         this.desgaste.desgastarMaterial(picoFino);
-        return false;
     }
 
     @Override
-    public boolean desgastarCon(Mano mano) {
+    public void desgastarCon(Mano mano) {
+    }
+
+    @Override
+    public boolean esDiamante() {
         return false;
     }
 

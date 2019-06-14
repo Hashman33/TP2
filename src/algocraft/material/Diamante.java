@@ -11,26 +11,24 @@ public class Diamante extends Material {
 
     }
     @Override
-    public boolean desgastarCon(Hacha hacha){
-        return false;
-    }
+    public void desgastarCon(Hacha hacha) { }
 
 
     @Override
-    public boolean desgastarCon(Pico pico){
-        return false;
-    }
+    public void desgastarCon(Pico pico) { }
 
 
     @Override
-    public boolean desgastarCon(PicoFino picoFino){
+    public void desgastarCon(PicoFino picoFino){
         this.desgaste.desgastarMaterial(picoFino);
-        return true;
     }
 
     @Override
-    public boolean desgastarCon(Mano mano) {
-        return false;
+    public void desgastarCon(Mano mano) { }
+
+    @Override
+    public boolean esDiamante() {
+        return true;
     }
 
     public String toString(){ return "dia ";}
