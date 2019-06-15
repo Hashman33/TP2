@@ -24,4 +24,7 @@ public class Fila {
         return fila.get(coordX);
     }
 
+    public List<Celda> getCeldas() {
+        return fila;
+    }
 }
