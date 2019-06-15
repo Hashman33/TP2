@@ -4,6 +4,7 @@ import algocraft.herramienta.Hacha;
 import algocraft.herramienta.HerramientaMadera;
 import algocraft.mapa.Mapa;
 import algocraft.material.Piedra;
+import algocraft.utilidades.VectorPosicion2I;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +25,7 @@ public class MesaDeTrabajoTests {
 
         MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
 
-        mesaDeTrabajo.agregarMaterial(0,0, new Piedra());
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(0,0));
 
         assert(!mesaDeTrabajo.estaVacia());
     }

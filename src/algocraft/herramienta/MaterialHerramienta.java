@@ -1,5 +1,7 @@
 package algocraft.herramienta;
 
+import algocraft.material.Material;
+
 public interface MaterialHerramienta {
 
     void inicializarHacha(Hacha hacha);
@@ -9,5 +11,7 @@ public interface MaterialHerramienta {
     boolean esPiedra();
 
     boolean esMetal();
+
+    Material getMaterial();
 
 }

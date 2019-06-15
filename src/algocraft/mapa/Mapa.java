@@ -83,7 +83,7 @@ public class Mapa {
     public boolean insertarJugador(Jugador jugador, VectorPosicion2I posicion) {
 
         Celda celda = tablero.obtenerCelda(posicion);
-        if (celda.colocar(jugador)) {
+        if (celda != null && celda.colocar(jugador)) {
             jugador.setCoordenadas(posicion);
             return true;
         }
@@ -93,7 +93,7 @@ public class Mapa {
     public void removerJugador(VectorPosicion2I posicion) {
 
         Celda celda = tablero.obtenerCelda(posicion);
-        celda.removerJugador();
+        if (celda != null) celda.removerJugador();
     }
 
     public boolean insertarMaterial(Material material, VectorPosicion2I posicion) {

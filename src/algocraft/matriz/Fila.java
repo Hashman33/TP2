@@ -27,4 +27,11 @@ public class Fila {
     public List<Celda> getCeldas() {
         return fila;
     }
+
+    public boolean estaVacia() {
+        for (Celda celda: fila) {
+            if(!celda.estaVacia()) return false;
+        }
+        return true;
+    }
 }

@@ -49,6 +49,7 @@ public class Matriz {
         return posicion.getX() >= 0 && posicion.getX() < ANCHO && posicion.getY() >= 0 && posicion.getY() < LARGO;
     }
 
+    // Se sabe comparar con otra matriz por sus clases
     public boolean esIgualA(Matriz matriz) {
 
         for (int i = 0; i < matriz.filas.size(); i++) {
@@ -66,6 +67,13 @@ public class Matriz {
 
     public boolean colocar(Material material, VectorPosicion2I posicion) {
         return this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).colocar(material);
+    }
+
+    public boolean estaVacia() {
+        for (Fila fila: this.filas) {
+            if (!fila.estaVacia()) return false;
+        }
+        return  true;
     }
 
 }

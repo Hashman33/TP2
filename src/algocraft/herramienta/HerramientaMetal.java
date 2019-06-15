@@ -1,8 +1,12 @@
 package algocraft.herramienta;
 
 import algocraft.desgaste.*;
+import algocraft.material.Material;
+import algocraft.material.Metal;
 
 public class HerramientaMetal implements MaterialHerramienta {
+
+    Metal material = new Metal();
 
     public void inicializarHacha(Hacha hacha) {
         hacha.desgaste = new DesgastePorValor(400);
@@ -19,4 +23,8 @@ public class HerramientaMetal implements MaterialHerramienta {
     public boolean esPiedra() { return false; }
 
     public boolean esMetal() { return true; }
+
+    public Material getMaterial() {
+        return this.material;
+    }
 }
