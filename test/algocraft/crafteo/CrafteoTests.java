@@ -1,10 +1,10 @@
 package algocraft.crafteo;
 
-import algocraft.herramienta.Hacha;
-import algocraft.herramienta.HerramientaMadera;
+import algocraft.herramienta.*;
 import algocraft.jugador.Jugador;
 import algocraft.jugador.MesaDeTrabajo;
 import algocraft.material.Madera;
+import algocraft.material.Metal;
 import algocraft.material.Piedra;
 import algocraft.matriz.Celda;
 import algocraft.matriz.Matriz;
@@ -16,21 +16,143 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CrafteoTests {
 
     @Test
-    public void test01CrafteoDeHachaDeMadera(){
+    public void test00PonerLosMaterialesEnCualquierLugarNoGeneraHerramienta(){
 
-        Hacha hachaMadera = new Hacha(new HerramientaMadera());
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
 
-        Matriz matrizHerramienta = hachaMadera.getMatrizCrafteo();
-        Matriz matrizMesaDeTrabajo = new Matriz(new VectorPosicion2I(3,3));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(0,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,2));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(2,2));
 
-        // Hacha de madera (OK)
-        matrizMesaDeTrabajo.colocar(new Madera(), new VectorPosicion2I(0,0));
-        matrizMesaDeTrabajo.colocar(new Madera(), new VectorPosicion2I(1,0));
-        matrizMesaDeTrabajo.colocar(new Madera(), new VectorPosicion2I(0,1));
-        matrizMesaDeTrabajo.colocar(new Madera(), new VectorPosicion2I(1,1));
-        matrizMesaDeTrabajo.colocar(new Madera(), new VectorPosicion2I(1,2));
+        assert(mesaDeTrabajo.obtenerCrafteoActual() == null);
 
-        assert(matrizHerramienta.esIgualA(matrizMesaDeTrabajo));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(0,2));
+
+        assert(mesaDeTrabajo.obtenerCrafteoActual() == null);
 
     }
+
+    @Test
+    public void test01CrafteoHachaDeMaderaYObtengoUnHachaDeMadera(){
+
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(0,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,2));
+
+        assert(mesaDeTrabajo.obtenerCrafteoActual() != null);
+        assert(mesaDeTrabajo.obtenerCrafteoActual() instanceof Hacha);
+        assert(((Hacha) mesaDeTrabajo.obtenerCrafteoActual()).getMaterial() instanceof HerramientaMadera);
+
+    }
+
+    @Test
+    public void test02CrafteoHachaDePiedraYObtengoUnHachaDePiedra(){
+
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(1,0));
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(0,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,2));
+
+        assert(mesaDeTrabajo.obtenerCrafteoActual() != null);
+        assert(mesaDeTrabajo.obtenerCrafteoActual() instanceof Hacha);
+        assert(((Hacha) mesaDeTrabajo.obtenerCrafteoActual()).getMaterial() instanceof HerramientaPiedra);
+
+    }
+
+    @Test
+    public void test03CrafteoHachaDeMetalYObtengoUnHachaDeMetal(){
+
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(1,0));
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(0,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,2));
+
+        assert(mesaDeTrabajo.obtenerCrafteoActual() != null);
+        assert(mesaDeTrabajo.obtenerCrafteoActual() instanceof Hacha);
+        assert(((Hacha) mesaDeTrabajo.obtenerCrafteoActual()).getMaterial() instanceof HerramientaMetal);
+
+    }
+
+    @Test
+    public void test04CrafteoPicoDeMaderaYObtengoUnPicoDeMadera(){
+
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(2,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,2));
+
+        assert(mesaDeTrabajo.obtenerCrafteoActual() != null);
+        assert(mesaDeTrabajo.obtenerCrafteoActual() instanceof Pico);
+        assert(((Pico) mesaDeTrabajo.obtenerCrafteoActual()).getMaterial() instanceof HerramientaMadera);
+
+    }
+
+    @Test
+    public void test05CrafteoPicoDePiedraYObtengoUnPicoDePiedra(){
+
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(1,0));
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(2,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,2));
+
+        assert(mesaDeTrabajo.obtenerCrafteoActual() != null);
+        assert(mesaDeTrabajo.obtenerCrafteoActual() instanceof Pico);
+        assert(((Pico) mesaDeTrabajo.obtenerCrafteoActual()).getMaterial() instanceof HerramientaPiedra);
+
+    }
+
+    @Test
+    public void test06CrafteoPicoDeMetalYObtengoUnPicoDeMetal(){
+
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(1,0));
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(2,0));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,2));
+
+        assert(mesaDeTrabajo.obtenerCrafteoActual() != null);
+        assert(mesaDeTrabajo.obtenerCrafteoActual() instanceof Pico);
+        assert(((Pico) mesaDeTrabajo.obtenerCrafteoActual()).getMaterial() instanceof HerramientaMetal);
+
+    }
+
+    @Test
+    public void test03CrafteoPicoFinoYObtengoUnPicoFino(){
+
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(1,0));
+        mesaDeTrabajo.agregarMaterial(new Metal(), new VectorPosicion2I(2,0));
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(0,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,1));
+        mesaDeTrabajo.agregarMaterial(new Madera(), new VectorPosicion2I(1,2));
+
+        assert(mesaDeTrabajo.obtenerCrafteoActual() != null);
+        assert(mesaDeTrabajo.obtenerCrafteoActual() instanceof PicoFino);
+
+    }
+
+
 }

@@ -49,12 +49,22 @@ public class Matriz {
         return posicion.getX() >= 0 && posicion.getX() < ANCHO && posicion.getY() >= 0 && posicion.getY() < LARGO;
     }
 
-    // Se sabe comparar con otra matriz por sus clases
+    // Se sabe comparar con otra matriz por sus clases de Material
     public boolean esIgualA(Matriz matriz) {
 
         for (int i = 0; i < matriz.filas.size(); i++) {
             for (int j = 0; j < matriz.filas.get(i).getCeldas().size(); j++) {
-                if (this.filas.get(i).getCeldas().get(j).getClass() != matriz.filas.get(i).getCeldas().get(j).getClass()) return false;
+                // Casos
+                if (this.filas.get(i).getCeldas().get(j).material != null) {
+                    if (matriz.filas.get(i).getCeldas().get(j).material == null) return false;
+                    if (this.filas.get(i).getCeldas().get(j).material.getClass() != matriz.filas.get(i).getCeldas().get(j).material.getClass()) return false;
+                }
+
+                if (matriz.filas.get(i).getCeldas().get(j).material != null) {
+                    if (this.filas.get(i).getCeldas().get(j).material == null) return false;
+                    if (this.filas.get(i).getCeldas().get(j).material.getClass() != matriz.filas.get(i).getCeldas().get(j).material.getClass()) return false;
+                }
+
             }
         }
 
@@ -74,6 +84,17 @@ public class Matriz {
             if (!fila.estaVacia()) return false;
         }
         return  true;
+    }
+
+    public void limpiar() {
+        for (Fila fila: filas) {
+            fila.limpiar();
+        }
+    }
+
+    public void remover(VectorPosicion2I posicion) {
+        this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).removerMaterial();
+        this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).removerJugador();
     }
 
 }

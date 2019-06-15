@@ -2,6 +2,8 @@ package algocraft.herramienta;
 
 import algocraft.desgaste.DurabilidadCeroException;
 import algocraft.material.*;
+import algocraft.matriz.Matriz;
+import algocraft.utilidades.VectorPosicion2I;
 
 public class Pico extends Herramienta{
 
@@ -10,6 +12,7 @@ public class Pico extends Herramienta{
     public Pico(MaterialHerramienta material){
         this.material = material;
         material.inicializarPico(this);
+        crearMatrizCrafteo(material.getMaterial());
     }
 
     @Override
@@ -24,4 +27,14 @@ public class Pico extends Herramienta{
     }
 
     public MaterialHerramienta getMaterial(){ return this.material; }
+
+    protected void crearMatrizCrafteo(Material material) {
+        matrizCrafteo = new Matriz(new VectorPosicion2I(3, 3));
+
+        matrizCrafteo.colocar(material, new VectorPosicion2I(0,0));
+        matrizCrafteo.colocar(material, new VectorPosicion2I(1,0));
+        matrizCrafteo.colocar(material, new VectorPosicion2I(2,0));
+        matrizCrafteo.colocar(new Madera(), new VectorPosicion2I(1,1));
+        matrizCrafteo.colocar(new Madera(), new VectorPosicion2I(1,2));
+    }
 }

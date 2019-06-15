@@ -34,4 +34,10 @@ public class Fila {
         }
         return true;
     }
+
+    public void limpiar() {
+        for (Celda celda: this.fila) {
+            celda.limpiar();
+        }
+    }
 }

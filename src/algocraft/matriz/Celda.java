@@ -66,4 +66,9 @@ public class Celda {
         return true;
     }
 
+    public void limpiar() {
+        this.removerJugador();
+        this.removerMaterial();
+    }
+
 }
