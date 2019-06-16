@@ -61,12 +61,15 @@ public class Jugador {
 
             } catch (MaterialDestruidoException e) {
                 this.inventario.agregar(material);
+                mapa.removerMaterial(posicionMaterial);
 
             } catch (HerramientaEstaRotaException e) {
                 this.inventario.equipar(new Mano());
             }
         }
     }
+
+    public void equipar(Herramienta herramienta) { this.inventario.equipar(herramienta); }
 
     public VectorPosicion2I getPosicion() { return this.posicion; }
 
