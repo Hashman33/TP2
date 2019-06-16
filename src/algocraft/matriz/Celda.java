@@ -16,26 +16,6 @@ public class Celda {
 
     }
 
-    public boolean colocarMaterial(Material materialAserColocado){
-
-        if (estaVacia()){
-            material = materialAserColocado;
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean colocarJugador(Jugador jugadorAserColocado){
-
-        if (estaVacia()){
-            jugador = jugadorAserColocado;
-            return true;
-        }
-
-        return false;
-    }
-
     public boolean estaVacia(){
         return material == null && jugador == null;
     }
@@ -52,8 +32,7 @@ public class Celda {
 
     public void removerJugador() { jugador = null; }
 
-    // Propuesta para la colocacion //
-    // Se que son dos metodos igual, pero me parecio prolijo asi
+
     public boolean colocar(Jugador jugadorAColocar){
         if (!estaVacia()) return false;
         this.jugador = jugadorAColocar;

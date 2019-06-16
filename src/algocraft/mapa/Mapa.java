@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 // Utilizamos patron Singleton
 public class Mapa {
 
-    private static final Mapa instancia = new Mapa();
+    private static Mapa instancia = new Mapa();
 
     // Medidas en casilleros
     private static final int LARGO = 20;
@@ -19,6 +19,8 @@ public class Mapa {
     private static Matriz tablero;
 
     public static Mapa obtenerInstancia() {
+
+        if (instancia == null) instancia = new Mapa();
         return instancia;
     }
 
@@ -75,7 +77,7 @@ public class Mapa {
 
         if (!celdaAVisitar.colocar(jugador)) return false;
 
-        celdaActual.removerJugador();
+        celdaActual.limpiar();
 
         return true;
     }
@@ -105,4 +107,16 @@ public class Mapa {
         Celda celda = tablero.obtenerCelda(posicion);
         celda.removerMaterial();
     }
+
+    public Material obtenerMaterial(VectorPosicion2I posicion) {
+        Celda celda = tablero.obtenerCelda(posicion);
+        return celda.obtenerMaterial();
+    }
+
+    public Jugador obtenerJugador(VectorPosicion2I posicion) {
+        Celda celda = tablero.obtenerCelda(posicion);
+        return celda.obtenerJugador();
+    }
+
+    public void resetear() { instancia = null; }
 }

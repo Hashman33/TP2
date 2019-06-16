@@ -6,6 +6,8 @@ import algocraft.mapa.*;
 import algocraft.utilidades.VectorPosicion2I;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class JugadorTests {
 
@@ -27,8 +29,9 @@ public class JugadorTests {
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 0)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(0, 0)));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
@@ -39,7 +42,8 @@ public class JugadorTests {
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(14, 14)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(14, 14)));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 }

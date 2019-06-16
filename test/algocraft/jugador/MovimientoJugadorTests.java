@@ -3,14 +3,15 @@ package algocraft.jugador;
 import algocraft.mapa.Mapa;
 import algocraft.material.Piedra;
 import algocraft.utilidades.*;
+
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class MovimientoJugadorTests {
 
-    Mapa mapa = Mapa.obtenerInstancia();
-    private int largo = mapa.getLargo();
-    private int ancho = mapa.getAncho();
+    private static final int LARGO = 20;
+    private static final int ANCHO = 20;
     Direccion direccion = new Direccion();
 
     // Test de movimiento con el VectorPosicion2I //
@@ -23,9 +24,10 @@ public class MovimientoJugadorTests {
 
         jugador.mover(mapa, direccion.abajo());
 
-        assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 1)));
+        assert(jugador.getPosicion().esIgualA(new VectorPosicion2I(0, 1)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(0, 1)));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
@@ -38,8 +40,9 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.derecha());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 0)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(1, 0)));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
@@ -52,8 +55,9 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.izquierda());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 0)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(0, 0)));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
@@ -66,8 +70,9 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.arriba());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 0)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(0, 0)));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
@@ -89,23 +94,19 @@ public class MovimientoJugadorTests {
 
         jugador.mover(mapa, direccion.arriba());
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(1, 1)));
         jugador.mover(mapa, direccion.abajo());
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(1, 1)));
         jugador.mover(mapa, direccion.derecha());
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(1, 1)));
         jugador.mover(mapa, direccion.izquierda());
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
+        assertEquals(jugador, mapa.obtenerJugador(new VectorPosicion2I(1, 1)));
 
         // Al final los saco porque es un singleton
-        mapa.removerJugador(jugador.getPosicion());
-        mapa.removerMaterial(new VectorPosicion2I(0,0));
-        mapa.removerMaterial(new VectorPosicion2I(1,0));
-        mapa.removerMaterial(new VectorPosicion2I(2,0));
-        mapa.removerMaterial(new VectorPosicion2I(0,1));
-        mapa.removerMaterial(new VectorPosicion2I(0,2));
-        mapa.removerMaterial(new VectorPosicion2I(1,2));
-        mapa.removerMaterial(new VectorPosicion2I(2,2));
-        mapa.removerMaterial(new VectorPosicion2I(2,1));
+        mapa.resetear();
     }
 
     @Test
@@ -119,13 +120,14 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.arriba());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
+        assertEquals(jugador, mapa.obtenerJugador(posicionInicial));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
     public void test07JugadorEnBordeInferiorSeMueveHaciaAbajoYNoSeDesplaza() {
-        VectorPosicion2I posicionInicial = new VectorPosicion2I(3,19);
+        VectorPosicion2I posicionInicial = new VectorPosicion2I(3,LARGO - 1);
         Jugador jugador = new Jugador(posicionInicial);
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -134,8 +136,9 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.abajo());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
+        assertEquals(jugador, mapa.obtenerJugador(posicionInicial));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
@@ -149,13 +152,14 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.izquierda());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
+        assertEquals(jugador, mapa.obtenerJugador(posicionInicial));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
     public void test09JugadorEnBordeDerechoSeMueveHaciaDerechaYNoSeDesplaza() {
-        VectorPosicion2I posicionInicial = new VectorPosicion2I(19,3);
+        VectorPosicion2I posicionInicial = new VectorPosicion2I(ANCHO - 1,3);
         Jugador jugador = new Jugador(posicionInicial);
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -164,14 +168,15 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.derecha());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
+        assertEquals(jugador, mapa.obtenerJugador(posicionInicial));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
 
     @Test
     public void test10JugadorEnBordeSuperiorDerechoNoPuedeDesplazarseParaArribaODerecha() {
-        VectorPosicion2I posicionInicial = new VectorPosicion2I(ancho - 1,0);
+        VectorPosicion2I posicionInicial = new VectorPosicion2I(ANCHO - 1,0);
         Jugador jugador = new Jugador(posicionInicial);
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -181,13 +186,14 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.derecha());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
+        assertEquals(jugador, mapa.obtenerJugador(posicionInicial));
 
         mapa.removerJugador(jugador.getPosicion());
     }
 
     @Test
     public void test11JugadorEnBordeInferiorIzquierdoNoPuedeDesplazarseParaAbajoOIzquierda() {
-        VectorPosicion2I posicionInicial = new VectorPosicion2I(0, largo - 1);
+        VectorPosicion2I posicionInicial = new VectorPosicion2I(0, LARGO - 1);
         Jugador jugador = new Jugador(posicionInicial);
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -197,13 +203,14 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.izquierda());
 
         assert (jugador.getPosicion().esIgualA(posicionInicial));
+        assertEquals(jugador, mapa.obtenerJugador(posicionInicial));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 
     @Test
     public void test12JugadorEnBordeInferiorDerechoNoPuedeDesplazarseParaAbajoODerecha() {
-        VectorPosicion2I posicionInicial = new VectorPosicion2I(ancho - 1, largo - 1);
+        VectorPosicion2I posicionInicial = new VectorPosicion2I(ANCHO - 1, LARGO - 1);
         Jugador jugador = new Jugador(posicionInicial);
 
         Mapa mapa = Mapa.obtenerInstancia();
@@ -213,8 +220,9 @@ public class MovimientoJugadorTests {
         jugador.mover(mapa, direccion.derecha());
 
         assert (jugador.getPosicion().esIgualA(posicionInicial));
+        assertEquals(jugador, mapa.obtenerJugador(posicionInicial));
 
-        mapa.removerJugador(jugador.getPosicion());
+        mapa.resetear();
     }
 }
 

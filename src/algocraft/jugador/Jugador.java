@@ -2,13 +2,14 @@ package algocraft.jugador;
 
 import algocraft.herramienta.*;
 import algocraft.mapa.*;
+import algocraft.material.*;
 import algocraft.utilidades.VectorPosicion2I;
 
 public class Jugador {
 
     private VectorPosicion2I mirada;
     private VectorPosicion2I posicion;
-    public Inventario inventario;
+    protected Inventario inventario;
 
     public Jugador() {
         inicializar(new VectorPosicion2I());
@@ -27,6 +28,7 @@ public class Jugador {
         this.inventario.equipar(hachaMadera);
 
         this.posicion = posicionInicial;
+        this.mirada = new VectorPosicion2I(0,-1);
     }
 
     public Herramienta herramientaEquipada() {
@@ -47,6 +49,27 @@ public class Jugador {
         }
     }
 
+    public void usarHerramienta(Mapa mapa) {
+
+        Herramienta herramienta = this.inventario.herramientaEquipada;
+        VectorPosicion2I posicionMaterial = this.posicion.sumar(mirada);
+        Material material = mapa.obtenerMaterial(posicionMaterial);
+
+        if (material != null) {
+            try {
+                herramienta.desgastar(material);
+
+            } catch (MaterialDestruidoException e) {
+                this.inventario.agregar(material);
+
+            } catch (HerramientaEstaRotaException e) {
+                this.inventario.equipar(new Mano());
+            }
+        }
+    }
+
     public VectorPosicion2I getPosicion() { return this.posicion; }
+
+    public VectorPosicion2I getMirada() { return this.mirada; }
 
 }

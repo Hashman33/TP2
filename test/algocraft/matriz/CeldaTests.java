@@ -20,7 +20,7 @@ public class CeldaTests {
     @Test
     public void test02CeldaSeLeAgregaUnMaterialYnoEstaVacia(){
         Celda celda = new Celda();
-        celda.colocarMaterial(new Madera());
+        celda.colocar(new Madera());
         assert(!celda.estaVacia());
     }
 
@@ -29,7 +29,7 @@ public class CeldaTests {
 
         Celda celda = new Celda();
         Madera madera = new Madera();
-        celda.colocarMaterial(madera);
+        celda.colocar(madera);
 
         assertEquals(madera, celda.obtenerMaterial());
     }
@@ -39,7 +39,7 @@ public class CeldaTests {
 
         Celda celda = new Celda();
         Jugador jugador = new Jugador();
-        celda.colocarJugador(jugador);
+        celda.colocar(jugador);
 
         assertEquals(jugador, celda.obtenerJugador());
     }
@@ -48,9 +48,9 @@ public class CeldaTests {
     public void test05CeldaSeIntentaAgregarUnMaterialEnUnaCeldaOcupadaPorMaterialYnoSeModifica(){
         Celda celda = new Celda();
         Madera madera = new Madera();
-        celda.colocarMaterial(madera);
+        celda.colocar(madera);
         Madera madera2 = new Madera();
-        celda.colocarMaterial(madera2);
+        celda.colocar(madera2);
 
         assertEquals(madera, celda.obtenerMaterial());
     }
@@ -59,18 +59,18 @@ public class CeldaTests {
     public void test06CeldaSeIntentaAgregarUnMaterialEnUnaCeldaOcupadaPorJugadorYnoSeModifica(){
         Celda celda = new Celda();
         Jugador jugador = new Jugador();
-        celda.colocarJugador(jugador);
+        celda.colocar(jugador);
         Madera madera = new Madera();
-        celda.colocarMaterial(madera);
+        celda.colocar(madera);
 
-        assertEquals( jugador, celda.obtenerJugador());
+        assertEquals(jugador, celda.obtenerJugador());
     }
 
     @Test
     public void test07CeldaSeRemueveMaterialCorrectamente(){
         Celda celda = new Celda();
         Madera madera = new Madera();
-        celda.colocarMaterial(madera);
+        celda.colocar(madera);
 
         celda.removerMaterial();
 
@@ -82,7 +82,7 @@ public class CeldaTests {
 
         Celda celda = new Celda();
         Jugador jugador = new Jugador();
-        celda.colocarJugador(jugador);
+        celda.colocar(jugador);
 
         celda.removerJugador();
 
