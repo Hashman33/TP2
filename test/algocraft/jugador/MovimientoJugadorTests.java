@@ -2,7 +2,7 @@ package algocraft.jugador;
 
 import algocraft.mapa.Mapa;
 import algocraft.material.Piedra;
-import algocraft.utilidades.VectorPosicion2I;
+import algocraft.utilidades.*;
 import org.junit.jupiter.api.Test;
 
 
@@ -11,6 +11,7 @@ public class MovimientoJugadorTests {
     Mapa mapa = Mapa.obtenerInstancia();
     private int largo = mapa.getLargo();
     private int ancho = mapa.getAncho();
+    Direccion direccion = new Direccion();
 
     // Test de movimiento con el VectorPosicion2I //
     @Test
@@ -20,7 +21,7 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(0,1));
+        jugador.mover(mapa, direccion.abajo());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 1)));
 
@@ -34,7 +35,7 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(1, 0));
+        jugador.mover(mapa, direccion.derecha());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 0)));
 
@@ -48,7 +49,7 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(-1, 0));
+        jugador.mover(mapa, direccion.izquierda());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 0)));
 
@@ -62,7 +63,7 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(0, -1));
+        jugador.mover(mapa, direccion.arriba());
 
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(0, 0)));
 
@@ -86,13 +87,13 @@ public class MovimientoJugadorTests {
         mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(2,2));
         mapa.insertarMaterial(new Piedra(), new VectorPosicion2I(2,1));
 
-        jugador.mover(mapa, new VectorPosicion2I(0, -1));
+        jugador.mover(mapa, direccion.arriba());
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
-        jugador.mover(mapa, new VectorPosicion2I(0, 1));
+        jugador.mover(mapa, direccion.abajo());
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
-        jugador.mover(mapa, new VectorPosicion2I(1, 0));
+        jugador.mover(mapa, direccion.derecha());
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
-        jugador.mover(mapa, new VectorPosicion2I(-1, 0));
+        jugador.mover(mapa, direccion.izquierda());
         assert(jugador.getPosicion().esIgualA( new VectorPosicion2I(1, 1)));
 
         // Al final los saco porque es un singleton
@@ -115,7 +116,7 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(0, -1));
+        jugador.mover(mapa, direccion.arriba());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
 
@@ -130,7 +131,7 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(0, 1));
+        jugador.mover(mapa, direccion.abajo());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
 
@@ -145,7 +146,7 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(-1, 0));
+        jugador.mover(mapa, direccion.izquierda());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
 
@@ -160,7 +161,7 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(1, 0));
+        jugador.mover(mapa, direccion.derecha());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
 
@@ -176,8 +177,8 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(0, -1));
-        jugador.mover(mapa, new VectorPosicion2I(1, 0));
+        jugador.mover(mapa, direccion.arriba());
+        jugador.mover(mapa, direccion.derecha());
 
         assert(jugador.getPosicion().esIgualA(posicionInicial));
 
@@ -192,8 +193,8 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(0, 1));
-        jugador.mover(mapa, new VectorPosicion2I(-1, 0));
+        jugador.mover(mapa, direccion.abajo());
+        jugador.mover(mapa, direccion.izquierda());
 
         assert (jugador.getPosicion().esIgualA(posicionInicial));
 
@@ -208,8 +209,8 @@ public class MovimientoJugadorTests {
         Mapa mapa = Mapa.obtenerInstancia();
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
-        jugador.mover(mapa, new VectorPosicion2I(0, 1));
-        jugador.mover(mapa, new VectorPosicion2I(1, 0));
+        jugador.mover(mapa, direccion.abajo());
+        jugador.mover(mapa, direccion.derecha());
 
         assert (jugador.getPosicion().esIgualA(posicionInicial));
 

@@ -6,6 +6,7 @@ import algocraft.utilidades.VectorPosicion2I;
 
 public class Jugador {
 
+    private VectorPosicion2I mirada;
     private VectorPosicion2I posicion;
     public Inventario inventario;
 
@@ -38,8 +39,12 @@ public class Jugador {
     }
 
 
-    public void mover(Mapa mapa, VectorPosicion2I nuevaPosicion) {
-        if (mapa.moverJugador(this, nuevaPosicion)) this.posicion = this.posicion.sumar(nuevaPosicion);
+    public void mover(Mapa mapa, VectorPosicion2I vectorDesplazamiento) {
+
+        this.mirada = vectorDesplazamiento;
+        if (mapa.moverJugador(this, vectorDesplazamiento)) {
+            this.posicion = this.posicion.sumar(vectorDesplazamiento);
+        }
     }
 
     public VectorPosicion2I getPosicion() { return this.posicion; }
