@@ -36,9 +36,9 @@ public class JugadorUsaHerramientaTests {
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
         //NO SE PORQUE DA ERROR CUANDO SE LE PONE OTRA HERRAMIENTA(con el hacha inicial funciona)
-        //jugador.equipar(new Pico(new HerramientaMadera()));
+        jugador.equipar(new Pico(new HerramientaMadera()));
         jugador.usarHerramienta(mapa);
-        assertEquals(piedra.getDurabilidadActual(), piedra.getDurabilidadInicial() /*- 2*/);
+        assertEquals(piedra.getDurabilidadActual(), piedra.getDurabilidadInicial() - 2);
 
         mapa.resetear();
     }
@@ -53,9 +53,9 @@ public class JugadorUsaHerramientaTests {
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
         //NO SE PORQUE DA ERROR CUANDO SE LE PONE OTRA HERRAMIENTA(con el hacha inicial funciona)
-        //jugador.equipar(new Pico(new HerramientaPiedra()));
+        jugador.equipar(new Pico(new HerramientaPiedra()));
         jugador.usarHerramienta(mapa);
-        assertEquals(metal.getDurabilidadActual(), metal.getDurabilidadInicial() /*- 4*/);
+        assertEquals(metal.getDurabilidadActual(), metal.getDurabilidadInicial() - 4);
 
         mapa.resetear();
     }
@@ -66,13 +66,16 @@ public class JugadorUsaHerramientaTests {
         Jugador jugador = new Jugador(new VectorPosicion2I(17, 6));
 
         Mapa mapa = Mapa.obtenerInstancia();
-        Material metal = mapa.obtenerMaterial(new VectorPosicion2I(17, 5));
+        Material diamante = mapa.obtenerMaterial(new VectorPosicion2I(17, 5));
         mapa.insertarJugador(jugador, jugador.getPosicion());
 
         //NO SE PORQUE DA ERROR CUANDO SE LE PONE OTRA HERRAMIENTA(con el hacha inicial funciona)
-        //jugador.equipar(new PicoFino());
         jugador.usarHerramienta(mapa);
-        assertEquals(metal.getDurabilidadActual(), metal.getDurabilidadInicial() /*- 20*/);
+        assertEquals(diamante.getDurabilidadActual(), diamante.getDurabilidadInicial());
+
+        jugador.equipar(new PicoFino());
+        jugador.usarHerramienta(mapa);
+        assertEquals(diamante.getDurabilidadActual(), diamante.getDurabilidadInicial() - 20);
 
         mapa.resetear();
     }

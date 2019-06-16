@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Matriz {
 
-    private static int ANCHO;
-    private static int LARGO;
+    private int ANCHO;
+    private int LARGO;
     private List<Fila> filas;
 
 
