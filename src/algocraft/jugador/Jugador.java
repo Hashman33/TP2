@@ -65,6 +65,7 @@ public class Jugador {
 
             } catch (HerramientaEstaRotaException e) {
                 this.inventario.equipar(new Mano());
+                this.inventario.quitar(herramienta);
             }
         }
     }
