@@ -34,13 +34,17 @@ La herramienta se rompe en el intento de uso posterior al llegar a durabilidad 0
 
 PARA AGREGAR JAVAFX12:
 	
-	Con JDK12, ya no tenemos incluido JavaFx en su release. Por eso tenemos que descargarlo aparte, e incluirlo como una librería 		cualquiera.
+	Con JDK12, ya no tenemos incluido JavaFx en su release. Por eso tenemos que descargarlo aparte, e incluirlo 
+	como una librería cualquiera.
 	
 	- Descargar JavaFx 12.0.1 de https://gluonhq.com/products/javafx/ (ver que sea la 12.0.1 que está más abajo).
-	- Haciendo update encontraremos un HolaMundo.java en el paquete algocraft.graficos. Es un fragmento de código para probar que 		funcione correctamente la librería, aunque puede usar cualquier fragmento de código para probarlo.
-	- Para IntelliJ: es posible que lance una excepción al correrlo, para ello debemos ir a la pestaña Run -> Edit Configurations y 	en la entrada que dice "VM Options" pegar lo siguiente:
+	- Haciendo update encontraremos un HolaMundo.java en el paquete algocraft.graficos. Es un 
+	fragmento de código para probar que funcione correctamente la librería, aunque puede usar cualquiera
+	para probarlo.
+	- Para IntelliJ: es posible que lance una excepción al correrlo, para ello debemos ir a la 
+	pestaña Run -> Edit Configurations y en la entrada que dice "VM Options" pegar lo siguiente:
 	
-	```--module-path C:\Libs\javafx-sdk-12.0.1\lib --add-modules javafx.controls,javafx.fxml```
+	--module-path C:\Libs\javafx-sdk-12.0.1\lib --add-modules javafx.controls,javafx.fxml
 	
 	(Reemplazar C:\Libs\javafx-sdk-12.0.1\lib por tu ruta a JavaFx)
 	
