@@ -48,5 +48,5 @@ PARA AGREGAR JAVAFX12:
 	
 	(Reemplazar C:\Libs\javafx-sdk-12.0.1\lib por tu ruta a JavaFx)
 	
-	Aplicar y aceptar, debería andar ok.
+	Aplicar y aceptar, debería andar ok. Más info en https://openjfx.io/openjfx-docs/
 	
