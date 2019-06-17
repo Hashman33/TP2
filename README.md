@@ -15,13 +15,16 @@ ESTADO DEL TP:
 	- El Jugador puede insertarse en el Mapa en el Origen (0,0) o en una posición dada.
 	- El Jugador puede moverese libremente en el mapa mientras la celda a ocupar este vacía.
 	- El Jugador posee un inventario de materiales y herramientas, puede incorporar y remover elementos del mismo.
+	- Clase MesaDeTrabajo para la creación de herramientas.
+    - El jugador puede obtener materiales del mapa correctamente y sus herramientas se rompen con el uso.
 	
 	En implentación:
 	- Clase MapaRandom 
-	- Clase MesaDeTrabajo para la creación de herramientas.
 	- Clase Juego con el inicio del juego.
 	
 	
 SUPUESTOS:
 
 No se puede desgastar madera con un pico fino.
+El material se obtiene en el momento que se su durabilidad llega a 0.
+La herramienta se rompe en el intento de uso posterior al llegar a durabilidad 0 y aparece la mano equipada(este "uso" no desgasta material).
