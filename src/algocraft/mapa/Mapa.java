@@ -5,6 +5,7 @@ import algocraft.jugador.*;
 import algocraft.matriz.*;
 import algocraft.matriz.Celda;
 import algocraft.utilidades.VectorPosicion2I;
+import java.util.Random;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -30,30 +31,7 @@ public class Mapa {
 
 
     private Mapa() {
-         tablero =  new Matriz(LARGO, ANCHO);
-
-         for( int i = 0; i < LARGO; i++ ){
-
-             for( int j = 0; j< ANCHO; j++){
-
-                 if (i > 0 && i < 3 && j > 6 && j < 14) {
-                     this.insertarMaterial(new Metal(), new VectorPosicion2I(j, i));
-                 }
-
-                 else if (i > 2 && i < 6 && j > 16 && j < 19) {
-                     this.insertarMaterial(new Diamante(), new VectorPosicion2I(j, i));
-                 }
-
-                 else if (i > 8 && i < 12 && j > 0 && j < 7) {
-                     this.insertarMaterial(new Piedra(), new VectorPosicion2I(j, i));
-                 }
-
-                 else if (i > 13 && i < 19 && j > 2 && j < 11) {
-                     this.insertarMaterial(new Madera(), new VectorPosicion2I(j, i));
-                 }
-             }
-         }
-
+        this.normalizarMapa();
     }
 
     public void maparandom(){
@@ -129,6 +107,23 @@ public class Mapa {
         }
         return false;
     }
+
+    public void insertarJugador(Jugador jugador) {
+
+        Celda celda;
+        VectorPosicion2I posicion;
+        do {
+            int posX = new Random().nextInt(ANCHO - 1);
+            int posY = new Random().nextInt(LARGO - 1);
+            posicion = new VectorPosicion2I(posX, posY);
+
+            celda = tablero.obtenerCelda(posicion);
+        }
+        while (celda == null || !celda.colocar(jugador));
+        jugador.setCoordenadas(posicion);
+    }
+
+
 
     public void removerJugador(VectorPosicion2I posicion) {
 

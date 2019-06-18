@@ -46,4 +46,18 @@ public class JugadorTests {
 
         mapa.resetear();
     }
+
+    @Test
+    public void test04JugadorSeInsertaEnElMapaEnPosicionRandomCorrectamente() {
+        Jugador jugador = new Jugador();
+
+        Mapa mapa = Mapa.obtenerInstancia();
+        mapa.insertarJugador(jugador);
+
+        assertEquals(jugador, mapa.obtenerJugador(jugador.getPosicion()));
+
+        mapa.resetear();
+    }
+
+
 }

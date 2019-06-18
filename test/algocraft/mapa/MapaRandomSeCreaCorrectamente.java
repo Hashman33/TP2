@@ -1,6 +1,5 @@
-package algocraft.randomMap;
+package algocraft.mapa;
 
-import algocraft.mapa.Mapa;
 import algocraft.material.Diamante;
 import algocraft.material.Madera;
 import algocraft.material.Metal;
