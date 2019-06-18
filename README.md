@@ -25,11 +25,12 @@ ESTADO DEL TP:
 	
 SUPUESTOS:
 
-No se puede desgastar madera con un pico fino.
+	- El pico fino puede desgastar cualquier material menos la madera (solo el diamante desgasta el pico fino).
+	- El material se obtiene en el momento que se su durabilidad llega a 0.
+	- La herramienta se rompe en el intento de uso posterior al llegar a durabilidad 0 y aparece la mano 
+	  equipada(este "uso" no desgasta material).
+	- Si el jugador quita de su inventario la herramienta que está equipando, se le equipa la mano.
 
-El material se obtiene en el momento que se su durabilidad llega a 0.
-
-La herramienta se rompe en el intento de uso posterior al llegar a durabilidad 0 y aparece la mano equipada(este "uso" no desgasta material).
 
 
 PARA AGREGAR JAVAFX12:
