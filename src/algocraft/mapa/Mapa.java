@@ -56,6 +56,18 @@ public class Mapa {
 
     }
 
+    public void maparandom(){
+        tablero = new Matriz(LARGO,ANCHO);
+        RandomMap generador = new RandomMap(this, ANCHO, LARGO);
+        generador.disponerMaterialMadera(30,20);
+        generador.disponerMaterialPiedra(25,15);
+        generador.disponerMaterialMetal(20,10);
+        generador.disponerMaterialDiamante(6,4);
+
+    }
+
+
+
     // Hecho con el VectorPosicion2I //
 
     // Propuesta de movimiento: Cuando funcione el juego vos apretas una tecla y se mueve. Depende la tecla
@@ -120,3 +132,28 @@ public class Mapa {
 
     public void resetear() { instancia = null; }
 }
+
+/*public void imprimirMapa(){
+
+        int cantPiedra = 0;
+
+        for (int i = 0; i < ANCHO; i++){
+
+            for(int j = 0 ; j < LARGO; j++ ){
+
+                if(this.obtenerMaterial(new VectorPosicion2I(i,j)) != null) {
+                    if (this.obtenerMaterial(new VectorPosicion2I(i, j)).getClass() == Piedra.class) {
+                        cantPiedra++;
+
+                    }
+                }
+                System.out.print(this.obtenerMaterial( new VectorPosicion2I(i,j)));
+            }
+
+            System.out.println();
+        }
+
+
+    }
+
+     */
