@@ -40,13 +40,13 @@ public class MapaRandomSeCreaCorrectamente {
 
         assert( cantMadera >= 20 && cantMadera <= 30 );
 
-
         assert( cantPiedra >= 15  && cantPiedra <= 25 );
 
         assert( cantMetal >=10 && cantMetal <= 20 );
 
         assert(cantDiamante >= 4 && cantDiamante <= 6 );
 
+        mapa.normalizarMapa();
 
     }
 

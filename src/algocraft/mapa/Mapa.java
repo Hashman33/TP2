@@ -66,7 +66,33 @@ public class Mapa {
 
     }
 
+    public void normalizarMapa(){
 
+        tablero =  new Matriz(LARGO, ANCHO);
+
+        for( int i = 0; i < LARGO; i++ ){
+
+            for( int j = 0; j< ANCHO; j++){
+
+                if (i > 0 && i < 3 && j > 6 && j < 14) {
+                    this.insertarMaterial(new Metal(), new VectorPosicion2I(j, i));
+                }
+
+                else if (i > 2 && i < 6 && j > 16 && j < 19) {
+                    this.insertarMaterial(new Diamante(), new VectorPosicion2I(j, i));
+                }
+
+                else if (i > 8 && i < 12 && j > 0 && j < 7) {
+                    this.insertarMaterial(new Piedra(), new VectorPosicion2I(j, i));
+                }
+
+                else if (i > 13 && i < 19 && j > 2 && j < 11) {
+                    this.insertarMaterial(new Madera(), new VectorPosicion2I(j, i));
+                }
+            }
+        }
+
+    }
 
     // Hecho con el VectorPosicion2I //
 
