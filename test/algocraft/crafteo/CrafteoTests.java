@@ -138,7 +138,7 @@ public class CrafteoTests {
     }
 
     @Test
-    public void test03CrafteoPicoFinoYObtengoUnPicoFino(){
+    public void test07CrafteoPicoFinoYObtengoUnPicoFino(){
 
         MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
 

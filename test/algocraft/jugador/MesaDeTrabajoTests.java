@@ -29,4 +29,15 @@ public class MesaDeTrabajoTests {
 
         assert(!mesaDeTrabajo.estaVacia());
     }
+
+    @Test
+    public void test03AgregoUnElementoALaMesaDeTrabajoYLuegoLoRemuevoYQuedaVacia() {
+
+        MesaDeTrabajo mesaDeTrabajo = new MesaDeTrabajo();
+
+        mesaDeTrabajo.agregarMaterial(new Piedra(), new VectorPosicion2I(0,0));
+        mesaDeTrabajo.removerMaterial(new VectorPosicion2I(0,0));
+
+        assert(mesaDeTrabajo.estaVacia());
+    }
 }

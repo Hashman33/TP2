@@ -72,11 +72,17 @@ public class Matriz {
     }
 
     public boolean colocar(Jugador jugador, VectorPosicion2I posicion) {
-        return this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).colocar(jugador);
+        if (this.esPosicionValida(posicion)) {
+            return this.obtenerCelda(posicion).colocar(jugador);
+        }
+        return false;
     }
 
     public boolean colocar(Material material, VectorPosicion2I posicion) {
-        return this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).colocar(material);
+        if (this.esPosicionValida(posicion)) {
+            return this.obtenerCelda(posicion).colocar(material);
+        }
+        return false;
     }
 
     public boolean estaVacia() {
@@ -86,15 +92,25 @@ public class Matriz {
         return  true;
     }
 
+    public Jugador obtenerJugador(VectorPosicion2I posicion) {
+            return this.obtenerCelda(posicion).obtenerJugador();
+    }
+
+    public Material obtenerMaterial(VectorPosicion2I posicion) {
+        return this.obtenerCelda(posicion).obtenerMaterial();
+    }
+
     public void limpiar() {
         for (Fila fila: filas) {
             fila.limpiar();
         }
     }
 
-    public void remover(VectorPosicion2I posicion) {
-        this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).removerMaterial();
-        this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).removerJugador();
+    public void limpiarCelda(VectorPosicion2I posicion) {
+        if (esPosicionValida(posicion)) {
+            this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).removerMaterial();
+            this.filas.get(posicion.getY()).getCeldas().get(posicion.getX()).removerJugador();
+        }
     }
 
 }

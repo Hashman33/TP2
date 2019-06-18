@@ -77,6 +77,8 @@ public class MesaDeTrabajo {
         this.evaluar();
     }
 
+    public void removerMaterial(VectorPosicion2I posicion) { this.matriz.limpiarCelda(posicion);}
+
     public Herramienta obtenerCrafteoActual() {
         return this.crafteoActual;
     }

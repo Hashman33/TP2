@@ -115,7 +115,7 @@ public class CeldaTests {
 
         assert(!matriz1.esIgualA(matriz2));
 
-        matriz2.remover(new VectorPosicion2I(2,2));
+        matriz2.limpiarCelda(new VectorPosicion2I(2,2));
 
         assert(matriz1.esIgualA(matriz2));
 

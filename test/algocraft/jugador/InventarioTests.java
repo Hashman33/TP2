@@ -1,9 +1,6 @@
 package algocraft.jugador;
 
-import algocraft.herramienta.Hacha;
-import algocraft.herramienta.HerramientaMadera;
-import algocraft.herramienta.Pico;
-import algocraft.herramienta.PicoFino;
+import algocraft.herramienta.*;
 import algocraft.material.Madera;
 import algocraft.material.Metal;
 import algocraft.material.Piedra;
@@ -114,6 +111,21 @@ public class InventarioTests {
         Piedra piedra = new Piedra();
 
         assertThrows(ElementoNoEstaEnInventarioException.class, ()-> { inventario.quitar(piedra); });
+
+    }
+
+    @Test
+    public void test08QuitoHerramientaQueEstabaEquipadaYSeEquipaLaMano() {
+
+        Inventario inventario = new Inventario();
+        Hacha hachaMadera = new Hacha(new HerramientaMadera());
+
+        inventario.agregar(hachaMadera);
+        inventario.equipar(hachaMadera);
+        inventario.quitar(hachaMadera);
+
+        assert(!inventario.pertenece(hachaMadera));
+        assert(inventario.herramientaEquipada instanceof Mano);
 
     }
 }

@@ -100,8 +100,7 @@ public class Mapa {
 
     public boolean insertarJugador(Jugador jugador, VectorPosicion2I posicion) {
 
-        Celda celda = tablero.obtenerCelda(posicion);
-        if (celda != null && celda.colocar(jugador)) {
+        if (tablero.colocar(jugador, posicion)) {
             jugador.setCoordenadas(posicion);
             return true;
         }
@@ -110,45 +109,36 @@ public class Mapa {
 
     public void insertarJugador(Jugador jugador) {
 
-        Celda celda;
         VectorPosicion2I posicion;
         do {
             int posX = new Random().nextInt(ANCHO - 1);
             int posY = new Random().nextInt(LARGO - 1);
             posicion = new VectorPosicion2I(posX, posY);
 
-            celda = tablero.obtenerCelda(posicion);
         }
-        while (celda == null || !celda.colocar(jugador));
+        while (!tablero.colocar(jugador, posicion));
         jugador.setCoordenadas(posicion);
     }
 
 
-
     public void removerJugador(VectorPosicion2I posicion) {
-
-        Celda celda = tablero.obtenerCelda(posicion);
-        if (celda != null) celda.removerJugador();
+        tablero.limpiarCelda(posicion);
     }
 
     public boolean insertarMaterial(Material material, VectorPosicion2I posicion) {
-        Celda celda = tablero.obtenerCelda(posicion);
-        return celda.colocar(material);
+        return tablero.colocar(material, posicion);
     }
 
     public void removerMaterial(VectorPosicion2I posicion) {
-        Celda celda = tablero.obtenerCelda(posicion);
-        celda.removerMaterial();
+        tablero.limpiarCelda(posicion);
     }
 
     public Material obtenerMaterial(VectorPosicion2I posicion) {
-        Celda celda = tablero.obtenerCelda(posicion);
-        return celda.obtenerMaterial();
+        return tablero.obtenerMaterial(posicion);
     }
 
     public Jugador obtenerJugador(VectorPosicion2I posicion) {
-        Celda celda = tablero.obtenerCelda(posicion);
-        return celda.obtenerJugador();
+        return tablero.obtenerJugador(posicion);
     }
 
     public void resetear() { instancia = null; }

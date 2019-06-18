@@ -31,11 +31,6 @@ public class Jugador {
         this.mirada = new VectorPosicion2I(0,-1);
     }
 
-    public Herramienta herramientaEquipada() {
-        return this.inventario.herramientaEquipada;
-    }
-
-
     public void setCoordenadas(VectorPosicion2I posicion) {
         this.posicion = posicion;
     }
@@ -71,6 +66,16 @@ public class Jugador {
     }
 
     public void equipar(Herramienta herramienta) { this.inventario.equipar(herramienta); }
+
+    public void agregar(Material material) { this.inventario.agregar(material); }
+
+    public void agregar(Herramienta herramienta) { this.inventario.agregar(herramienta); }
+
+    public void quitar(Material material) { this.inventario.quitar(material); }
+
+    public void quitar(Herramienta herramienta) { this.inventario.quitar(herramienta); }
+
+    public Herramienta herramientaEquipada() { return this.inventario.herramientaEquipada; }
 
     public VectorPosicion2I getPosicion() { return this.posicion; }
 

@@ -31,6 +31,7 @@ public class Inventario {
 
     public void quitar(Herramienta herramienta) {
         if (!pertenece(herramienta)) throw new ElementoNoEstaEnInventarioException();
+        if (herramienta == this.herramientaEquipada) this.equipar(new Mano());
         herramientas.remove(herramienta);
     }
 
