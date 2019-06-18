@@ -1,4 +1,4 @@
-package algocraft.vistas;
+package algocraft.vista;
 
 public class MapaView {
 }
