@@ -6,6 +6,10 @@ import algocraft.material.Material;
 import algocraft.matriz.Matriz;
 import algocraft.utilidades.VectorPosicion2I;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
 
 public class MesaDeTrabajo {
 
@@ -72,12 +76,30 @@ public class MesaDeTrabajo {
 
     }
 
-    public void agregarMaterial(Material material, VectorPosicion2I posicion) {
-        this.matriz.colocar(material, posicion);
+    public boolean agregarMaterial(Material material, VectorPosicion2I posicion) {
+
+        boolean seAgrega = this.matriz.colocar(material, posicion);
         this.evaluar();
+        if (this.crafteoActual != null) this.limpiar();
+        return seAgrega;
     }
 
-    public void removerMaterial(VectorPosicion2I posicion) { this.matriz.limpiarCelda(posicion);}
+    public Material removerMaterial(VectorPosicion2I posicion) {
+        Material material = this.matriz.obtenerMaterial(posicion);
+        this.matriz.limpiarCelda(posicion);
+        return material;
+    }
+
+    public List<Material> limpiar() {
+
+        List<Material> materiales = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                materiales.add(removerMaterial(new VectorPosicion2I(i, j)));
+            }
+        }
+        return materiales;
+    }
 
     public Herramienta obtenerCrafteoActual() {
         return this.crafteoActual;

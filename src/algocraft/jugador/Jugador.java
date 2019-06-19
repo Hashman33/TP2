@@ -5,11 +5,14 @@ import algocraft.mapa.*;
 import algocraft.material.*;
 import algocraft.utilidades.VectorPosicion2I;
 
+import java.util.List;
+
 public class Jugador {
 
     private VectorPosicion2I mirada;
     private VectorPosicion2I posicion;
     protected Inventario inventario;
+    protected MesaDeTrabajo mesaDeTrabajo;
 
     public Jugador() {
         inicializar(new VectorPosicion2I());
@@ -23,6 +26,7 @@ public class Jugador {
 
         Hacha hachaMadera = new Hacha(new HerramientaMadera());
 
+        this.mesaDeTrabajo = new MesaDeTrabajo();
         this.inventario = new Inventario();
         this.inventario.agregar(hachaMadera);
         this.inventario.equipar(hachaMadera);
@@ -55,25 +59,38 @@ public class Jugador {
                 herramienta.desgastar(material);
 
             } catch (MaterialDestruidoException e) {
-                this.inventario.agregar(material);
+                this.agregarEnInventario(material);
                 mapa.removerMaterial(posicionMaterial);
 
             } catch (HerramientaEstaRotaException e) {
-                this.inventario.equipar(new Mano());
-                this.inventario.quitar(herramienta);
+                this.equipar(new Mano());
+                this.quitarDeInventario(herramienta);
             }
         }
     }
 
+    public void agregarAMesaDeTrabajo(Material material, VectorPosicion2I posicion) {
+
+        if (mesaDeTrabajo.agregarMaterial(material, posicion)) this.quitarDeInventario(material);
+        if (mesaDeTrabajo.obtenerCrafteoActual() != null) {
+            this.agregarEnInventario(mesaDeTrabajo.obtenerCrafteoActual());
+        }
+    }
+
+    public void limpiarMesaDeTrabajo() {
+        List<Material> materiales = this.mesaDeTrabajo.limpiar();
+        for (Material material: materiales) this.agregarEnInventario(material);
+    }
+
     public void equipar(Herramienta herramienta) { this.inventario.equipar(herramienta); }
 
-    public void agregar(Material material) { this.inventario.agregar(material); }
+    public void agregarEnInventario(Material material) { this.inventario.agregar(material); }
 
-    public void agregar(Herramienta herramienta) { this.inventario.agregar(herramienta); }
+    public void agregarEnInventario(Herramienta herramienta) { this.inventario.agregar(herramienta); }
 
-    public void quitar(Material material) { this.inventario.quitar(material); }
+    public void quitarDeInventario(Material material) { this.inventario.quitar(material); }
 
-    public void quitar(Herramienta herramienta) { this.inventario.quitar(herramienta); }
+    public void quitarDeInventario(Herramienta herramienta) { this.inventario.quitar(herramienta); }
 
     public Herramienta herramientaEquipada() { return this.inventario.herramientaEquipada; }
 

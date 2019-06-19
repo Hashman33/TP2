@@ -91,7 +91,7 @@ public class InventarioTests {
     }
 
     // Por la dinamica del juego, esto no podria pasar, ya que no habria elementos que
-    // no pertenezcan al inventario para quitar. Para el modelo, es un caso de excepcion.
+    // no pertenezcan al inventario para quitarDeInventario. Para el modelo, es un caso de excepcion.
     @Test
     public void test06QuitoUnaHerramientaQueNoEstaYLanzaExcepcion() {
 

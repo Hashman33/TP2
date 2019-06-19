@@ -1,17 +1,13 @@
 package algocraft.jugador;
 
-import algocraft.herramienta.Hacha;
-import algocraft.herramienta.HerramientaMadera;
-import algocraft.mapa.Mapa;
-import algocraft.material.Piedra;
-import algocraft.utilidades.VectorPosicion2I;
+import algocraft.material.*;
+import algocraft.utilidades.*;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class MesaDeTrabajoTests {
 
+    PosicionMesaDeTrabajo posicion = new PosicionMesaDeTrabajo();
     @Test
     public void test01MesaDeTrabajoIniciaVacia() {
 
@@ -40,4 +36,5 @@ public class MesaDeTrabajoTests {
 
         assert(mesaDeTrabajo.estaVacia());
     }
+
 }

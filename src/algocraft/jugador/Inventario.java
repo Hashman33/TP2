@@ -13,9 +13,9 @@ public class Inventario {
         this.materiales = new ArrayList<Material>();
     }
 
-    private List<Herramienta> herramientas;
+    protected List<Herramienta> herramientas;
 
-    private List<Material> materiales;
+    protected List<Material> materiales;
 
     public Herramienta herramientaEquipada;
 

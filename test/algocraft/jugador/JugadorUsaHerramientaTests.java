@@ -175,7 +175,7 @@ public class JugadorUsaHerramientaTests {
 
         Hacha hachaPiedra = new Hacha(new HerramientaPiedra());
         jugador.equipar(hachaPiedra);
-        jugador.agregar(hachaPiedra);
+        jugador.agregarEnInventario(hachaPiedra);
         for (int i = 0; i < 41; i++) jugador.usarHerramienta(mapa);
 
         assertEquals(jugador.inventario.pertenece(hachaPiedra), false);
@@ -194,7 +194,7 @@ public class JugadorUsaHerramientaTests {
 
         Hacha hachaMetal = new Hacha(new HerramientaMetal());
         jugador.equipar(hachaMetal);
-        jugador.agregar(hachaMetal);
+        jugador.agregarEnInventario(hachaMetal);
         for (int i = 0; i < 81; i++) jugador.usarHerramienta(mapa);
 
         assertEquals(jugador.inventario.pertenece(hachaMetal), false);
@@ -213,7 +213,7 @@ public class JugadorUsaHerramientaTests {
 
         Pico picoMadera = new Pico(new HerramientaMadera());
         jugador.equipar(picoMadera);
-        jugador.agregar(picoMadera);
+        jugador.agregarEnInventario(picoMadera);
         for (int i = 0; i < 51; i++) jugador.usarHerramienta(mapa);
 
         assertEquals(jugador.inventario.pertenece(picoMadera), false);
@@ -232,7 +232,7 @@ public class JugadorUsaHerramientaTests {
 
         Pico picoPiedra = new Pico(new HerramientaPiedra());
         jugador.equipar(picoPiedra);
-        jugador.agregar(picoPiedra);
+        jugador.agregarEnInventario(picoPiedra);
         for (int i = 0; i < 77; i++) jugador.usarHerramienta(mapa);
 
         assertEquals(jugador.inventario.pertenece(picoPiedra), false);
@@ -251,7 +251,7 @@ public class JugadorUsaHerramientaTests {
 
         Pico picoMetal = new Pico(new HerramientaMetal());
         jugador.equipar(picoMetal);
-        jugador.agregar(picoMetal);
+        jugador.agregarEnInventario(picoMetal);
         for (int i = 0; i < 11; i++) jugador.usarHerramienta(mapa);
 
         assertEquals(jugador.inventario.pertenece(picoMetal), false);
