@@ -1,7 +1,7 @@
 package algocraft.juego;
 
-import algocraft.jugador.Jugador;
-import algocraft.mapa.Mapa;
+import algocraft.juego.jugador.Jugador;
+import algocraft.juego.mapa.Mapa;
 
 public class Juego {
 

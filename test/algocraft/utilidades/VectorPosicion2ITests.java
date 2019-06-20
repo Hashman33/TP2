@@ -1,8 +1,5 @@
 package algocraft.utilidades;
 
-import algocraft.jugador.Jugador;
-import algocraft.material.Madera;
-import algocraft.matriz.Celda;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
