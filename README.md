@@ -50,4 +50,10 @@ PARA AGREGAR JAVAFX12:
 	(Reemplazar C:\Libs\javafx-sdk-12.0.1\lib por tu ruta a JavaFx)
 	
 	Aplicar y aceptar, debería andar ok. Más info en https://openjfx.io/openjfx-docs/
+
+PARA AGREGAR JAVAFX CON JAVA8 UBUNTU:
+
+    - Descargar java8-openjfx https://www.archlinux.org/packages/testing/x86_64/java8-openjfx/
+    - En IntelliJ agregar .../jre/lib/ext/jxfrt.jar a las librerias. File -> Project Structure -> libraries -> + elegir ruta
+
 	
