@@ -17,10 +17,13 @@ ESTADO DEL TP:
 	- El Jugador posee un inventario de materiales y herramientas, puede incorporar y remover elementos del mismo.
 	- Clase MesaDeTrabajo para la creación de herramientas.
     - El jugador puede obtener materiales del mapa correctamente y sus herramientas se rompen con el uso.
-	
-	En implentación:
-	- Clase MapaRandom 
+    - El Jugador crea sus propias herramientas con sus materiales y la mesa de trabajo.
+	- Clase MapaRandom, genera un mapa con materiles aleatoriamente distrbuidos.
 	- Clase Juego con el inicio del juego.
+    - Interfaz grafica: Menu Inicio.
+
+    En implementación:
+    - Interfaz gráfica Juego.
 	
 	
 SUPUESTOS:
@@ -51,9 +54,5 @@ PARA AGREGAR JAVAFX12:
 	
 	Aplicar y aceptar, debería andar ok. Más info en https://openjfx.io/openjfx-docs/
 
-PARA AGREGAR JAVAFX CON JAVA8 UBUNTU:
-
-    - Descargar java8-openjfx https://www.archlinux.org/packages/testing/x86_64/java8-openjfx/
-    - En IntelliJ agregar .../jre/lib/ext/jxfrt.jar a las librerias. File -> Project Structure -> libraries -> + elegir ruta
 
 	

@@ -10,7 +10,7 @@ public class Juego {
 
     public Juego() {
 
-        mapa.maparandom();
+        mapa.iniciarRandom();
         mapa.insertarJugador(jugador);
     }
 

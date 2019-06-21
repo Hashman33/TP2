@@ -29,10 +29,10 @@ public class Mapa {
 
 
     private Mapa() {
-        this.normalizarMapa();
+        this.iniciarNormalizado();
     }
 
-    public void maparandom(){
+    public void iniciarRandom(){
         tablero = new Matriz(LARGO,ANCHO);
         RandomMap generador = new RandomMap(this, ANCHO, LARGO);
         generador.disponerMaterialMadera(30,20);
@@ -42,7 +42,7 @@ public class Mapa {
 
     }
 
-    public void normalizarMapa(){
+    public void iniciarNormalizado(){
 
         tablero =  new Matriz(LARGO, ANCHO);
 

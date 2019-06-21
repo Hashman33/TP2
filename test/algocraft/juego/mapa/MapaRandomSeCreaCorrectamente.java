@@ -18,7 +18,7 @@ public class MapaRandomSeCreaCorrectamente {
         int cantMetal = 0;
         int cantDiamante = 0;
         Mapa mapa = Mapa.obtenerInstancia();
-        mapa.maparandom();
+        mapa.iniciarRandom();
         for (int i = 0; i< largoMapa; i++){
 
             for( int j = 0; j< anchoMapa; j++){
@@ -45,7 +45,7 @@ public class MapaRandomSeCreaCorrectamente {
 
         assert(cantDiamante >= 4 && cantDiamante <= 6 );
 
-        mapa.normalizarMapa();
+        mapa.iniciarNormalizado();
 
     }
 
