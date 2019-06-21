@@ -98,4 +98,8 @@ public class Jugador {
 
     public VectorPosicion2I getMirada() { return this.mirada; }
 
+    public List<Material> getInventarioMateriales() { return this.inventario.materiales; }
+
+    public List<Herramienta> getInventarioHerramientas() { return this.inventario.herramientas; }
+
 }
