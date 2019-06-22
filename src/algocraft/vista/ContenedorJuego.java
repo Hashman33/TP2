@@ -23,10 +23,11 @@ public class ContenedorJuego extends BorderPane {
     public ContenedorJuego(Stage stage) {
 
         this.stage = stage;
+
+        // Supongo que despues se va a usar el Juego
         this.mapa = Mapa.obtenerInstancia();
 
         VistaMapa vistaMapa = new VistaMapa(mapa, this);
-
         vistaMapa.dibujar();
 
     }
