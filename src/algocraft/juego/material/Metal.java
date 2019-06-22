@@ -2,12 +2,14 @@ package algocraft.juego.material;
 
 import algocraft.juego.jugador.desgaste.*;
 import algocraft.juego.jugador.herramienta.*;
+import javafx.scene.image.Image;
 
 public class Metal extends Material {
 
 
     public Metal(){
         this.desgaste = new DesgastePorValor(50);
+        this.texturaUrl = "/recursos/texturas/metal.jpeg";
     }
 
     @Override

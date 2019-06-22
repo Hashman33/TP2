@@ -2,11 +2,14 @@ package algocraft.juego.material;
 
 import algocraft.juego.jugador.desgaste.*;
 import algocraft.juego.jugador.herramienta.*;
+import javafx.scene.image.Image;
 
 public abstract class Material {
 
     protected Desgaste desgaste;
-
+    protected String texturaUrl = "";
+    protected final int ANCHO = 32;
+    protected final int ALTO = 32;
 
     public abstract void desgastarCon(Hacha hacha);
 
@@ -26,6 +29,8 @@ public abstract class Material {
         return this.desgaste.getDurabilidadInicial();
     }
 
-
+    public Image getTextura() {
+        return new Image(this.texturaUrl, ANCHO, ALTO, false,true);
+    }
 
 }

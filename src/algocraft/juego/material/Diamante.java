@@ -2,13 +2,14 @@ package algocraft.juego.material;
 
 import algocraft.juego.jugador.desgaste.*;
 import algocraft.juego.jugador.herramienta.*;
+import javafx.scene.image.Image;
 
 public class Diamante extends Material {
 
 
     public Diamante(){
         this.desgaste = new DesgastePorValor(100);
-
+        this.texturaUrl = "/recursos/texturas/diamante.jpeg";
     }
     @Override
     public void desgastarCon(Hacha hacha) { }

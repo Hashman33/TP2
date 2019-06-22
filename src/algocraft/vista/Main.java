@@ -1,7 +1,5 @@
 package algocraft.vista;
 
-import algocraft.controlador.BotonJugar;
-import algocraft.evento.BotonJugarEventHandler;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -13,15 +11,17 @@ public class Main extends Application {
     public static final int ANCHO = 1280;
     public static final int ALTO = 720;
 
+    //pablosuarez@gmail.com
+    // Matriz en utilidades
+
     @Override
     public void start(Stage stage) {
 
         stage.setTitle("AlgoCraft - Grupo 13");
 
-        BorderPane contenedorJuego = new BorderPane();
+        //BorderPane contenedorJuego = new BorderPane();
+        ContenedorJuego contenedorJuego = new ContenedorJuego(stage);
         Scene escenaJuego = new Scene(contenedorJuego, ANCHO, ALTO);
-
-
 
         ContenedorMenuPrincipal contenedorMenuPrincipal = new ContenedorMenuPrincipal(stage, escenaJuego);
         Scene scene = new Scene(contenedorMenuPrincipal, ANCHO, ALTO);

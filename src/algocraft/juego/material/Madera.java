@@ -2,6 +2,7 @@ package algocraft.juego.material;
 
 import algocraft.juego.jugador.desgaste.*;
 import algocraft.juego.jugador.herramienta.*;
+import javafx.scene.image.Image;
 
 public class Madera extends Material {
 
@@ -9,6 +10,7 @@ public class Madera extends Material {
     public Madera() {
 
         this.desgaste = new DesgastePorValor(10);
+        this.texturaUrl = "/recursos/texturas/madera.png";
     }
 
     @Override

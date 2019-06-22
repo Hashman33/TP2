@@ -23,9 +23,9 @@ public class Mapa {
         return instancia;
     }
 
-    public static int getAncho() { return ANCHO; }
+    public int getAncho() { return ANCHO; }
 
-    public static int getLargo() { return  LARGO; }
+    public int getLargo() { return  LARGO; }
 
 
     private Mapa() {
