@@ -36,6 +36,7 @@ public class Jugador {
         if (mirada.esIgualA(direccion.izquierda())) imageView.setRotate(90);
         if (mirada.esIgualA(direccion.arriba())) imageView.setRotate(180);
         if (mirada.esIgualA(direccion.derecha())) imageView.setRotate(270);
+        if (mirada.esIgualA(direccion.abajo())) imageView.setRotate(360);
 
         return imageView;
     }
