@@ -13,14 +13,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 
-public class TecladoAccionado implements EventHandler<KeyEvent> {
+public class TeclaMovimientoEventHandler implements EventHandler<KeyEvent> {
 
     private Juego juego;
     private Direccion direccion;
     private ContenedorJuego contenedorJuego;
 
 
-    public TecladoAccionado(ContenedorJuego contenedorJuego, Juego juego) {
+    public TeclaMovimientoEventHandler(ContenedorJuego contenedorJuego, Juego juego) {
 
         this.juego = juego;
         this.direccion = new Direccion();
@@ -32,35 +32,20 @@ public class TecladoAccionado implements EventHandler<KeyEvent> {
     public void handle(KeyEvent event) {
 
         if(event.getCode() == KeyCode.W){
-
             juego.moverJugador(direccion.arriba());
-            contenedorJuego.actualizarmapa();
-
         }
-
         if(event.getCode() == KeyCode.A){
-
             juego.moverJugador(direccion.izquierda());
-            contenedorJuego.actualizarmapa();
-
         }
-
         if(event.getCode() == KeyCode.D){
-
             juego.moverJugador(direccion.derecha());
-            contenedorJuego.actualizarmapa();
-
         }
-
         if(event.getCode() == KeyCode.S){
-
             juego.moverJugador(direccion.abajo());
-            contenedorJuego.actualizarmapa();
-
         }
 
+        contenedorJuego.actualizarMapa();
     }
-
 }
 
 

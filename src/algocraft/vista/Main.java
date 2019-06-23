@@ -1,10 +1,9 @@
 package algocraft.vista;
 
-import algocraft.evento.TecladoAccionado;
+import algocraft.evento.TeclaMovimientoEventHandler;
 import algocraft.juego.Juego;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -27,8 +26,8 @@ public class Main extends Application {
         ContenedorJuego contenedorJuego = new ContenedorJuego(stage, juego);
         Scene escenaJuego = new Scene(contenedorJuego, ANCHO, ALTO);
 
-        TecladoAccionado tecladoAccionado = new TecladoAccionado(contenedorJuego,juego);
-        escenaJuego.setOnKeyPressed(tecladoAccionado);
+        TeclaMovimientoEventHandler teclaMovimientoEventHandler = new TeclaMovimientoEventHandler(contenedorJuego,juego);
+        escenaJuego.setOnKeyPressed(teclaMovimientoEventHandler);
 
         ContenedorMenuPrincipal contenedorMenuPrincipal = new ContenedorMenuPrincipal(stage, escenaJuego);
         Scene scene = new Scene(contenedorMenuPrincipal, ANCHO, ALTO);
