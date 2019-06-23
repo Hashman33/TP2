@@ -4,6 +4,7 @@ import algocraft.juego.jugador.herramienta.*;
 import algocraft.juego.mapa.*;
 import algocraft.juego.material.*;
 import algocraft.utilidades.*;
+import javafx.scene.image.Image;
 
 import java.util.List;
 
@@ -13,6 +14,11 @@ public class Jugador {
     private VectorPosicion2I posicion;
     protected Inventario inventario;
     protected MesaDeTrabajo mesaDeTrabajo;
+    protected String texturaUrl = "";
+    protected final int ANCHO = 32;
+    protected final int ALTO = 32;
+
+
 
     public Jugador() {
         inicializar(new VectorPosicion2I());
@@ -22,10 +28,14 @@ public class Jugador {
         inicializar(posicionInicial);
     }
 
+    public Image getTextura() {
+        return new Image(this.texturaUrl, ANCHO, ALTO, false,true);
+    }
+
     private void inicializar(VectorPosicion2I posicionInicial) {
 
         Hacha hachaMadera = new Hacha(new HerramientaMadera());
-
+        this.texturaUrl = "/recursos/texturas/Jugador.png";
         this.mesaDeTrabajo = new MesaDeTrabajo();
         this.inventario = new Inventario();
         this.inventario.agregar(hachaMadera);

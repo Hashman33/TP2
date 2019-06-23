@@ -2,6 +2,8 @@ package algocraft.vista;
 
 import algocraft.controlador.BotonJugar;
 import algocraft.evento.BotonJugarEventHandler;
+import algocraft.juego.Juego;
+import algocraft.juego.jugador.Jugador;
 import algocraft.juego.mapa.Mapa;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,18 +20,26 @@ import java.io.InputStream;
 public class ContenedorJuego extends BorderPane {
 
     Stage stage;
-    Mapa mapa;
+    Juego juego;
+    VistaMapa vistaMapa;
 
-    public ContenedorJuego(Stage stage) {
+    public ContenedorJuego(Stage stage, Juego juego) {
 
         this.stage = stage;
 
         // Supongo que despues se va a usar el Juego
-        this.mapa = Mapa.obtenerInstancia();
 
-        VistaMapa vistaMapa = new VistaMapa(mapa, this);
+        this.vistaMapa = new VistaMapa(juego.getMapa(), this);
+        vistaMapa.dibujar();
+    }
+
+
+    public void actualizarmapa(){
+
         vistaMapa.dibujar();
 
     }
+
+
 
 }

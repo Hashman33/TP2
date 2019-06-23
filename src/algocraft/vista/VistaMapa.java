@@ -30,6 +30,10 @@ public class VistaMapa implements Dibujable {
                 Image imagen = this.mapa.obtenerMaterial(posicion) != null ? this.mapa.obtenerMaterial(posicion).getTextura() : null;
                 ImageView imageView = null;
 
+                if(this.mapa.obtenerJugador(posicion)!= null){
+                    imagen = this.mapa.obtenerJugador(posicion).getTextura();
+                }
+
                 if (imagen != null) {
                     imageView = new ImageView(imagen);
                 }

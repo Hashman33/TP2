@@ -1,5 +1,7 @@
 package algocraft.vista;
 
+import algocraft.evento.TecladoAccionado;
+import algocraft.juego.Juego;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -20,8 +22,13 @@ public class Main extends Application {
         stage.setTitle("AlgoCraft - Grupo 13");
 
         //BorderPane contenedorJuego = new BorderPane();
-        ContenedorJuego contenedorJuego = new ContenedorJuego(stage);
+        Juego juego = new Juego();
+
+        ContenedorJuego contenedorJuego = new ContenedorJuego(stage, juego);
         Scene escenaJuego = new Scene(contenedorJuego, ANCHO, ALTO);
+
+        TecladoAccionado tecladoAccionado = new TecladoAccionado(contenedorJuego,juego);
+        escenaJuego.setOnKeyPressed(tecladoAccionado);
 
         ContenedorMenuPrincipal contenedorMenuPrincipal = new ContenedorMenuPrincipal(stage, escenaJuego);
         Scene scene = new Scene(contenedorMenuPrincipal, ANCHO, ALTO);
