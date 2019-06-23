@@ -27,17 +27,13 @@ public class VistaMapa implements Dibujable {
         for (int i = 0; i < this.mapa.getLargo(); i++) {
             for (int j = 0; j < this.mapa.getAncho(); j++) {
                 VectorPosicion2I posicion = new VectorPosicion2I(i, j);
-                Image imagen = this.mapa.obtenerMaterial(posicion) != null ? this.mapa.obtenerMaterial(posicion).getTextura() : null;
-                ImageView imageView = null;
+                ImageView imageView = this.mapa.obtenerMaterial(posicion) != null ? this.mapa.obtenerMaterial(posicion).getTextura() : null;
 
-                if(this.mapa.obtenerJugador(posicion)!= null){
-                    imagen = this.mapa.obtenerJugador(posicion).getTextura();
+                if (this.mapa.obtenerJugador(posicion)!= null) {
+                    imageView = this.mapa.obtenerJugador(posicion).getTextura();
                 }
 
-                if (imagen != null) {
-                    imageView = new ImageView(imagen);
-                }
-                else {
+                if (imageView == null) {
                     imageView = new ImageView(pasto);
                 }
                 gridPane.add(imageView, i, j);

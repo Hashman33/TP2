@@ -3,6 +3,7 @@ package algocraft.juego.material;
 import algocraft.juego.jugador.desgaste.*;
 import algocraft.juego.jugador.herramienta.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class Material {
 
@@ -29,8 +30,8 @@ public abstract class Material {
         return this.desgaste.getDurabilidadInicial();
     }
 
-    public Image getTextura() {
-        return new Image(this.texturaUrl, ANCHO, ALTO, false,true);
+    public ImageView getTextura() {
+        return new ImageView(new Image(this.texturaUrl, ANCHO, ALTO, false,true));
     }
 
 }

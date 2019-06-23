@@ -5,11 +5,13 @@ import algocraft.juego.mapa.*;
 import algocraft.juego.material.*;
 import algocraft.utilidades.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.List;
 
 public class Jugador {
 
+    private Direccion direccion;
     private VectorPosicion2I mirada;
     private VectorPosicion2I posicion;
     protected Inventario inventario;
@@ -28,8 +30,14 @@ public class Jugador {
         inicializar(posicionInicial);
     }
 
-    public Image getTextura() {
-        return new Image(this.texturaUrl, ANCHO, ALTO, false,true);
+    public ImageView getTextura() {
+        ImageView imageView = new ImageView(new Image(this.texturaUrl, ANCHO, ALTO, false,true));
+
+        if (mirada.esIgualA(direccion.izquierda())) imageView.setRotate(90);
+        if (mirada.esIgualA(direccion.arriba())) imageView.setRotate(180);
+        if (mirada.esIgualA(direccion.derecha())) imageView.setRotate(270);
+
+        return imageView;
     }
 
     private void inicializar(VectorPosicion2I posicionInicial) {
@@ -37,12 +45,13 @@ public class Jugador {
         Hacha hachaMadera = new Hacha(new HerramientaMadera());
         this.texturaUrl = "/recursos/texturas/Jugador.png";
         this.mesaDeTrabajo = new MesaDeTrabajo();
+        this.direccion = new Direccion();
         this.inventario = new Inventario();
         this.inventario.agregar(hachaMadera);
         this.inventario.equipar(hachaMadera);
 
         this.posicion = posicionInicial;
-        this.mirada = new Direccion().arriba();
+        this.mirada = direccion.arriba();
     }
 
     public void setCoordenadas(VectorPosicion2I posicion) {
