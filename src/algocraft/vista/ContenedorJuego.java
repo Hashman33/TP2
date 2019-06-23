@@ -42,6 +42,11 @@ public class ContenedorJuego extends BorderPane {
 
     }
 
+    public void actualizarMaterialMapa(VectorPosicion2I posMaterialDestruido){
+
+        vistaMapa.actualizarMaterial(posMaterialDestruido);
+    }
+
 
 
 }

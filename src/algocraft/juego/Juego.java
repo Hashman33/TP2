@@ -17,7 +17,7 @@ public class Juego {
 
     public void moverJugador(VectorPosicion2I movimiento) { jugador.mover(mapa, movimiento); }
 
-    public void usarHerramienta() { jugador.usarHerramienta(mapa); }
+    public VectorPosicion2I usarHerramienta() { return jugador.usarHerramienta(mapa); }
 
 
     public Mapa getMapa() { return this.mapa; }

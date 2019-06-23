@@ -46,6 +46,18 @@ public class TeclaMovimientoEventHandler implements EventHandler<KeyEvent> {
             juego.moverJugador(direccion.abajo());
         }
 
+
+
+        if(event.getCode() == KeyCode.F){
+            VectorPosicion2I  vectorMaterial;
+            vectorMaterial = juego.usarHerramienta();
+
+            if(vectorMaterial != null) {
+
+                contenedorJuego.actualizarMaterialMapa(vectorMaterial);
+            }
+        }
+
         contenedorJuego.actualizarMapa(posAnterior);
     }
 }
