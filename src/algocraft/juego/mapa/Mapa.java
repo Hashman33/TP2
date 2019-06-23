@@ -142,27 +142,3 @@ public class Mapa {
     public void resetear() { instancia = null; }
 }
 
-/*public void imprimirMapa(){
-
-        int cantPiedra = 0;
-
-        for (int i = 0; i < ANCHO; i++){
-
-            for(int j = 0 ; j < LARGO; j++ ){
-
-                if(this.obtenerMaterial(new VectorPosicion2I(i,j)) != null) {
-                    if (this.obtenerMaterial(new VectorPosicion2I(i, j)).getClass() == Piedra.class) {
-                        cantPiedra++;
-
-                    }
-                }
-                System.out.print(this.obtenerMaterial( new VectorPosicion2I(i,j)));
-            }
-
-            System.out.println();
-        }
-
-
-    }
-
-     */
