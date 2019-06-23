@@ -31,6 +31,8 @@ public class TeclaMovimientoEventHandler implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent event) {
 
+        VectorPosicion2I posAnterior = juego.getJugador().getPosicion();
+
         if(event.getCode() == KeyCode.W){
             juego.moverJugador(direccion.arriba());
         }
@@ -44,7 +46,7 @@ public class TeclaMovimientoEventHandler implements EventHandler<KeyEvent> {
             juego.moverJugador(direccion.abajo());
         }
 
-        contenedorJuego.actualizarMapa();
+        contenedorJuego.actualizarMapa(posAnterior);
     }
 }
 

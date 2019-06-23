@@ -5,6 +5,7 @@ import algocraft.evento.BotonJugarEventHandler;
 import algocraft.juego.Juego;
 import algocraft.juego.jugador.Jugador;
 import algocraft.juego.mapa.Mapa;
+import algocraft.utilidades.VectorPosicion2I;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -27,6 +28,7 @@ public class ContenedorJuego extends BorderPane {
 
         this.stage = stage;
 
+        this.juego = juego;
         // Supongo que despues se va a usar el Juego
 
         this.vistaMapa = new VistaMapa(juego.getMapa(), this);
@@ -34,9 +36,9 @@ public class ContenedorJuego extends BorderPane {
     }
 
 
-    public void actualizarMapa(){
+    public void actualizarMapa(VectorPosicion2I posAnterior){
 
-        vistaMapa.dibujar();
+        vistaMapa.actualizar(juego.getJugador().getPosicion(),posAnterior);
 
     }
 

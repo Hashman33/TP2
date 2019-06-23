@@ -11,36 +11,48 @@ public class VistaMapa implements Dibujable {
 
     private Mapa mapa;
     private BorderPane borderPane;
+    private Image pasto;
+    private GridPane gridPane;
 
     public VistaMapa(Mapa mapa, BorderPane borderPane) {
         this.borderPane = borderPane;
         this.mapa = mapa;
+        this.pasto = new Image("/recursos/texturas/pasto.jpg", 32, 32, false, true);
+        this.gridPane = new GridPane();
     }
 
     @Override
     public void dibujar() {
 
-        GridPane gridPane = new GridPane();
-
-        Image pasto = new Image("/recursos/texturas/pasto.jpg", 32, 32, false,true);
 
         for (int i = 0; i < this.mapa.getLargo(); i++) {
             for (int j = 0; j < this.mapa.getAncho(); j++) {
                 VectorPosicion2I posicion = new VectorPosicion2I(i, j);
                 ImageView imageView = this.mapa.obtenerMaterial(posicion) != null ? this.mapa.obtenerMaterial(posicion).getTextura() : null;
 
-                if (this.mapa.obtenerJugador(posicion)!= null) {
+                if (this.mapa.obtenerJugador(posicion) != null) {
                     imageView = this.mapa.obtenerJugador(posicion).getTextura();
                 }
 
                 if (imageView == null) {
-                    imageView = new ImageView(pasto);
+                    imageView = new ImageView(this.pasto);
                 }
-                gridPane.add(imageView, i, j);
+                this.gridPane.add(imageView, i, j);
             }
         }
 
         this.borderPane.setCenter(gridPane);
 
     }
+
+    public void actualizar(VectorPosicion2I posJugador, VectorPosicion2I posPasto) {
+        if (this.mapa.obtenerJugador(posJugador) != null) {
+            this.gridPane.add(new ImageView(this.pasto), posPasto.getX(), posPasto.getY());
+            ImageView imageView = this.mapa.obtenerJugador(posJugador).getTextura();
+            this.gridPane.add(imageView, posJugador.getX(), posJugador.getY());
+
+        }
+
+    }
+
 }
