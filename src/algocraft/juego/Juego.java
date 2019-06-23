@@ -15,7 +15,7 @@ public class Juego {
         mapa.insertarJugador(jugador);
     }
 
-    public void moverJugador(VectorPosicion2I movimiento) { mapa.moverJugador(jugador, movimiento); }
+    public void moverJugador(VectorPosicion2I movimiento) { jugador.mover(mapa, movimiento); }
 
     public void usarHerramienta() { jugador.usarHerramienta(mapa); }
 
