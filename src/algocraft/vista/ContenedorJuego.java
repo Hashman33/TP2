@@ -34,7 +34,7 @@ public class ContenedorJuego extends BorderPane {
     }
 
 
-    public void actualizarmapa(){
+    public void actualizarMapa(){
 
         vistaMapa.dibujar();
 
