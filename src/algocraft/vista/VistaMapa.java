@@ -24,35 +24,28 @@ public class VistaMapa implements Dibujable {
     @Override
     public void dibujar() {
 
-
         for (int i = 0; i < this.mapa.getLargo(); i++) {
             for (int j = 0; j < this.mapa.getAncho(); j++) {
-                VectorPosicion2I posicion = new VectorPosicion2I(i, j);
-                ImageView imageView = this.mapa.obtenerMaterial(posicion) != null ? this.mapa.obtenerMaterial(posicion).getTextura() : null;
-
-                if (this.mapa.obtenerJugador(posicion) != null) {
-                    imageView = this.mapa.obtenerJugador(posicion).getTextura();
-                }
-
-                if (imageView == null) {
-                    imageView = new ImageView(this.pasto);
-                }
-                this.gridPane.add(imageView, i, j);
+                dibujarPosicion(i, j);
             }
         }
-
         this.borderPane.setCenter(gridPane);
 
     }
 
-    public void actualizar(VectorPosicion2I posJugador, VectorPosicion2I posPasto) {
-        if (this.mapa.obtenerJugador(posJugador) != null) {
-            this.gridPane.add(new ImageView(this.pasto), posPasto.getX(), posPasto.getY());
-            ImageView imageView = this.mapa.obtenerJugador(posJugador).getTextura();
-            this.gridPane.add(imageView, posJugador.getX(), posJugador.getY());
+    public void dibujarPosicion(int i, int j) {
 
+        VectorPosicion2I posicion = new VectorPosicion2I(i, j);
+        ImageView imageView = this.mapa.obtenerMaterial(posicion) != null ? this.mapa.obtenerMaterial(posicion).getTextura() : null;
+
+        if (this.mapa.obtenerJugador(posicion) != null) {
+            imageView = this.mapa.obtenerJugador(posicion).getTextura();
         }
 
+        if (imageView == null) {
+            imageView = new ImageView(this.pasto);
+        }
+        this.gridPane.add(imageView, i, j);
     }
 
     public void actualizarMaterial(VectorPosicion2I posMaterialDestruido){
