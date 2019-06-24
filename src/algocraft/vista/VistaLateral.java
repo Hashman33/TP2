@@ -6,6 +6,7 @@ import algocraft.juego.mapa.Mapa;
 import algocraft.utilidades.VectorPosicion2I;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -61,6 +62,7 @@ public class VistaLateral implements Dibujable {
         this.contenedor.getChildren().addAll(mesaCarfteo, inventarioMateriales, inventarioHerramientas);
         this.contenedor.setSpacing(40);
         this.borderPane.setRight(contenedor);
+        BorderPane.setMargin(contenedor, new Insets(32,64,32,32));
 
     }
 
