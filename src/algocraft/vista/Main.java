@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     // Poner la resolucion que quieran. Yo la setee en HD
-    public static final int ANCHO = 1280;
-    public static final int ALTO = 720;
+    public static final int ANCHO = 1140;
+    public static final int ALTO = 640;
 
     //pablosuarez@gmail.com
     // Matriz en utilidades

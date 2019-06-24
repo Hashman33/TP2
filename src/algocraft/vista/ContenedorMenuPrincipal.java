@@ -17,8 +17,8 @@ public class ContenedorMenuPrincipal extends BorderPane {
 
     Stage stage;
 
-    public static final int ANCHO = 1280;
-    public static final int ALTO = 720;
+    public static final int ANCHO = 1140;
+    public static final int ALTO = 640;
 
 
     public ContenedorMenuPrincipal(Stage stage, Scene proximaEscena) {

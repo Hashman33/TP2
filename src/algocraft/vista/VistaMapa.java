@@ -35,6 +35,8 @@ public class VistaMapa implements Dibujable {
 
     public void dibujarPosicion(int i, int j) {
 
+        if (i >= mapa.getAncho() || i < 0 || j >= mapa.getLargo() || j < 0) return;
+
         VectorPosicion2I posicion = new VectorPosicion2I(i, j);
         ImageView imageView = this.mapa.obtenerMaterial(posicion) != null ? this.mapa.obtenerMaterial(posicion).getTextura() : null;
 
