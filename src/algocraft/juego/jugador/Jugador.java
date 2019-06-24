@@ -125,4 +125,6 @@ public class Jugador {
     public List<Herramienta> getInventarioHerramientas() { return this.inventario.herramientas; }
 
     public Inventario getInventario() { return inventario; }
+
+    public MesaDeTrabajo getMesaDeTrabajo(){ return mesaDeTrabajo;}
 }

@@ -9,6 +9,7 @@ public abstract class Material {
 
     protected Desgaste desgaste;
     protected String texturaUrl = "";
+    protected String texturaInvUrl = "";
     protected final int ANCHO = 32;
     protected final int ALTO = 32;
 
@@ -33,5 +34,7 @@ public abstract class Material {
     public ImageView getTextura() {
         return new ImageView(new Image(this.texturaUrl, ANCHO, ALTO, false,true));
     }
+
+    public ImageView getTexturaU(){return new ImageView( new Image(this.texturaInvUrl, ANCHO, ALTO, false, true));}
 
 }

@@ -11,6 +11,7 @@ public class Madera extends Material {
 
         this.desgaste = new DesgastePorValor(10);
         this.texturaUrl = "/recursos/texturas/madera.png";
+        this.texturaInvUrl = "/recursos/texturas/umadera.png";
     }
 
     @Override

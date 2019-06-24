@@ -10,6 +10,7 @@ public class Diamante extends Material {
     public Diamante(){
         this.desgaste = new DesgastePorValor(100);
         this.texturaUrl = "/recursos/texturas/diamante.jpeg";
+        this.texturaInvUrl = "/recursos/texturas/udiamante.png";
     }
     @Override
     public void desgastarCon(Hacha hacha) { }

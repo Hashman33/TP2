@@ -10,6 +10,7 @@ public class Piedra extends Material {
     public Piedra(){
         this.desgaste = new DesgastePorValor(30);
         this.texturaUrl = "/recursos/texturas/piedra.png";
+        this.texturaInvUrl = "/recursos/texturas/upiedra.png";
     }
     @Override
     public void desgastarCon(Hacha hacha){
