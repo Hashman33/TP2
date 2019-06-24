@@ -48,9 +48,4 @@ public class VistaMapa implements Dibujable {
         this.gridPane.add(imageView, i, j);
     }
 
-    public void actualizarMaterial(VectorPosicion2I posMaterialDestruido){
-        this.gridPane.add(new ImageView(this.pasto), posMaterialDestruido.getX(), posMaterialDestruido.getY());
-    }
-
-
 }

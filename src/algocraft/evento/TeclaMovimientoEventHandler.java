@@ -31,7 +31,8 @@ public class TeclaMovimientoEventHandler implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent event) {
 
-        VectorPosicion2I posAnterior = juego.getJugador().getPosicion();
+        Jugador jugador = juego.getJugador();
+        VectorPosicion2I posAnterior = jugador.getPosicion();
         VectorPosicion2I movimiento = new VectorPosicion2I(0,0);
 
         if(event.getCode() == KeyCode.W) { movimiento = direccion.arriba(); }
@@ -42,9 +43,15 @@ public class TeclaMovimientoEventHandler implements EventHandler<KeyEvent> {
 
         if(event.getCode() == KeyCode.S) { movimiento = direccion.abajo(); }
 
-        juego.moverJugador(movimiento);
+        if(event.getCode() == KeyCode.F) { juego.usarHerramienta(); }
+
+
+        if (!movimiento.esIgualA(new VectorPosicion2I(0,0))) {
+            juego.moverJugador(movimiento);
+        }
         contenedorJuego.actualizarCeldaMapa(posAnterior);
         contenedorJuego.actualizarCeldaMapa(posAnterior.sumar(movimiento));
+        contenedorJuego.actualizarCeldaMapa(posAnterior.sumar(jugador.getMirada()));
     }
 }
 

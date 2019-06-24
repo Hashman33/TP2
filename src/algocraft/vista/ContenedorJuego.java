@@ -35,16 +35,10 @@ public class ContenedorJuego extends BorderPane {
         vistaMapa.dibujar();
     }
 
-
     public void actualizarCeldaMapa(VectorPosicion2I posicion){
 
         vistaMapa.dibujarPosicion(posicion.getX(), posicion.getY());
 
-    }
-
-    public void actualizarMaterialMapa(VectorPosicion2I posMaterialDestruido){
-
-        vistaMapa.actualizarMaterial(posMaterialDestruido);
     }
 
 

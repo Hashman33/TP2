@@ -68,7 +68,7 @@ public class Jugador {
         }
     }
 
-    public VectorPosicion2I usarHerramienta(Mapa mapa) {
+    public void usarHerramienta(Mapa mapa) {
 
         Herramienta herramienta = this.inventario.herramientaEquipada;
         VectorPosicion2I posicionMaterial = this.posicion.sumar(mirada);
@@ -81,15 +81,14 @@ public class Jugador {
             } catch (MaterialDestruidoException e) {
                 this.agregarEnInventario(material);
                 mapa.removerMaterial(posicionMaterial);
-                return posicionMaterial;
+
 
             } catch (HerramientaEstaRotaException e) {
                 this.equipar(new Mano());
                 this.quitarDeInventario(herramienta);
-                return null;
+
             }
         }
-        return null;
     }
 
     public void agregarAMesaDeTrabajo(Material material, VectorPosicion2I posicion) {
