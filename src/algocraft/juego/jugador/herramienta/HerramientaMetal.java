@@ -9,12 +9,14 @@ public class HerramientaMetal implements MaterialHerramienta {
     Metal material = new Metal();
 
     public void inicializarHacha(Hacha hacha) {
+        hacha.texturaUrl = "/recursos/texturas/hachametal.png";
         hacha.desgaste = new DesgastePorValor(400);
         hacha.factor = 0.5;
         hacha.fuerza = 10;
     }
 
     public void inicializarPico(Pico pico) {
+        pico.texturaUrl = "/recursos/texturas/picometal.png";
         pico.desgaste = new DesgasteAbrupto(400, 10);
         pico.factor = 1;
         pico.fuerza = 12;

@@ -23,6 +23,7 @@ public class ContenedorJuego extends BorderPane {
     Stage stage;
     Juego juego;
     VistaMapa vistaMapa;
+
     public static final int ANCHO = 480;
     public static final int ALTO = 260;
 

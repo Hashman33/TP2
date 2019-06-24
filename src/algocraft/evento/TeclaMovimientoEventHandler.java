@@ -54,6 +54,7 @@ public class TeclaMovimientoEventHandler implements EventHandler<KeyEvent> {
         if(event.getCode() == KeyCode.F) {
             juego.usarHerramienta();
             contenedorJuego.actualizarCeldaMapa(posJugador.sumar(jugador.getMirada()));
+
         }
     }
 }

@@ -8,6 +8,7 @@ import algocraft.utilidades.VectorPosicion2I;
 public class PicoFino extends Herramienta {
 
     public PicoFino() {
+        this.texturaUrl = "/recursos/texturas/picofino.png";
         this.desgaste = new DesgastePorValor(1000);
         this.factor = 0.1;
         this.fuerza = 20;

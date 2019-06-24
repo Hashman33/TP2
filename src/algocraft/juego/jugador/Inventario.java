@@ -54,4 +54,11 @@ public class Inventario {
 
     public int cantidadDeElementos() { return this.materiales.size() + this.herramientas.size(); }
 
+    public List<Herramienta> getHerramientas() { return herramientas; }
+
+    public List<Material> getMateriales() { return materiales; }
+
+    public int cantidadDeMateriales() {return this.materiales.size();}
+
+    public int cantidadDeHerramientas() {return this.herramientas.size();}
 }
