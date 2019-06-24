@@ -25,6 +25,8 @@ public class ContenedorJuego extends BorderPane {
     VistaMapa vistaMapa;
     VistaLateral vistaLateral;
 
+
+
     public static final int ANCHO = 480;
     public static final int ALTO = 260;
 
