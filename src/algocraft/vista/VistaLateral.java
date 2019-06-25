@@ -32,7 +32,7 @@ public class VistaLateral implements Dibujable {
 
         this.borderPane = borderPane;
         this.contenedor = new VBox();
-        this.slot = new Image("/recursos/texturas/slot.png", 32, 32, false, true);
+        this.slot = new Image("/recursos/texturas/slot.png", 34, 34, false, true);
         this.mesaCarfteo = new GridPane();
         this.inventarioMateriales = new GridPane();
         this.inventarioHerramientas = new GridPane();
@@ -62,7 +62,7 @@ public class VistaLateral implements Dibujable {
         this.contenedor.getChildren().addAll(mesaCarfteo, inventarioMateriales, inventarioHerramientas);
         this.contenedor.setSpacing(40);
         this.borderPane.setRight(contenedor);
-        BorderPane.setMargin(contenedor, new Insets(32,64,32,32));
+        BorderPane.setMargin(contenedor, new Insets(32,32,32,32));
 
     }
 
@@ -86,32 +86,32 @@ public class VistaLateral implements Dibujable {
     }
 
     public void dibujarCeldaMesa(int i, int j) {
-
-        // Tal vez cada nodo del grid deberia ser un vbox con un fondo y una imagen
         ImageView fondo = new ImageView(slot);
         this.mesaCarfteo.add(fondo, i, j);
     }
 
     public void dibujarCeldaInventarioM(int i, int j) {
+        ImageView fondo = new ImageView(slot);
+        this.inventarioMateriales.add(fondo, i, j);
+
         int posicionArray = LARGOINVENTARIOM * i + j;
 
         if ( posicionArray < inventario.getMateriales().size() ){
             this.inventarioMateriales.add(inventario.getMateriales().get(posicionArray).getTexturaU(),i,j);
             return;
         }
-        ImageView fondo = new ImageView(slot);
-        this.inventarioMateriales.add(fondo, i, j);
+
     }
 
     public void dibujarCeldaInventarioH(int i, int j) {
+        ImageView fondo = new ImageView(slot);
+        this.inventarioHerramientas.add(fondo, i, j);
 
         if( i < inventario.cantidadDeHerramientas()){
             this.inventarioHerramientas.add(inventario.getHerramientas().get(i).getTextura(),i,j);
             return;
         }
 
-        ImageView fondo = new ImageView(slot);
-        this.inventarioHerramientas.add(fondo, i, j);
     }
 
 
