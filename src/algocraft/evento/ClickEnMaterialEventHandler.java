@@ -1,3 +1,4 @@
+
 package algocraft.evento;
 
 import algocraft.juego.material.Material;
@@ -19,3 +20,4 @@ public class ClickEnMaterialEventHandler implements  EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) { this.vistaLateral.setMaterialAUbicarEnMesa(materialSeleccionado); }
 }
+

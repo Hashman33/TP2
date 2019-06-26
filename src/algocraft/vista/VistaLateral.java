@@ -110,6 +110,7 @@ public class VistaLateral implements Dibujable {
             ImageView material = inventario.getMateriales().get(posicionArray).getTexturaU();
             ClickEnMaterialEventHandler clickMaterialHandler = new ClickEnMaterialEventHandler(inventario.getMateriales().get(posicionArray), this);
             material.setOnMouseClicked(clickMaterialHandler);
+            fondo.setOnMouseClicked(clickMaterialHandler);
             this.inventarioMateriales.add(material,i,j);
         }
 
@@ -120,10 +121,15 @@ public class VistaLateral implements Dibujable {
         this.inventarioHerramientas.add(fondo, i, j);
 
         if (i < inventario.cantidadDeHerramientas()) {
-            this.inventarioHerramientas.add(inventario.getHerramientas().get(i).getTextura(), i, j);
 
+            ImageView herramienta = inventario.getHerramientas().get(i).getTextura();
+            ClickEnHerramientaEventHandler clickMaterialHandler = new ClickEnHerramientaEventHandler(inventario.getHerramientas().get(i), contenedorJuego, juego);
+            herramienta.setOnMouseClicked(clickMaterialHandler);
+            fondo.setOnMouseClicked(clickMaterialHandler);
+            this.inventarioHerramientas.add(herramienta, i, j);
         }
     }
+
     public void setMaterialAUbicarEnMesa(Material material) { this.materialAUbicarEnMesa = material; }
 
     public Material getMaterialAUbicarEnMesa() { return this.materialAUbicarEnMesa; }

@@ -27,6 +27,7 @@ public class ClickEnMesaEventHandler implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
         if (vistaLateral.getMaterialAUbicarEnMesa() != null) {
             juego.agregarMaterialAMesaDeTrabajo(vistaLateral.getMaterialAUbicarEnMesa(), posicion);
+            vistaLateral.setMaterialAUbicarEnMesa(null);
             contenedor.actualizarMesaDeTrabajo();
             contenedor.actualizarInventario();
         }
