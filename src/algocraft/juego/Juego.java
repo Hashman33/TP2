@@ -2,6 +2,7 @@ package algocraft.juego;
 
 import algocraft.juego.jugador.Jugador;
 import algocraft.juego.mapa.Mapa;
+import algocraft.juego.material.Material;
 import algocraft.utilidades.VectorPosicion2I;
 
 public class Juego {
@@ -18,6 +19,10 @@ public class Juego {
     public void moverJugador(VectorPosicion2I movimiento) { jugador.mover(mapa, movimiento); }
 
     public void usarHerramienta() { jugador.usarHerramienta(mapa); }
+
+    public void agregarMaterialAMesaDeTrabajo(Material material, VectorPosicion2I pos) {
+        jugador.agregarAMesaDeTrabajo(material, pos);
+    }
 
 
     public Mapa getMapa() { return this.mapa; }

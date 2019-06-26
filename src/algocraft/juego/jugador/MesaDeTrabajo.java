@@ -107,4 +107,6 @@ public class MesaDeTrabajo {
         return this.matriz.estaVacia();
     }
 
+    public Material obtenerMaterial(VectorPosicion2I pos) { return this.matriz.obtenerMaterial(pos); }
+
 }

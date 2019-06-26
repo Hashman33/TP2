@@ -40,7 +40,7 @@ public class ContenedorJuego extends BorderPane {
         this.vistaMapa = new VistaMapa(juego.getMapa(), this);
         vistaMapa.dibujar();
 
-        this.vistaLateral = new VistaLateral(juego.getJugador().getInventario(), juego.getJugador().getMesaDeTrabajo(),this);
+        this.vistaLateral = new VistaLateral(juego,this);
         vistaLateral.dibujar();
 
         BackgroundImage fondo = new BackgroundImage(new Image("/recursos/fondos/fondo2.jpg", ANCHO, ALTO, false, true), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
@@ -59,6 +59,11 @@ public class ContenedorJuego extends BorderPane {
 
         vistaLateral.dibujarInventarioH();
         vistaLateral.dibujarInventarioM();
+    }
+
+    public void actualizarMesaDeTrabajo() {
+
+        vistaLateral.dibujarMesaDeTrabajo();
     }
 
 

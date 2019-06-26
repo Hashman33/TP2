@@ -1,11 +1,11 @@
 package algocraft.vista;
 
+import algocraft.evento.*;
+import algocraft.juego.Juego;
 import algocraft.juego.jugador.Inventario;
 import algocraft.juego.jugador.MesaDeTrabajo;
-import algocraft.juego.mapa.Mapa;
-import algocraft.utilidades.VectorPosicion2I;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import algocraft.juego.material.Material;
+import algocraft.utilidades.*;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,10 +14,10 @@ import javafx.scene.paint.Color;
 
 public class VistaLateral implements Dibujable {
 
-    private BorderPane borderPane;
+    private ContenedorJuego contenedorJuego;
     private VBox contenedor;
     private Image slot;
-    private GridPane mesaCarfteo;
+    private GridPane gridMesaCarfteo;
     private GridPane inventarioMateriales;
     private GridPane inventarioHerramientas;
     private static int LARGOMESA = 3;
@@ -25,45 +25,48 @@ public class VistaLateral implements Dibujable {
     private static int ANCHOINVENTARIO = 6;
     private static int LARGOINVENTARIOH = 1;
     private static int LARGOINVENTARIOM = 4;
+    private Juego juego;
     private Inventario inventario;
     private MesaDeTrabajo mesaDeTrabajo;
+    private Material materialAUbicarEnMesa;
 
-    public VistaLateral(Inventario inventario, MesaDeTrabajo mesaDeTrabajo,BorderPane borderPane) {
 
-        this.borderPane = borderPane;
+    public VistaLateral(Juego juego,ContenedorJuego contenedorJuego) {
+
+        this.contenedorJuego = contenedorJuego;
         this.contenedor = new VBox();
         this.slot = new Image("/recursos/texturas/slot.png", 34, 34, false, true);
-        this.mesaCarfteo = new GridPane();
+        this.gridMesaCarfteo = new GridPane();
         this.inventarioMateriales = new GridPane();
         this.inventarioHerramientas = new GridPane();
         inventarioHerramientas.setBackground(new Background(new BackgroundFill(Color.DARKGREY, CornerRadii.EMPTY, Insets.EMPTY)));
-        this.inventario = inventario;
-        this.mesaDeTrabajo = mesaDeTrabajo;
+        this.inventario = juego.getJugador().getInventario();
+        this.mesaDeTrabajo = juego.getJugador().getMesaDeTrabajo();
+        this.materialAUbicarEnMesa = null;
+        this.juego = juego;
     }
 
     @Override
     public void dibujar() {
+
+        this.dibujarMesaDeTrabajo();
+        this.dibujarInventarioH();
+        this.dibujarInventarioM();
+
+        this.contenedor.getChildren().addAll(gridMesaCarfteo, inventarioMateriales, inventarioHerramientas);
+        this.contenedor.setSpacing(40);
+        this.contenedorJuego.setRight(contenedor);
+        BorderPane.setMargin(contenedor, new Insets(32,32,32,32));
+
+    }
+
+    public void dibujarMesaDeTrabajo() {
 
         for (int i = 0; i < ANCHOMESA; i++) {
             for (int j = 0; j < LARGOMESA; j++) {
                 dibujarCeldaMesa(i, j);
             }
         }
-        for (int i = 0; i < ANCHOINVENTARIO; i++) {
-            for (int j = 0; j < LARGOINVENTARIOH; j++) {
-                dibujarCeldaInventarioH(i, j);
-            }
-        }
-        for (int i = 0; i < ANCHOINVENTARIO; i++) {
-            for (int j = 0; j < LARGOINVENTARIOM; j++) {
-                dibujarCeldaInventarioM(i, j);
-            }
-        }
-        this.contenedor.getChildren().addAll(mesaCarfteo, inventarioMateriales, inventarioHerramientas);
-        this.contenedor.setSpacing(40);
-        this.borderPane.setRight(contenedor);
-        BorderPane.setMargin(contenedor, new Insets(32,32,32,32));
-
     }
 
     public void dibujarInventarioH(){
@@ -73,8 +76,8 @@ public class VistaLateral implements Dibujable {
                 dibujarCeldaInventarioH(i, j);
             }
         }
-
     }
+
     public void dibujarInventarioM(){
 
         for (int i = 0; i < ANCHOINVENTARIO; i++) {
@@ -82,12 +85,18 @@ public class VistaLateral implements Dibujable {
                 dibujarCeldaInventarioM(i, j);
             }
         }
-
     }
 
     public void dibujarCeldaMesa(int i, int j) {
         ImageView fondo = new ImageView(slot);
-        this.mesaCarfteo.add(fondo, i, j);
+        ClickEnMesaEventHandler clickMesaHandler = new ClickEnMesaEventHandler(contenedorJuego, juego, this, new VectorPosicion2I(i,j) );
+        fondo.setOnMouseClicked(clickMesaHandler);
+        this.gridMesaCarfteo.add(fondo, i, j);
+
+        Material material = this.mesaDeTrabajo.obtenerMaterial(new VectorPosicion2I(i, j));
+        if (material != null) {
+            this.gridMesaCarfteo.add(material.getTexturaU(), i, j);
+        }
     }
 
     public void dibujarCeldaInventarioM(int i, int j) {
@@ -97,8 +106,11 @@ public class VistaLateral implements Dibujable {
         int posicionArray = LARGOINVENTARIOM * i + j;
 
         if ( posicionArray < inventario.getMateriales().size() ){
-            this.inventarioMateriales.add(inventario.getMateriales().get(posicionArray).getTexturaU(),i,j);
-            return;
+
+            ImageView material = inventario.getMateriales().get(posicionArray).getTexturaU();
+            ClickEnMaterialEventHandler clickMaterialHandler = new ClickEnMaterialEventHandler(inventario.getMateriales().get(posicionArray), this);
+            material.setOnMouseClicked(clickMaterialHandler);
+            this.inventarioMateriales.add(material,i,j);
         }
 
     }
@@ -107,13 +119,14 @@ public class VistaLateral implements Dibujable {
         ImageView fondo = new ImageView(slot);
         this.inventarioHerramientas.add(fondo, i, j);
 
-        if( i < inventario.cantidadDeHerramientas()){
-            this.inventarioHerramientas.add(inventario.getHerramientas().get(i).getTextura(),i,j);
-            return;
+        if (i < inventario.cantidadDeHerramientas()) {
+            this.inventarioHerramientas.add(inventario.getHerramientas().get(i).getTextura(), i, j);
+
         }
-
     }
+    public void setMaterialAUbicarEnMesa(Material material) { this.materialAUbicarEnMesa = material; }
 
+    public Material getMaterialAUbicarEnMesa() { return this.materialAUbicarEnMesa; }
 
 
 }

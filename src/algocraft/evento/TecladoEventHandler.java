@@ -13,14 +13,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 
-public class TeclaMovimientoEventHandler implements EventHandler<KeyEvent> {
+public class TecladoEventHandler implements EventHandler<KeyEvent> {
 
     private Juego juego;
     private Direccion direccion;
     private ContenedorJuego contenedorJuego;
 
 
-    public TeclaMovimientoEventHandler(ContenedorJuego contenedorJuego, Juego juego) {
+    public TecladoEventHandler(ContenedorJuego contenedorJuego, Juego juego) {
 
         this.juego = juego;
         this.direccion = new Direccion();

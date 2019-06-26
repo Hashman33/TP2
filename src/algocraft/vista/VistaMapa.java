@@ -10,12 +10,12 @@ import javafx.scene.layout.GridPane;
 public class VistaMapa implements Dibujable {
 
     private Mapa mapa;
-    private BorderPane borderPane;
+    private ContenedorJuego contenedorJuego;
     private Image pasto;
     private GridPane gridPane;
 
-    public VistaMapa(Mapa mapa, BorderPane borderPane) {
-        this.borderPane = borderPane;
+    public VistaMapa(Mapa mapa, ContenedorJuego contenedorJuego) {
+        this.contenedorJuego = contenedorJuego;
         this.mapa = mapa;
         this.pasto = new Image("/recursos/texturas/pasto.jpg", 32, 32, false, true);
         this.gridPane = new GridPane();
@@ -29,7 +29,7 @@ public class VistaMapa implements Dibujable {
                 dibujarPosicion(i, j);
             }
         }
-        this.borderPane.setCenter(gridPane);
+        this.contenedorJuego.setCenter(gridPane);
 
     }
 
