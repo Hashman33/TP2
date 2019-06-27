@@ -35,10 +35,10 @@ public class Mapa {
     public void iniciarRandom(){
         tablero = new Matriz(LARGO,ANCHO);
         RandomMap generador = new RandomMap(this, ANCHO, LARGO);
-        generador.disponerMaterialMadera(30,20);
-        generador.disponerMaterialPiedra(25,15);
+        generador.disponerMaterialMadera(50,30);
+        generador.disponerMaterialPiedra(40,25);
         generador.disponerMaterialMetal(20,10);
-        generador.disponerMaterialDiamante(6,4);
+        generador.disponerMaterialDiamante(10,5);
 
     }
 
