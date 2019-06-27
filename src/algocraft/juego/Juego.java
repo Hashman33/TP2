@@ -25,7 +25,9 @@ public class Juego {
         jugador.agregarAMesaDeTrabajo(material, pos);
     }
 
-    public void equipar(Herramienta herramienta) { this.jugador.equipar(herramienta);}
+    public void equipar(Herramienta herramienta) { this.jugador.equipar(herramienta); }
+
+    public void limpiarMesaDeTrabajo() { this.jugador.limpiarMesaDeTrabajo(); }
 
 
     public Mapa getMapa() { return this.mapa; }

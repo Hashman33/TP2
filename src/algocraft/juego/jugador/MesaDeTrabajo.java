@@ -93,7 +93,8 @@ public class MesaDeTrabajo {
         List<Material> materiales = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                materiales.add(removerMaterial(new VectorPosicion2I(i, j)));
+                Material material = removerMaterial(new VectorPosicion2I(i, j));
+                if (material != null) materiales.add(material);
             }
         }
         return materiales;

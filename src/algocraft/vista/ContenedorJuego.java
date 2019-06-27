@@ -55,6 +55,11 @@ public class ContenedorJuego extends BorderPane {
 
     }
 
+    public void actualizarInventarioM() {
+
+        vistaLateral.dibujarInventarioM();
+    }
+
     public void actualizarInventario(){
 
         vistaLateral.dibujarInventarioH();

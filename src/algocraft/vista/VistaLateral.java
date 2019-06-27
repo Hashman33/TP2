@@ -1,5 +1,6 @@
 package algocraft.vista;
 
+import algocraft.controlador.BotonLimpiarMesa;
 import algocraft.evento.*;
 import algocraft.juego.Juego;
 import algocraft.juego.jugador.Inventario;
@@ -7,6 +8,7 @@ import algocraft.juego.jugador.MesaDeTrabajo;
 import algocraft.juego.material.Material;
 import algocraft.utilidades.*;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -14,17 +16,18 @@ import javafx.scene.paint.Color;
 
 public class VistaLateral implements Dibujable {
 
+    private static int LARGOMESA = 3;
+    private static int ANCHOMESA = 3;
+    private static int ANCHOINVENTARIO = 6;
+    private static int LARGOINVENTARIOH = 1;
+    private static int LARGOINVENTARIOM = 4;
+
     private ContenedorJuego contenedorJuego;
     private VBox contenedor;
     private Image slot;
     private GridPane gridMesaCarfteo;
     private GridPane inventarioMateriales;
     private GridPane inventarioHerramientas;
-    private static int LARGOMESA = 3;
-    private static int ANCHOMESA = 3;
-    private static int ANCHOINVENTARIO = 6;
-    private static int LARGOINVENTARIOH = 1;
-    private static int LARGOINVENTARIOM = 4;
     private Juego juego;
     private Inventario inventario;
     private MesaDeTrabajo mesaDeTrabajo;
@@ -53,11 +56,18 @@ public class VistaLateral implements Dibujable {
         this.dibujarInventarioH();
         this.dibujarInventarioM();
 
-        this.contenedor.getChildren().addAll(gridMesaCarfteo, inventarioMateriales, inventarioHerramientas);
+        HBox mesaTrabajo = new HBox();
+        BotonLimpiarMesa botonLimpiar = new BotonLimpiarMesa();
+        mesaTrabajo.getChildren().addAll(gridMesaCarfteo, botonLimpiar);
+        mesaTrabajo.setSpacing(20);
+
+        BotonLimpiarEventHandler botonLimpiarHandler = new BotonLimpiarEventHandler(contenedorJuego, juego);
+        botonLimpiar.setOnAction(botonLimpiarHandler);
+
+        this.contenedor.getChildren().addAll(mesaTrabajo, inventarioMateriales, inventarioHerramientas);
         this.contenedor.setSpacing(40);
         this.contenedorJuego.setRight(contenedor);
         BorderPane.setMargin(contenedor, new Insets(32,32,32,32));
-
     }
 
     public void dibujarMesaDeTrabajo() {
@@ -88,6 +98,7 @@ public class VistaLateral implements Dibujable {
     }
 
     public void dibujarCeldaMesa(int i, int j) {
+
         ImageView fondo = new ImageView(slot);
         ClickEnMesaEventHandler clickMesaHandler = new ClickEnMesaEventHandler(contenedorJuego, juego, this, new VectorPosicion2I(i,j) );
         fondo.setOnMouseClicked(clickMesaHandler);
@@ -100,6 +111,7 @@ public class VistaLateral implements Dibujable {
     }
 
     public void dibujarCeldaInventarioM(int i, int j) {
+
         ImageView fondo = new ImageView(slot);
         this.inventarioMateriales.add(fondo, i, j);
 
@@ -117,6 +129,7 @@ public class VistaLateral implements Dibujable {
     }
 
     public void dibujarCeldaInventarioH(int i, int j) {
+
         ImageView fondo = new ImageView(slot);
         this.inventarioHerramientas.add(fondo, i, j);
 
