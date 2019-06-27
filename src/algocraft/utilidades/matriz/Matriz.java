@@ -93,11 +93,17 @@ public class Matriz {
     }
 
     public Jugador obtenerJugador(VectorPosicion2I posicion) {
+        if (this.esPosicionValida(posicion)) {
             return this.obtenerCelda(posicion).obtenerJugador();
+        }
+        return null;
     }
 
     public Material obtenerMaterial(VectorPosicion2I posicion) {
-        return this.obtenerCelda(posicion).obtenerMaterial();
+        if (this.esPosicionValida(posicion)) {
+            return this.obtenerCelda(posicion).obtenerMaterial();
+        }
+        return null;
     }
 
     public void limpiar() {
