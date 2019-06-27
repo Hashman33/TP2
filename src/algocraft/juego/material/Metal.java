@@ -9,7 +9,7 @@ public class Metal extends Material {
 
     public Metal(){
         this.desgaste = new DesgastePorValor(50);
-        this.texturaUrl = "/recursos/texturas/metal.jpeg";
+        this.texturaUrl = "/recursos/texturas/metal.png";
         this.texturaInvUrl = "/recursos/texturas/umetal.png";
     }
 
