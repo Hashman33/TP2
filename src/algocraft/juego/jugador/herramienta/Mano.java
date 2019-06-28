@@ -7,6 +7,7 @@ public class Mano extends Herramienta {
 
     public Mano(){
         this.texturaUrl = "/recursos/texturas/stick.png";
+        this.sonidoUrl = "/recursos/sonidos/mano.mp3";
         this.desgaste = new DesgastePorValor(Double.POSITIVE_INFINITY);
         this.factor = 1;
         this.fuerza = 0;

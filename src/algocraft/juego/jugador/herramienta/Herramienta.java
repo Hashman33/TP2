@@ -5,6 +5,7 @@ import algocraft.juego.material.*;
 import algocraft.utilidades.matriz.Matriz;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 
 public abstract class Herramienta {
 
@@ -13,6 +14,7 @@ public abstract class Herramienta {
     protected int fuerza;
     protected Matriz matrizCrafteo;
     protected String texturaUrl = "";
+    protected String sonidoUrl = "";
     protected final int ANCHO = 32;
     protected final int ALTO = 32;
     protected final int ANCHOGRANDE = 96;
@@ -39,6 +41,8 @@ public abstract class Herramienta {
     public ImageView getTexturaGrande() {
         return new ImageView(new Image(this.texturaUrl, ANCHOGRANDE, ALTOGRANDE, false,true));
     }
+
+    public AudioClip getSonido() { return new AudioClip(this.getClass().getResource(this.sonidoUrl).toExternalForm()); }
 
 
 }

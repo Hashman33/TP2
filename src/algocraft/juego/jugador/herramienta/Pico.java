@@ -10,6 +10,7 @@ public class Pico extends Herramienta{
     protected MaterialHerramienta material;
 
     public Pico(MaterialHerramienta material){
+        this.sonidoUrl = "/recursos/sonidos/pico.mp3";
         this.material = material;
         material.inicializarPico(this);
         crearMatrizCrafteo(material.getMaterial());

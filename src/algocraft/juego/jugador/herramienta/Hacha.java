@@ -10,7 +10,7 @@ public class Hacha extends Herramienta{
     protected MaterialHerramienta material;
 
     public Hacha(MaterialHerramienta material){
-        this.texturaUrl = "/recursos/texturas/madera.png";
+        this.sonidoUrl = "/recursos/sonidos/hacha.mp3";
         this.material = material;
         material.inicializarHacha(this);
         crearMatrizCrafteo(material.getMaterial());
