@@ -55,6 +55,7 @@ public class TecladoEventHandler implements EventHandler<KeyEvent> {
             juego.usarHerramienta();
             contenedorJuego.actualizarCeldaMapa(posJugador.sumar(jugador.getMirada()));
             contenedorJuego.actualizarInventario();
+            contenedorJuego.actualizarHerramientaEquipada();
 
         }
     }

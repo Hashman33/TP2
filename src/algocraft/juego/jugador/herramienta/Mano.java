@@ -6,6 +6,7 @@ import algocraft.juego.material.Material;
 public class Mano extends Herramienta {
 
     public Mano(){
+        this.texturaUrl = "/recursos/texturas/stick.png";
         this.desgaste = new DesgastePorValor(Double.POSITIVE_INFINITY);
         this.factor = 1;
         this.fuerza = 0;

@@ -25,9 +25,11 @@ public class VistaLateral implements Dibujable {
     private ContenedorJuego contenedorJuego;
     private VBox contenedor;
     private Image slot;
+    private Image fondoHerramienta;
     private GridPane gridMesaCarfteo;
     private GridPane inventarioMateriales;
     private GridPane inventarioHerramientas;
+    private HBox herramientaEquipada;
     private Juego juego;
     private Inventario inventario;
     private MesaDeTrabajo mesaDeTrabajo;
@@ -39,10 +41,12 @@ public class VistaLateral implements Dibujable {
         this.contenedorJuego = contenedorJuego;
         this.contenedor = new VBox();
         this.slot = new Image("/recursos/texturas/slot.png", 34, 34, false, true);
+        this.fondoHerramienta = new Image("/recursos/texturas/fondoherramienta.png", 110, 110, false, true);
         this.gridMesaCarfteo = new GridPane();
         this.inventarioMateriales = new GridPane();
         this.inventarioHerramientas = new GridPane();
-        inventarioHerramientas.setBackground(new Background(new BackgroundFill(Color.DARKGREY, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.herramientaEquipada = new HBox();
+        //inventarioHerramientas.setBackground(new Background(new BackgroundFill(Color.DARKGREY, CornerRadii.EMPTY, Insets.EMPTY)));
         this.inventario = juego.getJugador().getInventario();
         this.mesaDeTrabajo = juego.getJugador().getMesaDeTrabajo();
         this.materialAUbicarEnMesa = null;
@@ -55,6 +59,7 @@ public class VistaLateral implements Dibujable {
         this.dibujarMesaDeTrabajo();
         this.dibujarInventarioH();
         this.dibujarInventarioM();
+        this.dibujarHerraminetaEquipada();
 
         HBox mesaTrabajo = new HBox();
         BotonLimpiarMesa botonLimpiar = new BotonLimpiarMesa();
@@ -64,7 +69,7 @@ public class VistaLateral implements Dibujable {
         BotonLimpiarEventHandler botonLimpiarHandler = new BotonLimpiarEventHandler(contenedorJuego, juego);
         botonLimpiar.setOnAction(botonLimpiarHandler);
 
-        this.contenedor.getChildren().addAll(mesaTrabajo, inventarioMateriales, inventarioHerramientas);
+        this.contenedor.getChildren().addAll(mesaTrabajo, inventarioMateriales, inventarioHerramientas, herramientaEquipada);
         this.contenedor.setSpacing(40);
         this.contenedorJuego.setRight(contenedor);
         BorderPane.setMargin(contenedor, new Insets(32,32,32,32));
@@ -95,6 +100,26 @@ public class VistaLateral implements Dibujable {
                 dibujarCeldaInventarioM(i, j);
             }
         }
+    }
+
+    public void dibujarHerraminetaEquipada() {
+        this.herramientaEquipada = new HBox();
+
+        BackgroundImage fondo = new BackgroundImage(this.fondoHerramienta, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        ImageView herramienta = inventario.herramientaEquipada.getTexturaGrande();
+
+        this.herramientaEquipada.setBackground(new Background(fondo));
+        this.herramientaEquipada.setAlignment(Pos.CENTER);
+        this.herramientaEquipada.getChildren().addAll(herramienta);
+
+    }
+
+    public void actualizarHerramientaEquipada() {
+        ImageView herramienta = inventario.herramientaEquipada.getTexturaGrande();
+        this.herramientaEquipada.getChildren().remove(0);
+        this.herramientaEquipada.getChildren().addAll(herramienta);
+
     }
 
     public void dibujarCeldaMesa(int i, int j) {

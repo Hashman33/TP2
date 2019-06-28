@@ -71,6 +71,11 @@ public class ContenedorJuego extends BorderPane {
         vistaLateral.dibujarMesaDeTrabajo();
     }
 
+    public void actualizarHerramientaEquipada(){
+
+        vistaLateral.actualizarHerramientaEquipada();
+    }
+
 
 
 }

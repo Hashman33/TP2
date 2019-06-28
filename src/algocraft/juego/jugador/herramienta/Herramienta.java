@@ -15,6 +15,8 @@ public abstract class Herramienta {
     protected String texturaUrl = "";
     protected final int ANCHO = 32;
     protected final int ALTO = 32;
+    protected final int ANCHOGRANDE = 96;
+    protected final int ALTOGRANDE = 96;
 
     public abstract void desgastar(Material material);
 
@@ -33,5 +35,10 @@ public abstract class Herramienta {
     public ImageView getTextura() {
         return new ImageView(new Image(this.texturaUrl, ANCHO, ALTO, false,true));
     }
+
+    public ImageView getTexturaGrande() {
+        return new ImageView(new Image(this.texturaUrl, ANCHOGRANDE, ALTOGRANDE, false,true));
+    }
+
 
 }
