@@ -35,7 +35,7 @@ public class TecladoEventHandler implements EventHandler<KeyEvent> {
         Jugador jugador = juego.getJugador();
         VectorPosicion2I posJugador = jugador.getPosicion();
         VectorPosicion2I movimiento = null;
-        this.sonidoHerramienta = juego.getJugador().herramientaEquipada().getSonido();
+
 
         // Movimiento
         if (event.getCode() == KeyCode.W) {
@@ -63,11 +63,16 @@ public class TecladoEventHandler implements EventHandler<KeyEvent> {
 
         // Uso de herramienta
         if (event.getCode() == KeyCode.F) {
+            this.sonidoHerramienta = juego.getJugador().herramientaEquipada().getSonido();
+
+            if (juego.getMapa().obtenerMaterial(posJugador.sumar(jugador.getMirada())) != null) {
+                sonidoHerramienta.play();
+            }
             juego.usarHerramienta();
             contenedorJuego.actualizarCeldaMapa(posJugador.sumar(jugador.getMirada()));
             contenedorJuego.actualizarInventario();
             contenedorJuego.actualizarHerramientaEquipada();
-            if (juego.getMapa().obtenerMaterial(posJugador.sumar(jugador.getMirada())) != null) {   sonidoHerramienta.play(); }
+
         }
     }
 }

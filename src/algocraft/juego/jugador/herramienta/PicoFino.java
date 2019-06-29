@@ -9,6 +9,7 @@ public class PicoFino extends Herramienta {
 
     public PicoFino() {
         this.texturaUrl = "/recursos/texturas/picofino.png";
+        this.sonidoUrl = "/recursos/sonidos/pico.mp3";
         this.desgaste = new DesgastePorValor(1000);
         this.factor = 0.1;
         this.fuerza = 20;
