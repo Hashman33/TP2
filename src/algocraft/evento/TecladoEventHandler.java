@@ -58,7 +58,9 @@ public class TecladoEventHandler implements EventHandler<KeyEvent> {
             juego.moverJugador(movimiento);
             contenedorJuego.actualizarCeldaMapa(posJugador.sumar(movimiento));
             contenedorJuego.actualizarCeldaMapa(posJugador);
-            sonidoCaminar.play();
+            if (!posJugador.esIgualA(juego.getJugador().getPosicion())) {
+                sonidoCaminar.play();
+            }
         }
 
         // Uso de herramienta

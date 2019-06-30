@@ -1,22 +1,12 @@
 package algocraft.vista;
 
-import algocraft.controlador.BotonJugar;
-import algocraft.evento.BotonJugarEventHandler;
+
 import algocraft.juego.Juego;
-import algocraft.juego.jugador.Jugador;
-import algocraft.juego.mapa.Mapa;
 import algocraft.utilidades.VectorPosicion2I;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.InputStream;
 
 public class ContenedorJuego extends BorderPane {
 
@@ -40,7 +30,7 @@ public class ContenedorJuego extends BorderPane {
         this.vistaMapa = new VistaMapa(juego.getMapa(), this);
         vistaMapa.dibujar();
 
-        this.vistaLateral = new VistaLateral(juego,this);
+        this.vistaLateral = new VistaLateral(stage, juego,this);
         vistaLateral.dibujar();
 
         BackgroundImage fondo = new BackgroundImage(new Image("/recursos/fondos/fondo2.jpg", ANCHO, ALTO, false, true), BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,

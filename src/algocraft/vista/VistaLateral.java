@@ -1,6 +1,6 @@
 package algocraft.vista;
 
-import algocraft.controlador.BotonLimpiarMesa;
+import algocraft.controlador.*;
 import algocraft.evento.*;
 import algocraft.juego.Juego;
 import algocraft.juego.jugador.Inventario;
@@ -9,10 +9,15 @@ import algocraft.juego.material.Material;
 import algocraft.utilidades.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+import java.io.InputStream;
 
 public class VistaLateral implements Dibujable {
 
@@ -22,6 +27,7 @@ public class VistaLateral implements Dibujable {
     private static int LARGOINVENTARIOH = 1;
     private static int LARGOINVENTARIOM = 4;
 
+    private Stage stage;
     private ContenedorJuego contenedorJuego;
     private VBox contenedor;
     private Image slot;
@@ -36,8 +42,9 @@ public class VistaLateral implements Dibujable {
     private Material materialAUbicarEnMesa;
 
 
-    public VistaLateral(Juego juego,ContenedorJuego contenedorJuego) {
+    public VistaLateral(Stage stage,Juego juego, ContenedorJuego contenedorJuego) {
 
+        this.stage = stage;
         this.contenedorJuego = contenedorJuego;
         this.contenedor = new VBox();
         this.slot = new Image("/recursos/texturas/slot.png", 34, 34, false, true);
@@ -46,7 +53,6 @@ public class VistaLateral implements Dibujable {
         this.inventarioMateriales = new GridPane();
         this.inventarioHerramientas = new GridPane();
         this.herramientaEquipada = new HBox();
-        //inventarioHerramientas.setBackground(new Background(new BackgroundFill(Color.DARKGREY, CornerRadii.EMPTY, Insets.EMPTY)));
         this.inventario = juego.getJugador().getInventario();
         this.mesaDeTrabajo = juego.getJugador().getMesaDeTrabajo();
         this.materialAUbicarEnMesa = null;
@@ -69,7 +75,16 @@ public class VistaLateral implements Dibujable {
         BotonLimpiarEventHandler botonLimpiarHandler = new BotonLimpiarEventHandler(contenedorJuego, juego);
         botonLimpiar.setOnAction(botonLimpiarHandler);
 
-        this.contenedor.getChildren().addAll(mesaTrabajo, inventarioMateriales, inventarioHerramientas, herramientaEquipada);
+        VBox vBoxHerramientaEquipada = new VBox();
+        HBox hBoxTitulo = this.dibujarTituloHerramienta();
+        vBoxHerramientaEquipada.getChildren().addAll(hBoxTitulo, herramientaEquipada);
+        vBoxHerramientaEquipada.setSpacing(5);
+
+        BotonSalir botonSalir = new BotonSalir();
+        BotonSalirEventHandler botonSalirHandler = new BotonSalirEventHandler(stage);
+        botonSalir.setOnAction(botonSalirHandler);
+
+        this.contenedor.getChildren().addAll(mesaTrabajo, inventarioMateriales, inventarioHerramientas, vBoxHerramientaEquipada, botonSalir);
         this.contenedor.setSpacing(40);
         this.contenedorJuego.setRight(contenedor);
         BorderPane.setMargin(contenedor, new Insets(32,32,32,32));
@@ -102,7 +117,7 @@ public class VistaLateral implements Dibujable {
         }
     }
 
-    public void dibujarHerraminetaEquipada() {
+    private void dibujarHerraminetaEquipada() {
         this.herramientaEquipada = new HBox();
 
         BackgroundImage fondo = new BackgroundImage(this.fondoHerramienta, BackgroundRepeat.NO_REPEAT,
@@ -113,6 +128,20 @@ public class VistaLateral implements Dibujable {
         this.herramientaEquipada.setAlignment(Pos.CENTER);
         this.herramientaEquipada.getChildren().addAll(herramienta);
 
+    }
+
+    private HBox dibujarTituloHerramienta() {
+
+        HBox hBoxTitulo = new HBox();
+        Label titulo = new Label("Herramienta Equipada");
+        InputStream i = getClass().getResourceAsStream("/recursos/fuentes/Minecraft.ttf");
+        Font fuenteRegular = Font.loadFont(i, 15);
+        titulo.setTextFill(Color.web("DCDCDC", 1.0));
+        titulo.setFont(fuenteRegular);
+
+        hBoxTitulo.getChildren().addAll(titulo);
+        hBoxTitulo.setAlignment(Pos.CENTER);
+        return hBoxTitulo;
     }
 
     public void actualizarHerramientaEquipada() {
@@ -135,7 +164,7 @@ public class VistaLateral implements Dibujable {
         }
     }
 
-    public void dibujarCeldaInventarioM(int i, int j) {
+    private void dibujarCeldaInventarioM(int i, int j) {
 
         ImageView fondo = new ImageView(slot);
         this.inventarioMateriales.add(fondo, i, j);
@@ -153,7 +182,7 @@ public class VistaLateral implements Dibujable {
 
     }
 
-    public void dibujarCeldaInventarioH(int i, int j) {
+    private void dibujarCeldaInventarioH(int i, int j) {
 
         ImageView fondo = new ImageView(slot);
         this.inventarioHerramientas.add(fondo, i, j);
@@ -171,6 +200,5 @@ public class VistaLateral implements Dibujable {
     public void setMaterialAUbicarEnMesa(Material material) { this.materialAUbicarEnMesa = material; }
 
     public Material getMaterialAUbicarEnMesa() { return this.materialAUbicarEnMesa; }
-
 
 }

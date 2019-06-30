@@ -18,10 +18,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
+        this.iniciarJuego(stage);
+    }
 
+    public static void iniciarJuego(Stage stage) {
         stage.setTitle("AlgoCraft - Grupo 13");
 
-        //BorderPane contenedorJuego = new BorderPane();
         Juego juego = new Juego();
 
         ContenedorJuego contenedorJuego = new ContenedorJuego(stage, juego);
