@@ -74,26 +74,21 @@ public class Mapa {
 
     // Propuesta de movimiento: Cuando funcione el juego vos apretas una tecla y se mueve. Depende la tecla
     // le pasas un vector distinto y se mueve a donde corresponde
-    public boolean moverJugador(Jugador jugador, VectorPosicion2I movimiento) {
+    public boolean moverJugador(Jugador jugador, VectorPosicion2I posicionActual, VectorPosicion2I movimiento) {
 
         // Tecla arriba: + (0 -1)
         // Tecla abajo: + (0 1)
         // Tecla izquierda: + (-1 0)
         // Tecla derecha: + (1 0)
         // Tambien en diagonal se podria con (1 1), (-1 1), etc.
-        Celda celdaActual = tablero.obtenerCelda(jugador.getPosicion());
 
-        VectorPosicion2I nuevaPosicion = jugador.getPosicion().sumar(movimiento);
+        VectorPosicion2I nuevaPosicion = posicionActual.sumar(movimiento);
 
-        Celda celdaAVisitar = tablero.obtenerCelda(nuevaPosicion);
+        boolean seColoco = tablero.colocar(jugador, nuevaPosicion);
 
-        if (celdaAVisitar == null) return false;
+        if (seColoco) { tablero.limpiarCelda(posicionActual); }
 
-        if (!celdaAVisitar.colocar(jugador)) return false;
-
-        celdaActual.limpiar();
-
-        return true;
+        return seColoco;
     }
 
     public boolean insertarJugador(Jugador jugador, VectorPosicion2I posicion) {

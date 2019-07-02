@@ -63,7 +63,7 @@ public class Jugador {
     public void mover(Mapa mapa, VectorPosicion2I vectorDesplazamiento) {
 
         this.mirada = vectorDesplazamiento;
-        if (mapa.moverJugador(this, vectorDesplazamiento)) {
+        if (mapa.moverJugador(this, this.posicion, vectorDesplazamiento)) {
             this.posicion = this.posicion.sumar(vectorDesplazamiento);
         }
     }
